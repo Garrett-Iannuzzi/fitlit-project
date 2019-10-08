@@ -22,25 +22,30 @@ describe('User', () => {
   it('should have a name', () => {
     expect(user.name).to.equal('Herminia Witting');
   });
-  //
-  // it('should have a ', () => {
-  //   expect(user.).to.equal();
-  // });
-  //
-  // it('should have a ', () => {
-  //   expect(user.).to.equal();
-  // });
-  //
-  // it('should have a ', () => {
-  //   expect(user.).to.equal();
-  // });
-  //
-  // it('should have a ', () => {
-  //   expect(user.).to.equal();
-  // });
-  //
-  // it('should have a ', () => {
-  //   expect(user.).to.equal();
-  // });
+
+  it('should have an address', () => {
+    expect(user.address).to.equal('85823 Bosco Fork, East Oscarstad MI 85126-5660');
+  });
+
+  it('should have an email', () => {
+    expect(user.email).to.equal('Elwin.Tromp@yahoo.com');
+  });
+
+  it('should have a stride length', () => {
+    expect(user.strideLength).to.equal(4.4);
+  });
+
+  it('should have a daily step goal', () => {
+    expect(user.dailyStepGoal).to.equal(5000);
+  });
+
+  it('should have a list of friends', () => {
+    expect(user.friends).to.eql([
+      19,
+      11,
+      42,
+      33
+    ]);
+  });
 
 })
