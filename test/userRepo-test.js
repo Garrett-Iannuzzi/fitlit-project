@@ -20,6 +20,4 @@ describe('UserRepo', () => {
     expect(userRepo.userData).to.eql(sampleUserData);
   });
 
-
-
 });
