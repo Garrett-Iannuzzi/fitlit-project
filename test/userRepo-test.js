@@ -1,5 +1,5 @@
 const chai = require('chai');
-const expect = chai.expect; 
+const expect = chai.expect;
 const UserRepo = require('../src/userRepo');
 const sampleUserData = require('../data/sampleUserData');
 
@@ -17,7 +17,7 @@ describe('UserRepo', () => {
   });
 
   it('should hold info on users', () => {
-    expect(userRepo.userData).to.eql(sampleUserData);
+    expect(userRepo.usersData).to.eql(sampleUserData);
   });
 
   it('should be able to get a user by id', () => {
