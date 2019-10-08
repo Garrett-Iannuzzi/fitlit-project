@@ -1,17 +1,17 @@
 class UserRepo {
-  constructor(userData) {
-    this.userData = userData;
+  constructor(usersData) {
+    this.usersData = usersData;
     this.user;
   }
 
   getUserInfo(userId) {
-    this.user = this.userData.find(user => user.id === userId);
+    this.user = this.usersData.find(user => user.id === userId);
     return this.user;
   }
-  
+
   getAverageStepGoalAllUsers() {
-    let stepGoalAll = this.userData.reduce((steps, user) => {
-      steps += user.dailyStepGoal / this.userData.length
+    let stepGoalAll = this.usersData.reduce((steps, user) => {
+      steps += user.dailyStepGoal / this.usersData.length
       return steps
     },0)
     return stepGoalAll
