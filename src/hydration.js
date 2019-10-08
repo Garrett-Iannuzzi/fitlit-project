@@ -17,7 +17,9 @@ class Hydration {
   }
 
   getOuncesPerDayByWeek(date) {
-    let todayDate = this.hydrationInfo.filter(user => user.date === date)
+    let todayDateIndex = this.hydrationInfo.findIndex(user => user.date === date)
+    let ouncesByWeek = this.hydrationInfo.splice(todayDateIndex - 6).map(user => user.numOunces)
+    return ouncesByWeek
   }
 
 }

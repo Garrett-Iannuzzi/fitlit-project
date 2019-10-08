@@ -41,8 +41,6 @@ describe('Hydration', () => {
   })
 
   it('should be able to get ounces consumed per day by week', () => {
-    // hydration = new Hydration(user3weekOfOunces);
-    // console.log(user3weekOfOunces);
     expect(hydration.getOuncesPerDayByWeek('2019/06/21')).to.eql([47, 99, 28, 29, 21, 23, 26]);
   })
 
