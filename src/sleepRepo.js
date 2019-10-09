@@ -32,8 +32,7 @@ class SleepRepo {
       return mostHoursSlept[0].userID
     }
   }
-
-
+  
 }
 
 if (typeof module !== 'undefined') {
