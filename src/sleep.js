@@ -11,9 +11,15 @@ class Sleep {
     return Number(allSleepData.toFixed(1))
   }
 
-  getMetricByDate(date, stat) {
+  getMetricByDate(date, metric) {
     let findDateAndMetric = this.sleepInfo.find(user => user.date === date);
-    return findDateAndMetric[stat]
+    return findDateAndMetric[metric]
+  }
+
+  getMetricByWeek(date, metric) {
+    let findDateIndex = this.sleepInfo.find(user => user.date === date);
+    let findMetric = this.sleepInfo.splice(findDateIndex - 6).map(user => user[metric]);
+    return findMetric
   }
 
 

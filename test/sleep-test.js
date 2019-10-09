@@ -35,7 +35,7 @@ describe('Sleep', () => {
     expect(sleep.getAvgMetricPerDayAllTime('hoursSlept')).to.equal(8.9);
   });
 
-  it('should be able to get the average sleep quality for a user', () => {
+  it('should get the average sleep quality for a user', () => {
     expect(sleep.getAvgMetricPerDayAllTime('sleepQuality')).to.equal(3.4);
   });
 
@@ -45,6 +45,14 @@ describe('Sleep', () => {
 
   it('should get sleep quality by date', () => {
     expect(sleep.getMetricByDate('2019/06/17', 'sleepQuality')).to.equal(4.9);
+  });
+
+  it('should get hours slept each day for a week', () => {
+    expect(sleep.getMetricByWeek('2019/06/21', 'hoursSlept')).to.eql([ 10.8, 10.7, 5.3, 9.8, 7.2, 9.4, 8.9 ]);
+  });
+
+  it('should get sleep quality each day for a week', () => {
+    expect(sleep.getMetricByWeek('2019/06/21', 'sleepQuality')).to.eql([ 4.7, 3.4, 4.9, 2.6, 3.4, 1.2, 3.7 ]);
   });
 
 
