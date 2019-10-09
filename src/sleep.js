@@ -3,12 +3,12 @@ class Sleep {
     this.sleepInfo = sleepInfo;
   }
 
-  getAvgHrsSleptPerDay() {
-    let avgSleep = this.sleepInfo.reduce((acc, cv) => {
-      acc += cv.hoursSlept / this.sleepInfo.length
-      return acc
+  getAvgMetricPerDayAllTime(stat) {
+    let allSleepData = this.sleepInfo.reduce((acc, user) => {
+      acc += user[stat] / this.sleepInfo.length
+      return acc 
     }, 0)
-    return Number(avgSleep.toFixed(2))
+    return Number(allSleepData.toFixed(1))
   }
 
 

@@ -32,10 +32,12 @@ describe('Sleep', () => {
   });
 
   it('should get average number of hours slept by id', () => {
-    expect(sleep.getAvgHrsSleptPerDay()).to.equal(8.87);
+    expect(sleep.getAvgMetricPerDayAllTime('hoursSlept')).to.equal(8.9);
   });
 
-
+  it('should be able to get the average sleep quality for a user', () => {
+    expect(sleep.getAvgMetricPerDayAllTime('sleepQuality')).to.equal(3.4);
+  });
 
 
 
