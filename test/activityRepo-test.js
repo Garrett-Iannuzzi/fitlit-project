@@ -61,8 +61,11 @@ describe('ActivityRepo', () => {
   });
 
   it('should be able to get all users avg step by date', () => {
-    expect(activityRepo.getAllUserActivityAvgByDate('numSteps', '2019/06/15')).to.equal(6026);
+    expect(activityRepo.getAllUserActivityAvgByDate('numSteps', '2019/06/15')).to.equal(6027);
   })
 
+  it('should be able to get all users avg flights of stair by date', () => {
+    expect(activityRepo.getAllUserActivityAvgByDate('flightsOfStairs', '2019/06/17')).to.equal(15);
+  })
 
 });
