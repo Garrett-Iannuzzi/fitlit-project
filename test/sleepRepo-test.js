@@ -36,6 +36,14 @@ describe ('SleepRepo', () => {
     expect(sleepRepo.getAvgSleepQuality()).to.equal(3.13);
   });
 
+  it('should get all users who have a sleep quality above three', () => {
+    
+  });
+
+  it('should get user with most hours slept by day', () => {
+    
+  });
+
 
 
 

@@ -17,6 +17,14 @@ class SleepRepo {
     return Number(avgSleepQuality.toFixed(2))
   }
 
+  getAvgSleepQualityAboveThree() {
+
+  }
+
+  getMostHoursSleptByDay() {
+
+  }
+
 
 }
 
