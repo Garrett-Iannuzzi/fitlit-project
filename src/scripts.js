@@ -1,3 +1,9 @@
-const randomUser = Math.floor(Math.random() * 50);
+const randomUser = Math.ceil(Math.random() * 50);
 const userRepo = new UserRepo(userData);
-console.log(userRepo)
+const user = new User(userRepo.getUserInfo(randomUser));
+const hydrationRepo = new HydrationRepo(hydrationData);
+const hydration = new Hydration(hydrationRepo.getUserByID(randomUser));
+const sleepRepo = new SleepRepo(sleepData);
+const sleep = new Sleep(sleepRepo.getUserById(randomUser));
+// const activityRepo = new ActivityRepo(activityData);
+// const activity = new Activity(activityRepo.)
