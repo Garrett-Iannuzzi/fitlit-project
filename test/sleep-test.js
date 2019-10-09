@@ -39,6 +39,10 @@ describe('Sleep', () => {
     expect(sleep.getAvgMetricPerDayAllTime('sleepQuality')).to.equal(3.4);
   });
 
+  it('should get hours slept by date', () => {
+    expect(sleep.getHrsSleptByDate('2019/06/17')).to.equal(5.3);
+  });
+
 
 
 
