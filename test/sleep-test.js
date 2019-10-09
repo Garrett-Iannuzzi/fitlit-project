@@ -40,7 +40,11 @@ describe('Sleep', () => {
   });
 
   it('should get hours slept by date', () => {
-    expect(sleep.getHrsSleptByDate('2019/06/17')).to.equal(5.3);
+    expect(sleep.getMetricByDate('2019/06/17', 'hoursSlept')).to.equal(5.3);
+  });
+
+  it('should get sleep quality by date', () => {
+    expect(sleep.getMetricByDate('2019/06/17', 'sleepQuality')).to.equal(4.9);
   });
 
 

@@ -11,9 +11,9 @@ class Sleep {
     return Number(allSleepData.toFixed(1))
   }
 
-  getHrsSleptByDate(date) {
-    let findDate = this.sleepInfo.find(user => user.date === date);
-    return findDate.hoursSlept
+  getMetricByDate(date, stat) {
+    let findDateAndMetric = this.sleepInfo.find(user => user.date === date);
+    return findDateAndMetric[stat]
   }
 
 
