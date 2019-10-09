@@ -18,7 +18,12 @@ class SleepRepo {
   }
 
   getAvgSleepQualityAboveThree() {
-
+    // need a date 
+      //will you be able to iterate over that date veriable?
+    // need to get 7 days from that date
+    // need to add sleep quality for every user
+    // need to compare that sleep quality avg to 3
+    //
   }
 
   getMostHoursSleptByDay(date) {
@@ -32,7 +37,7 @@ class SleepRepo {
       return mostHoursSlept[0].userID
     }
   }
-  
+
 }
 
 if (typeof module !== 'undefined') {

@@ -22,8 +22,6 @@ class Sleep {
     return findMetric
   }
 
-
-
 }
 
 if (typeof module !== 'undefined') {
