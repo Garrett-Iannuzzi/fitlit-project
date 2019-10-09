@@ -21,8 +21,16 @@ class SleepRepo {
 
   }
 
-  getMostHoursSleptByDay() {
-
+  getMostHoursSleptByDay(date) {
+    let hoursByDate = this.sleepData.filter(user => user.date === date)
+    let mostHoursSlept = hoursByDate.sort((a, b) => {
+      return b.hoursSlept - a.hoursSlept
+    });
+    if (mostHoursSlept[0].hoursSlept === mostHoursSlept[1].hoursSlept) {
+      return mostHoursSlept[0].userID && mostHoursSlept[1].userID
+    } else {
+      return mostHoursSlept[0].userID
+    }
   }
 
 
