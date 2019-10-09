@@ -9,7 +9,7 @@ describe('UserRepo', () => {
   let userRepo;
 
   beforeEach(() => {
-    userRepo = new UserRepo(sampleUserData)
+    userRepo = new UserRepo(sampleUserData);
   });
 
   it('should be a function', () => {
