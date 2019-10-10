@@ -3,13 +3,13 @@ let userRepo = new UserRepo(userData);
 let user = new User(userRepo.getUserInfo(randomUser));
 let hydrationRepo = new HydrationRepo(hydrationData);
 let hydration = new Hydration(hydrationRepo.getUserByID(randomUser));
-
+let date = hydrationData[hydrationData.length - 1].date;
 
 $(document).ready(function () {
-    userHandler();
-    hydrationHandler();
-  })
-  
+  userHandler();
+  hydrationHandler();
+  $('#span__current--date').text(date);
+})
 
 function userHandler() {
   $('#span__user--name--js').text(`${user.getUserFirstName()}`);
@@ -22,7 +22,7 @@ function userHandler() {
 }
 
 function hydrationHandler() {
-  $('#span__todays--water').text(`${hydration.getOuncesPerDayByDate('2019/06/17')}oz`);
+  $('#span__todays--water').text(`${hydration.getOuncesPerDayByDate(date)}oz`);
 }
 
 
