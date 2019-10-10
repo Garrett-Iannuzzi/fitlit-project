@@ -1,85 +1,87 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Activity Tracker</title>
   </head>
   <body>
-    <h1 class="" id="">Activity Tracker</h1>
-    <h3 class="" id="">Today's Date</h3>
+    <header class="" id="">
+      <h1 class="" id="">Fitness Is Litness</h1>
+      <h3 class="" id="">Today's Date: </h3>
+    </header>
+    <main class="main__page">
+      <!-- User Info -->
+      <div class="div__userInfo">
+        <section class="" id="">
+          ...name
+          ...address
+          ...email
+          ...strideLength
+          ...dailyStepGoal
+          ...friends
+        </section>
+      </div>  
 
-    <!-- User Info -->
-    <div class="div__userInfo">
-      <section class="" id="">
-        ...name
-        ...address
-        ...email
-        ...strideLength
-        ...dailyStepGoal
-        ...friends
-      </section>
-    </div>  
+      <!-- Hydration -->
+      <div class="div__hydration">
+        <section class="" id="">
+          <h4>Todays Water: <span id="span__todays--water"><p class="" id="hydration__today"></p></span></h4>
+          <img class="water__img" src="../Images/drop.png">
+        </section>
+        <section class="" id="">
+            <p class="" id="">A display to show much water they have consumed each day over the course of the latest week</p> 
+        </section>
+      </div>
 
-    <!-- Hydration -->
-    <div class="div__hydration">
-      <section class="" id="">
-        <h4>Todays Water: <span id="span__todays--water"><p class="" id="hydration__today"></p></span></h4>
-      </section>
-      <section class="" id="">
-          <p class="" id="">A display to show much water they have consumed each day over the course of the latest week</p> 
-      </section>
-    </div>
+      <!-- Sleep -->
+      <div class="div__sleep">
+        <section class="" id="">
+          ...For a user, their sleep data for the latest day (hours slept and quality of sleep)
+        </section>
+        <section class="" id="" >
+          ...For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)
+        </section>
+        <section class="" id="">
+          ...For a user, their all-time average sleep quality and all-time average number of hours slept
+        </section>
+      </div>
 
-    <!-- Sleep -->
-    <div class="div__sleep">
-      <section class="" id="">
-        ...For a user, their sleep data for the latest day (hours slept and quality of sleep)
-      </section>
-      <section class="" id="" >
-        ...For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)
-      </section>
-      <section class="" id="">
-        ...For a user, their all-time average sleep quality and all-time average number of hours slept
-      </section>
-    </div>
+      <!-- Activity -->
+      <div class="div__activity">
+        <section class="" id="">
+          ...For a user, the number of steps for the latest day
+        </section>
+        <section class="" id="">
+          ...For a user, the number minutes active for the latest day
+        </section>
+        <section class="" id="">
+          ...For a user, the distance they have walked (in miles) for the latest day based on their step count
+        </section>
+        <section class="" id="">
+          ...How their number of steps, minutes active, and flights of stairs climbed compares to all users for the latest day
+        </section>
+        <section class="" id="">
+          ...For a user, a weekly view of their step count, flights of stairs climbed, and minutes active
+        </section>
+        <section class="" id=""></section>
+      </div>
 
-    <!-- Activity -->
-    <div class="div__activity">
-      <section class="" id="">
-        ...For a user, the number of steps for the latest day
-      </section>
-      <section class="" id="">
-        ...For a user, the number minutes active for the latest day
-      </section>
-      <section class="" id="">
-        ...For a user, the distance they have walked (in miles) for the latest day based on their step count
-      </section>
-      <section class="" id="">
-        ...How their number of steps, minutes active, and flights of stairs climbed compares to all users for the latest day
-      </section>
-      <section class="" id="">
-        ...For a user, a weekly view of their step count, flights of stairs climbed, and minutes active
-      </section>
-      <section class="" id=""></section>
-    </div>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="path/to/your/jquery.min.js"><\/script>')</script>
-    <script type="text/javascript" src="./activityRepo.js"></script>
-    <script type="text/javascript" src="./activity.js"></script>
-    <script type="text/javascript" src="./sleepRepo.js"></script>
-    <script type="text/javascript" src="./sleep.js"></script>
-    <script type="text/javascript" src="./hydrationRepo.js"></script>
-    <script type="text/javascript" src="./hydration.js"></script>
-    <script type="text/javascript" src="./user.js"></script>
-    <script type="text/javascript" src="./userRepo.js"></script>
-    
-    <script type="text/javascript" src="../data/users-data.js"></script>
-    <script type="text/javascript" src="../data/hydration-data.js"></script>
-    <script type="text/javascript" src="../data/sleep-data.js"></script>
-    <script type="text/javascript" src="../data/activity-data.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="path/to/your/jquery.min.js"><\/script>')</script>
+      <script type="text/javascript" src="./activityRepo.js"></script>
+      <script type="text/javascript" src="./activity.js"></script>
+      <script type="text/javascript" src="./sleepRepo.js"></script>
+      <script type="text/javascript" src="./sleep.js"></script>
+      <script type="text/javascript" src="./hydrationRepo.js"></script>
+      <script type="text/javascript" src="./hydration.js"></script>
+      <script type="text/javascript" src="./user.js"></script>
+      <script type="text/javascript" src="./userRepo.js"></script>
+      
+      <script type="text/javascript" src="../data/users-data.js"></script>
+      <script type="text/javascript" src="../data/hydration-data.js"></script>
+      <script type="text/javascript" src="../data/sleep-data.js"></script>
+      <script type="text/javascript" src="../data/activity-data.js"></script>
+      <script type="text/javascript" src="./scripts.js"></script>
+    </main>
   </body>
 </html>
 
