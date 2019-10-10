@@ -7,7 +7,6 @@ const User = require('../src/user');
 const UserRepo = require('../src/userRepo');
 const sampleUserData = require('../data/sampleUserData');
 
-
 describe('Activity', () => {
 
   let activityRepo;
@@ -95,5 +94,9 @@ describe('Activity', () => {
 
   it('should know how many step a user took on a given date', () => {
     expect(activity.getUserActivityStatForDate('numSteps', '2019/06/21')).to.equal(7498);
+  })
+
+  it('should calculate a users average mins of activity for the week', () => {
+    expect(activity.getAverageByWeek('minutesActive', '2019/06/21')).to.equal(165);
   })
 })

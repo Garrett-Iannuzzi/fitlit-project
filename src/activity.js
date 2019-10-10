@@ -20,6 +20,13 @@ class Activity {
     return this.date[activity];
   }
 
+  getAverageByWeek(activity, date) {
+    let dateIndex = this.activityInfo.findIndex((loggedActivity, index) => loggedActivity.date === date);
+    let weekArray = this.activityInfo.filter((loggedActivity, index) => (index <= dateIndex && index >= (dateIndex -6)));
+    let average = weekArray.reduce((acc, loggedActivity) => acc += loggedActivity[activity] / 7, 0);
+    return Math.round(average);
+  }
+
 }
 
 if (typeof module !== 'undefined') {
