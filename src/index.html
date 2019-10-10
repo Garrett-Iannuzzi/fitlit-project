@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Activity Tracker</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
   </head>
   <body>
     <header class="" id="">
@@ -28,11 +30,11 @@
       <!-- Hydration -->
       <div class="div__hydration">
         <section class="" id="">
-          <h4>Todays Water: <span id="span__todays--water"><p class="" id="hydration__today"></p></span></h4>
+          <h4 class="h4__box--header">Todays Water: <span id="span__todays--water"><p class="" id="hydration__today"></p></span></h4>
           <img class="water__img" src="../Images/drop.png">
         </section>
         <section class="" id="">
-            <h4 class="" id="">Week's Water: </h4> 
+            <h4 class="h4__box--header" id="">Week's Water: </h4> 
             <img class="water__img" src="../Images/water-bottle.png">
         </section>
       </div>
@@ -40,7 +42,10 @@
       <!-- Sleep -->
       <div class="div__sleep">
         <section class="" id="">
-          ...For a user, their sleep data for the latest day (hours slept and quality of sleep)
+          <h4 class="h4__box--header">Last Nights Sleep:</h4>
+          <p class="p__user">Hours: <span id="span__sleep--hours"></span></p>
+          <p class="p__user">Quality Score: <span id="span__sleep--quality"></span> / 5</p>
+          <img class="sleep__img" src="../Images/sleep.png">
         </section>
         <section class="" id="" >
           ...For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)

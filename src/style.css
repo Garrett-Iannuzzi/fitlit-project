@@ -47,7 +47,8 @@ section {
   width: 330px;
 }
 
-.water__img {
+.water__img,
+.sleep__img {
   height: 100px;
   margin-bottom: 35px;
   width: 100px;
