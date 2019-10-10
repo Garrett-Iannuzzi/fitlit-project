@@ -69,8 +69,31 @@ describe('Activity', () => {
       ]);
   });
 
-  it('should calculate miles walked by the user on a given date', () => {
-    expect(activity.getMilesWalked('2019/06/18', user)).to.equal(2.1);
-  })
+  it('should be able to organize all activity info by a specific date', () => {
+    expect(activity.getActivityInfoByDate('2019/06/17')).to.eql({
+      userID: 3,
+      date: '2019/06/17',
+      numSteps: 4547,
+      minutesActive: 97,
+      flightsOfStairs: 5 });
+    expect(activity.date).to.eql({
+      userID: 3,
+      date: '2019/06/17',
+      numSteps: 4547,
+      minutesActive: 97,
+      flightsOfStairs: 5 });
+    expect(activity.date.numSteps).to.equal(4547);
+  });
 
+  it('should calculate miles walked by the user on a given date', () => {
+    expect(activity.getMilesWalked('2019/06/18')).to.equal(2.1);
+  });
+
+  it('should know how many minutes a user was active on a given date', () => {
+    expect(activity.getUserActivityStatForDate('minutesActive', '2019/06/17')).to.equal(97);
+  });
+
+  it('should know how many step a user took on a given date', () => {
+    expect(activity.getUserActivityStatForDate('numSteps', '2019/06/21')).to.equal(7498);
+  })
 })
