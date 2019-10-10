@@ -29,8 +29,10 @@ function hydrationHandler() {
 }
 
 function sleepHandler() {
-  $('#span__sleep--hours').text(`${sleep.getMetricByDate(date, 'hoursSlept')} hr`);
-  $('#span__sleep--quality').text(`${sleep.getMetricByDate(date, 'sleepQuality')}`);
+  $('#span__sleep--hours--js').text(`${sleep.getMetricByDate(date, 'hoursSlept')} hr`);
+  $('#span__sleep--quality--js').text(`${sleep.getMetricByDate(date, 'sleepQuality')}`);
+  $('#span__sleep--average--hours--js').text(`${sleep.getAvgMetricPerDayAllTime('hoursSlept')}`);
+  $('#span__sleep--average--quality--js').text(`${sleep.getAvgMetricPerDayAllTime('sleepQuality')}`);
 }
 
 
