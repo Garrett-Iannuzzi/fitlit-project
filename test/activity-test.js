@@ -99,4 +99,43 @@ describe('Activity', () => {
   it('should calculate a users average mins of activity for the week', () => {
     expect(activity.getAverageByWeek('minutesActive', '2019/06/21')).to.equal(165);
   })
+
+  it('should calculate which days a user exceeded step goal', () => {
+    expect(activity.findDaysExceededGoal()).to.eql([
+      {
+        "userID": 3,
+        "date": "2019/06/15",
+        "numSteps": 7402,
+        "minutesActive": 116,
+        "flightsOfStairs": 33
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/16",
+        "numSteps": 12304,
+        "minutesActive": 152,
+        "flightsOfStairs": 8
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/19",
+        "numSteps": 10961,
+        "minutesActive": 188,
+        "flightsOfStairs": 17
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/20",
+        "numSteps": 5369,
+        "minutesActive": 129,
+        "flightsOfStairs": 46
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/21",
+        "numSteps": 7498,
+        "minutesActive": 199,
+        "flightsOfStairs": 13
+      }]);
+  })
 })

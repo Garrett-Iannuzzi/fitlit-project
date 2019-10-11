@@ -6,7 +6,7 @@ class Sleep {
   getAvgMetricPerDayAllTime(stat) {
     let allSleepData = this.sleepInfo.reduce((acc, user) => {
       acc += user[stat] / this.sleepInfo.length
-      return acc 
+      return acc
     }, 0)
     return Number(allSleepData.toFixed(1))
   }

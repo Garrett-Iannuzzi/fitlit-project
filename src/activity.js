@@ -2,6 +2,7 @@ class Activity {
   constructor(activityInfo, user) {
     this.activityInfo = activityInfo;
     this.strideLength = user.strideLength;
+    this.dailyStepGoal = user.dailyStepGoal;
     this.date = {};
   }
 
@@ -22,9 +23,14 @@ class Activity {
 
   getAverageByWeek(activity, date) {
     let dateIndex = this.activityInfo.findIndex((loggedActivity, index) => loggedActivity.date === date);
-    let weekArray = this.activityInfo.filter((loggedActivity, index) => (index <= dateIndex && index >= (dateIndex -6)));
+    let weekArray = this.activityInfo.filter((loggedActivity, index) => (index <= dateIndex && index >= (dateIndex - 6)));
     let average = weekArray.reduce((acc, loggedActivity) => acc += loggedActivity[activity] / 7, 0);
     return Math.round(average);
+  }
+
+  findDaysExceededGoal() {
+    console.log(this.activityInfo);
+    return this.activityInfo.filter(loggedActivity => loggedActivity.numSteps > this.dailyStepGoal);
   }
 
 }
