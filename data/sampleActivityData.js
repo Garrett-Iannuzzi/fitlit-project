@@ -132,6 +132,20 @@ const sampleActivityData = [
     "minutesActive": 199,
     "flightsOfStairs": 13
   },
+  {
+    "userID": 3,
+    "date": "2019/06/22",
+    "numSteps": 11342,
+    "minutesActive": 53,
+    "flightsOfStairs": 17
+  },
+  {
+    "userID": 3,
+    "date": "2019/06/23",
+    "numSteps": 4665,
+    "minutesActive": 219,
+    "flightsOfStairs": 9
+  }
 ];
 
 if (typeof module !== 'undefined') {
