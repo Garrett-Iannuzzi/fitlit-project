@@ -28,8 +28,6 @@ class Activity {
     return Math.round(average);
   }
 
-
-
   findDaysExceededGoal() {
     return this.activityInfo.reduce((acc, loggedActivity) => {
       if (loggedActivity.numSteps > this.dailyStepGoal) {
@@ -50,6 +48,17 @@ class Activity {
     } else {
       return false;
     }
+  }
+
+  findStairRecord() {
+    let sortByStairs = this.activityInfo;
+    console.log('FIRST', sortByStairs);
+    console.log('ORIG', this.activityInfo);
+    sortByStairs = sortByStairs.sort((a,b) => b.flightsOfStairs - a.flightsOfStairs);
+    console.log('SECOND', sortByStairs);
+    console.log('ORIGstillok?', this.activityInfo);
+
+    return sortByStairs[0];
   }
 
 }

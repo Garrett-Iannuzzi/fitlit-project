@@ -111,7 +111,7 @@ describe('Activity', () => {
     expect(activity.getAverageByWeek('minutesActive', '2019/06/23')).to.equal(166);
   })
 
-  it('should calculate which days a user exceeded step goal', () => {
+  it('should get info for which days a user exceeded step goal', () => {
     expect(activity.findInfoForDaysExceededGoal()).to.eql([
       {
         "userID": 3,
@@ -167,6 +167,16 @@ describe('Activity', () => {
   it('should calculate if a user exceeded goal on given date', () => {
       expect(activity.findIfGoalExceededByDate('2019/06/19')).to.equal(true);
       expect(activity.findIfGoalExceededByDate('2019/06/17')).to.equal(false);
+  })
+
+  it('should be able to display a users all time stair climbing record', () => {
+    expect(activity.findStairRecord()).to.equal({
+      "userID": 3,
+      "date": "2019/06/20",
+      "numSteps": 5369,
+      "minutesActive": 129,
+      "flightsOfStairs": 46
+    })
   })
 
 })
