@@ -170,7 +170,7 @@ describe('Activity', () => {
   })
 
   it('should be able to display a users all time stair climbing record', () => {
-    expect(activity.findStairRecord()).to.equal({
+    expect(activity.findStairRecord()).to.eql({
       "userID": 3,
       "date": "2019/06/20",
       "numSteps": 5369,
