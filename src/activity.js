@@ -28,22 +28,29 @@ class Activity {
     return Math.round(average);
   }
 
+
+
   findDaysExceededGoal() {
     return this.activityInfo.reduce((acc, loggedActivity) => {
       if (loggedActivity.numSteps > this.dailyStepGoal) {
         acc.push(loggedActivity.date)
       };
-      // console.log('ACC', acc);
       return acc;
       }, []);
   }
 
-  findDaysExceededGoalJustDates() {
-    // console.log(this.activityInfo.filter(loggedActivity => loggedActivity.numSteps > this.dailyStepGoal));
+  findInfoForDaysExceededGoal() {
     return this.activityInfo.filter(loggedActivity => loggedActivity.numSteps > this.dailyStepGoal);
   }
 
-
+  findIfGoalExceededByDate(date) {
+    this.getActivityInfoByDate(date);
+    if (this.date.numSteps > this.dailyStepGoal) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 }
 

@@ -112,7 +112,7 @@ describe('Activity', () => {
   })
 
   it('should calculate which days a user exceeded step goal', () => {
-    expect(activity.findDaysExceededGoal()).to.eql([
+    expect(activity.findInfoForDaysExceededGoal()).to.eql([
       {
         "userID": 3,
         "date": "2019/06/15",
@@ -147,10 +147,26 @@ describe('Activity', () => {
         "numSteps": 7498,
         "minutesActive": 199,
         "flightsOfStairs": 13
-      }])
-    })
-  //     it('should calculate which days a user exceeded step goal', () => {
-  //       expect(activity.findDaysExceededGoal()).to.eql(
-  // })
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/22",
+        "numSteps": 11342,
+        "minutesActive": 53,
+        "flightsOfStairs": 17
+      }
+    ])
+  })
+
+  it('should calculate just the dates a user exceeded step goal', () => {
+    expect(activity.findDaysExceededGoal()).to.eql([
+      '2019/06/15', '2019/06/16', '2019/06/19', '2019/06/20', '2019/06/21', '2019/06/22'
+    ])
+  })
+
+  it('should calculate if a user exceeded goal on given date', () => {
+      expect(activity.findIfGoalExceededByDate('2019/06/19')).to.equal(true);
+      expect(activity.findIfGoalExceededByDate('2019/06/17')).to.equal(false);
+  })
 
 })
