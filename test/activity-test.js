@@ -7,7 +7,6 @@ const User = require('../src/user');
 const UserRepo = require('../src/userRepo');
 const sampleUserData = require('../data/sampleUserData');
 
-
 describe('Activity', () => {
 
   let activityRepo;
@@ -65,7 +64,17 @@ describe('Activity', () => {
         date: '2019/06/21',
         numSteps: 7498,
         minutesActive: 199,
-        flightsOfStairs: 13 }
+        flightsOfStairs: 13 },
+      { userID: 3,
+        date: '2019/06/22',
+        numSteps: 11342,
+        minutesActive: 53,
+        flightsOfStairs: 17 },
+      { userID: 3,
+        date: '2019/06/23',
+        numSteps: 4665,
+        minutesActive: 219,
+        flightsOfStairs: 9 }
       ]);
   });
 
@@ -96,4 +105,78 @@ describe('Activity', () => {
   it('should know how many step a user took on a given date', () => {
     expect(activity.getUserActivityStatForDate('numSteps', '2019/06/21')).to.equal(7498);
   })
+
+  it('should calculate a users average mins of activity for the week', () => {
+    expect(activity.getAverageByWeek('minutesActive', '2019/06/21')).to.equal(165);
+    expect(activity.getAverageByWeek('minutesActive', '2019/06/23')).to.equal(166);
+  })
+
+  it('should get info for which days a user exceeded step goal', () => {
+    expect(activity.findInfoForDaysExceededGoal()).to.eql([
+      {
+        "userID": 3,
+        "date": "2019/06/15",
+        "numSteps": 7402,
+        "minutesActive": 116,
+        "flightsOfStairs": 33
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/16",
+        "numSteps": 12304,
+        "minutesActive": 152,
+        "flightsOfStairs": 8
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/19",
+        "numSteps": 10961,
+        "minutesActive": 188,
+        "flightsOfStairs": 17
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/20",
+        "numSteps": 5369,
+        "minutesActive": 129,
+        "flightsOfStairs": 46
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/21",
+        "numSteps": 7498,
+        "minutesActive": 199,
+        "flightsOfStairs": 13
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/22",
+        "numSteps": 11342,
+        "minutesActive": 53,
+        "flightsOfStairs": 17
+      }
+    ])
+  })
+
+  it('should calculate just the dates a user exceeded step goal', () => {
+    expect(activity.findDaysExceededGoal()).to.eql([
+      '2019/06/15', '2019/06/16', '2019/06/19', '2019/06/20', '2019/06/21', '2019/06/22'
+    ])
+  })
+
+  it('should calculate if a user exceeded goal on given date', () => {
+      expect(activity.findIfGoalExceededByDate('2019/06/19')).to.equal(true);
+      expect(activity.findIfGoalExceededByDate('2019/06/17')).to.equal(false);
+  })
+
+  it('should be able to display a users all time stair climbing record', () => {
+    expect(activity.findStairRecord()).to.equal({
+      "userID": 3,
+      "date": "2019/06/20",
+      "numSteps": 5369,
+      "minutesActive": 129,
+      "flightsOfStairs": 46
+    })
+  })
+
 })
