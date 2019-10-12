@@ -28,12 +28,13 @@ describe ('SleepRepo', () => {
       { userID: 3, date: '2019/06/18', hoursSlept: 9.8, sleepQuality: 2.6 },
       { userID: 3, date: '2019/06/19', hoursSlept: 7.2, sleepQuality: 3.4 },
       { userID: 3, date: '2019/06/20', hoursSlept: 9.4, sleepQuality: 1.2 },
-      { userID: 3, date: '2019/06/21', hoursSlept: 8.9, sleepQuality: 3.7 }
+      { userID: 3, date: '2019/06/21', hoursSlept: 8.9, sleepQuality: 3.7 },
+      { userID: 3, date: '2019/06/22', hoursSlept: 9.8, sleepQuality: 2.1 }
     ]);
   });
 
   it('should get average sleep quality for all users', () => {
-    expect(sleepRepo.getAvgSleepQuality()).to.equal(3.13);
+    expect(sleepRepo.getAvgSleepQuality()).to.equal(3.02);
   });
 
   it('should get all users who have a sleep quality above three', () => {
