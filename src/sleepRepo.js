@@ -17,13 +17,37 @@ class SleepRepo {
     return Number(avgSleepQuality.toFixed(2))
   }
 
-  getAvgSleepQualityAboveThree() {
-    // need a date 
-      //will you be able to iterate over that date veriable?
-    // need to get 7 days from that date
-    // need to add sleep quality for every user
-    // need to compare that sleep quality avg to 3
-    //
+  getAvgSleepQualityAboveThree(date) {
+    let userIds = this.getAllUserIds()
+    return userIds.reduce((finalAcc, id) => {
+      let thisUsersStuff = this.sleepData.reduce((acc, stat) => {
+        if (stat.userID === id) {
+          acc.push(stat)
+        }
+        return acc
+      }, [])
+      let index = thisUsersStuff.findIndex(stat => stat.date === date);
+      let justThisWeek = thisUsersStuff.splice(index - 6, 7);
+      let fakeAcc = 0;
+      let objId = 0;
+      justThisWeek.forEach(stat => {
+        fakeAcc += stat.sleepQuality / 7;
+        objId = stat.userID
+      })
+        if (fakeAcc > 3) {
+          finalAcc.push(objId)
+        }
+        return finalAcc
+    },[])
+  }
+
+  getAllUserIds() {
+    return this.sleepData.reduce((acc, stat) => {
+      if (!acc.includes(stat.userID)) {
+        acc.push(stat.userID)
+      }
+      return acc
+    }, []);
   }
 
   getMostHoursSleptByDay(date) {

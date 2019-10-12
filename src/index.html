@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Activity Tracker</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
   </head>
   <body>
     <header class="" id="">
@@ -10,6 +12,7 @@
       <h3>Today's Date: <span id="span__current--date"></span></h3>
     </header>
     <main class="main__page">
+      
       <!-- User Info -->
       <div class="div__user--info">
         <section class="section__user--info" id="section__user--info--js">
@@ -21,18 +24,17 @@
           <p class="p__user">Daily Step Goal:</p>
           <p class="p__user">Your Goal: <span id="span__user--goal--js"></span></p>
           <p class="p__user">FitLit Users Goal: <span id="span__user--average--js"></span></p>
-
         </section>
       </div>  
 
       <!-- Hydration -->
       <div class="div__hydration">
         <section class="" id="">
-          <h4>Todays Water: <span id="span__todays--water"><p class="" id="hydration__today"></p></span></h4>
+          <h4 class="h4__box--header">Todays Water: <span id="span__todays--water"><p class="" id="hydration__today"></p></span></h4>
           <img class="water__img" src="../Images/drop.png">
         </section>
         <section class="" id="">
-            <h4 class="" id="">Week's Water: </h4> 
+            <h4 class="h4__box--header" id="">The Week's Water: </h4> 
             <img class="water__img" src="../Images/water-bottle.png">
         </section>
       </div>
@@ -40,14 +42,23 @@
       <!-- Sleep -->
       <div class="div__sleep">
         <section class="" id="">
-          ...For a user, their sleep data for the latest day (hours slept and quality of sleep)
+          <h4 class="h4__box--header">Last Nights Sleep:</h4>
+          <p class="p__user">Hours: <span id="span__sleep--hours--js"></span></p>
+          <p class="p__user">Quality Score: <span id="span__sleep--quality--js"></span> / 5</p>
+          <img class="sleep__img" src="../Images/sleep.png">
         </section>
         <section class="" id="" >
-          ...For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)
+          <h4 class="h4__box--header">The Week's Sleep</h4>
         </section>
         <section class="" id="">
-          ...For a user, their all-time average sleep quality and all-time average number of hours slept
+          <h4 class="h4__box--header">Average Sleep Stats:</h4>
+          <p class="p__user">Hours: <span id="span__sleep--average--hours--js"></span></p>
+          <p class="p__user">Quality Score: <span id="span__sleep--average--quality--js"></span> / 5</p>
+          <img class="sleep__img--avg" src="../Images/sleepy.png">
         </section>
+        <section class="" id="" >
+            <h4 class="h4__box--header">My Metric: </h4>
+          </section>
       </div>
 
       <!-- Activity -->
