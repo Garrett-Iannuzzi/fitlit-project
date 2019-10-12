@@ -27,16 +27,17 @@ describe('Sleep', () => {
       { userID: 3, date: '2019/06/18', hoursSlept: 9.8, sleepQuality: 2.6 },
       { userID: 3, date: '2019/06/19', hoursSlept: 7.2, sleepQuality: 3.4 },
       { userID: 3, date: '2019/06/20', hoursSlept: 9.4, sleepQuality: 1.2 },
-      { userID: 3, date: '2019/06/21', hoursSlept: 8.9, sleepQuality: 3.7 }
+      { userID: 3, date: '2019/06/21', hoursSlept: 8.9, sleepQuality: 3.7 },
+      { userID: 3, date: '2019/06/22', hoursSlept: 9.8, sleepQuality: 2.1 }
     ])
   });
 
   it('should get average number of hours slept by id', () => {
-    expect(sleep.getAvgMetricPerDayAllTime('hoursSlept')).to.equal(8.9);
+    expect(sleep.getAvgMetricPerDayAllTime('hoursSlept')).to.equal(9);
   });
 
   it('should get the average sleep quality for a user', () => {
-    expect(sleep.getAvgMetricPerDayAllTime('sleepQuality')).to.equal(3.4);
+    expect(sleep.getAvgMetricPerDayAllTime('sleepQuality')).to.equal(3.3);
   });
 
   it('should get hours slept by date', () => {
@@ -49,6 +50,7 @@ describe('Sleep', () => {
 
   it('should get hours slept each day for a week', () => {
     expect(sleep.getMetricByWeek('2019/06/21', 'hoursSlept')).to.eql([ 10.8, 10.7, 5.3, 9.8, 7.2, 9.4, 8.9 ]);
+    //expect(sleep.getMetricByWeek('2019/06/22', 'hoursSlept')).to.eql([ 10.7, 5.3, 9.8, 7.2, 9.4, 8.9, 9.8 ]);
   });
 
   it('should get sleep quality each day for a week', () => {

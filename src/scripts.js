@@ -3,11 +3,14 @@ let userRepo = new UserRepo(userData);
 let user = new User(userRepo.getUserInfo(randomUser));
 let hydrationRepo = new HydrationRepo(hydrationData);
 let hydration = new Hydration(hydrationRepo.getUserByID(randomUser));
+const sleepRepo = new SleepRepo(sleepData);
+const sleep = new Sleep(sleepRepo.getUserById(randomUser));
 let date = hydrationData[hydrationData.length - 1].date;
 
 $(document).ready(function () {
   userHandler();
   hydrationHandler();
+  sleepHandler()
   $('#span__current--date').text(date);
 })
 
@@ -25,9 +28,14 @@ function hydrationHandler() {
   $('#span__todays--water').text(`${hydration.getOuncesPerDayByDate(date)}oz`);
 }
 
+function sleepHandler() {
+  $('#span__sleep--hours--js').text(`${sleep.getMetricByDate(date, 'hoursSlept')} hr`);
+  $('#span__sleep--quality--js').text(`${sleep.getMetricByDate(date, 'sleepQuality')}`);
+  $('#span__sleep--average--hours--js').text(`${sleep.getAvgMetricPerDayAllTime('hoursSlept')}`);
+  $('#span__sleep--average--quality--js').text(`${sleep.getAvgMetricPerDayAllTime('sleepQuality')}`);
+}
 
-// const sleepRepo = new SleepRepo(sleepData);
-// const sleep = new Sleep(sleepRepo.getUserById(randomUser));
+
 // const activityRepo = new ActivityRepo(activityData);
 // const activity = new Activity(activityRepo.)
 
