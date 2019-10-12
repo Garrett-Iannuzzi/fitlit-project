@@ -169,7 +169,7 @@ describe('Activity', () => {
       expect(activity.findIfGoalExceededByDate('2019/06/17')).to.equal(false);
   })
 
-  it('should be able to display a users all time stair climbing record', () => {
+  it('should be able to find a users all time stair climbing record', () => {
     expect(activity.findStairRecord()).to.eql({
       "userID": 3,
       "date": "2019/06/20",
@@ -177,6 +177,10 @@ describe('Activity', () => {
       "minutesActive": 129,
       "flightsOfStairs": 46
     })
+  })
+
+  it('should be able to calculate by how much a user exceeded their goal', () => {
+    expect(activity.findByHowMuchExceededGoal('2019/06/20')).to.equal(369);
   })
 
 })
