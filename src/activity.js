@@ -29,9 +29,21 @@ class Activity {
   }
 
   findDaysExceededGoal() {
-    console.log(this.activityInfo);
+    return this.activityInfo.reduce((acc, loggedActivity) => {
+      if (loggedActivity.numSteps > this.dailyStepGoal) {
+        acc.push(loggedActivity.date)
+      };
+      // console.log('ACC', acc);
+      return acc;
+      }, []);
+  }
+
+  findDaysExceededGoalJustDates() {
+    // console.log(this.activityInfo.filter(loggedActivity => loggedActivity.numSteps > this.dailyStepGoal));
     return this.activityInfo.filter(loggedActivity => loggedActivity.numSteps > this.dailyStepGoal);
   }
+
+
 
 }
 

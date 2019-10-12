@@ -64,7 +64,17 @@ describe('Activity', () => {
         date: '2019/06/21',
         numSteps: 7498,
         minutesActive: 199,
-        flightsOfStairs: 13 }
+        flightsOfStairs: 13 },
+      { userID: 3,
+        date: '2019/06/22',
+        numSteps: 11342,
+        minutesActive: 53,
+        flightsOfStairs: 17 },
+      { userID: 3,
+        date: '2019/06/23',
+        numSteps: 4665,
+        minutesActive: 219,
+        flightsOfStairs: 9 }
       ]);
   });
 
@@ -98,6 +108,7 @@ describe('Activity', () => {
 
   it('should calculate a users average mins of activity for the week', () => {
     expect(activity.getAverageByWeek('minutesActive', '2019/06/21')).to.equal(165);
+    expect(activity.getAverageByWeek('minutesActive', '2019/06/23')).to.equal(166);
   })
 
   it('should calculate which days a user exceeded step goal', () => {
@@ -136,6 +147,10 @@ describe('Activity', () => {
         "numSteps": 7498,
         "minutesActive": 199,
         "flightsOfStairs": 13
-      }]);
-  })
+      }])
+    })
+  //     it('should calculate which days a user exceeded step goal', () => {
+  //       expect(activity.findDaysExceededGoal()).to.eql(
+  // })
+
 })
