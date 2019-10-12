@@ -51,14 +51,12 @@ class Activity {
   }
 
   findStairRecord() {
-    let sortByStairs = this.activityInfo;
-    console.log('FIRST', sortByStairs);
-    console.log('ORIG', this.activityInfo);
-    sortByStairs = sortByStairs.sort((a,b) => b.flightsOfStairs - a.flightsOfStairs);
-    console.log('SECOND', sortByStairs);
-    console.log('ORIGstillok?', this.activityInfo);
-
-    return sortByStairs[0];
+    return this.activityInfo.reduce((acc, loggedActivity) => {
+      if (loggedActivity.flightsOfStairs > acc.flightsOfStairs) {
+        acc = loggedActivity
+      }
+      return acc;
+    })
   }
 
 }
