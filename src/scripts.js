@@ -41,7 +41,13 @@ function activityHandler() {
   $('#span__todays--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
   $('#span__todays--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
   $('#span__todays--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
-  $('#span__distance--miles--js').text(`${activity.getMilesWalked(date)}`);
+
+  if (activity.getMilesWalked(date) <= 1) {
+    $('#span__distance--miles--js').text(`${activity.getMilesWalked(date)} mile`);
+  } else (activity.getMilesWalked(date) > 1) {
+    $('#span__distance--miles--js').text(`${activity.getMilesWalked(date)} miles`);
+  }
+
   $('#span__you--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
   $('#span__them--steps--js').text(`${activityRepo.getAllUserActivityAvgByDate('numSteps', date)}`);
   $('#span__you--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
