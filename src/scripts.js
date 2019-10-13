@@ -13,9 +13,11 @@ $(document).ready(function () {
   $('#span__current--date').text(date);
   userHandler();
   hydrationHandler();
-  sleepHandler()
-  activityHandler()
+  sleepHandler();
+  // activityHandler()
 })
+
+
 
 function userHandler() {
   $('#span__user--name--js').text(`${user.getUserFirstName()}`);
@@ -25,6 +27,7 @@ function userHandler() {
   $('#span__user--friends--js').text(`${user.friends.length}`);
   $('#span__user--goal--js').text(`${user.dailyStepGoal}`);
   $('#span__user--average--js').text(`${userRepo.getAverageStepGoalAllUsers()}`);
+  user.findFriendNames(userData);
 }
 
 function hydrationHandler() {
