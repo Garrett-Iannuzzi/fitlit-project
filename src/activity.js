@@ -41,6 +41,12 @@ class Activity {
     return this.activityInfo.filter(loggedActivity => loggedActivity.numSteps > this.dailyStepGoal);
   }
 
+  findByHowMuchExceededGoal(date) {
+    let exceededs = this.findInfoForDaysExceededGoal();
+    let dateInQuestion = exceededs.find(loggedActivity => loggedActivity.date === date);
+    return dateInQuestion.numSteps - this.dailyStepGoal;
+  }
+
   findIfGoalExceededByDate(date) {
     this.getActivityInfoByDate(date);
     if (this.date.numSteps > this.dailyStepGoal) {
