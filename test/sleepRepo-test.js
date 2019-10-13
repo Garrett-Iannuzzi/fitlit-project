@@ -48,4 +48,5 @@ describe ('SleepRepo', () => {
   it('should get user with most hours slept by day', () => {
     expect(sleepRepo.getMostHoursSleptByDay('2019/06/21')).to.eql(4);
   });
+
 });

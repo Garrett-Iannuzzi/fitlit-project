@@ -22,6 +22,12 @@ class Sleep {
     return findMetric;
   }
 
+  getUserSleepStatus(date) {
+    let findDate = this.sleepInfo.find(user => user.date === date);
+    let sleepyStatus = (findDate.hoursSlept > 8) ? 'You are well rested!' : 'You need more sleep!';
+    return sleepyStatus
+    }
+
 }
 
 if (typeof module !== 'undefined') {

@@ -57,4 +57,16 @@ describe('Sleep', () => {
     expect(sleep.getMetricByWeek('2019/06/21', 'sleepQuality')).to.eql([ 4.7, 3.4, 4.9, 2.6, 3.4, 1.2, 3.7 ]);
   });
 
+  describe ('Sleepy Status', () => {
+
+    it('should determine if the user is sleepy or not', () => {
+      expect(sleep.getUserSleepStatus('2019/06/16')).to.equal('You are well rested!');
+    });
+
+    it('should determine if the user is sleepy or not', () => {
+      expect(sleep.getUserSleepStatus('2019/06/17')).to.equal('You need more sleep!');
+    });
+    
+  });
+
 });
