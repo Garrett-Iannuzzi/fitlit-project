@@ -5,6 +5,8 @@ let hydrationRepo = new HydrationRepo(hydrationData);
 let hydration = new Hydration(hydrationRepo.getUserByID(randomUser));
 const sleepRepo = new SleepRepo(sleepData);
 const sleep = new Sleep(sleepRepo.getUserById(randomUser));
+const activityRepo = new ActivityRepo(activityData);
+const activity = new Activity(activityRepo, user);
 let date = hydrationData[hydrationData.length - 1].date;
 
 $(document).ready(function () {
@@ -35,7 +37,7 @@ function sleepHandler() {
   $('#span__sleep--average--quality--js').text(`${sleep.getAvgMetricPerDayAllTime('sleepQuality')}`);
 }
 
-
-// const activityRepo = new ActivityRepo(activityData);
-// const activity = new Activity(activityRepo.)
-
+function activityHandler() {
+  $('#span__todays--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
+  $('#span__todays--minutes--active--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
+}
