@@ -40,5 +40,8 @@ function sleepHandler() {
 function activityHandler() {
   $('#span__todays--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
   $('#span__todays--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
-  $('#span__todays--minutes--active--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
+  $('#span__todays--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
+  $('#span__distance--miles--js').text(`${activity.getMilesWalked(date)}`);
+  $('#span__you--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
+  $('#span__them--steps--js').text(`${activityRepo.getAllUserActivityAvgByDate('numSteps', date)}`);
 }
