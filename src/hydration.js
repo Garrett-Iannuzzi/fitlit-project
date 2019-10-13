@@ -18,7 +18,8 @@ class Hydration {
 
   getOuncesPerDayByWeek(date) {
     let todayDateIndex = this.hydrationInfo.findIndex(user => user.date === date)
-    let ouncesByWeek = this.hydrationInfo.splice(todayDateIndex - 6).map(user => user.numOunces)
+    console.log(todayDateIndex);
+    let ouncesByWeek = this.hydrationInfo.slice(todayDateIndex - 6, todayDateIndex + 1).map(user => user.numOunces)
     return ouncesByWeek
   }
 
