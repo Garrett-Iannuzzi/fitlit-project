@@ -28,12 +28,14 @@ describe('Hydration', () => {
       { userID: 3, date: '2019/06/18', numOunces: 29 },
       { userID: 3, date: '2019/06/19', numOunces: 21 },
       { userID: 3, date: '2019/06/20', numOunces: 23 },
-      { userID: 3, date: '2019/06/21', numOunces: 26 }
+      { userID: 3, date: '2019/06/21', numOunces: 26 },
+      { userID: 3, date: '2019/06/22', numOunces: 78 },
+      { userID: 3, date: '2019/06/23', numOunces: 35 }
     ]);
   });
 
   it('should be able to average users daily hydration', () => {
-    expect(hydration.getAllTimeDailyHydrationAvg()).to.equal(39);
+    expect(hydration.getAllTimeDailyHydrationAvg()).to.equal(43);
   })
 
   it('should be able to get ounces consumed by date', () => {
