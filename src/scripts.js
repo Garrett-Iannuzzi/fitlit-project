@@ -44,4 +44,6 @@ function activityHandler() {
   $('#span__distance--miles--js').text(`${activity.getMilesWalked(date)}`);
   $('#span__you--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
   $('#span__them--steps--js').text(`${activityRepo.getAllUserActivityAvgByDate('numSteps', date)}`);
+  $('#span__you--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
+  $('#span__them--stairs--js').text(`${activityRepo.getAllUserActivityAvgByDate('flightsOfStairs', date)}`);
 }
