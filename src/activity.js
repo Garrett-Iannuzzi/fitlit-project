@@ -7,7 +7,9 @@ class Activity {
   }
 
   getActivityInfoByDate(date) {
-    this.date = this.activityInfo.find(loggedActivity => loggedActivity.date === date);
+    this.date = this.activityInfo.find(function(loggedActivity) {
+      return loggedActivity.date === date;
+    })
     return this.date;
   }
 
