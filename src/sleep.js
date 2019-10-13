@@ -1,6 +1,7 @@
 class Sleep {
   constructor(sleepInfo) {
     this.sleepInfo = sleepInfo;
+    this.wellRested = false;
   }
 
   getAvgMetricPerDayAllTime(stat) {
@@ -21,6 +22,13 @@ class Sleep {
     let findMetric = this.sleepInfo.splice(findDateIndex - 6, 7).map(user => user[metric]);
     return findMetric;
   }
+
+  getUserSleepStatus(date) {
+    let findDate = this.sleepInfo.find(user => user.date === date);
+    this.wellRested = (findDate.hoursSlept > 8) ? true : false;
+    let sleepyStatus = (findDate.hoursSlept > 8) ? 'Well Rested!' : 'Sleepy!';
+    return sleepyStatus
+    }
 
 }
 
