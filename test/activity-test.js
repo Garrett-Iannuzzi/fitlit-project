@@ -75,7 +75,7 @@ describe('Activity', () => {
         numSteps: 4665,
         minutesActive: 219,
         flightsOfStairs: 9 }
-      ]);
+    ]);
   });
 
   it('should be able to organize all activity info by a specific date', () => {
@@ -99,16 +99,20 @@ describe('Activity', () => {
   });
 
   it('should know how many minutes a user was active on a given date', () => {
-    expect(activity.getUserActivityStatForDate('minutesActive', '2019/06/17')).to.equal(97);
+    expect(activity.getUserActivityStatForDate('minutesActive', '2019/06/17')).
+      to.equal(97);
   });
 
   it('should know how many step a user took on a given date', () => {
-    expect(activity.getUserActivityStatForDate('numSteps', '2019/06/21')).to.equal(7498);
+    expect(activity.getUserActivityStatForDate('numSteps', '2019/06/21')).
+      to.equal(7498);
   })
 
   it('should calculate a users average mins of activity for the week', () => {
-    expect(activity.getAverageByWeek('minutesActive', '2019/06/21')).to.equal(165);
-    expect(activity.getAverageByWeek('minutesActive', '2019/06/23')).to.equal(166);
+    expect(activity.getAverageByWeek('minutesActive', '2019/06/21')).
+      to.equal(165);
+    expect(activity.getAverageByWeek('minutesActive', '2019/06/23')).
+      to.equal(166);
   })
 
   it('should get info for which days a user exceeded step goal', () => {
@@ -160,13 +164,18 @@ describe('Activity', () => {
 
   it('should calculate just the dates a user exceeded step goal', () => {
     expect(activity.findDaysExceededGoal()).to.eql([
-      '2019/06/15', '2019/06/16', '2019/06/19', '2019/06/20', '2019/06/21', '2019/06/22'
+      '2019/06/15',
+      '2019/06/16',
+      '2019/06/19',
+      '2019/06/20',
+      '2019/06/21',
+      '2019/06/22'
     ])
   })
 
   it('should calculate if a user exceeded goal on given date', () => {
-      expect(activity.findIfGoalExceededByDate('2019/06/19')).to.equal(true);
-      expect(activity.findIfGoalExceededByDate('2019/06/17')).to.equal(false);
+    expect(activity.findIfGoalExceededByDate('2019/06/19')).to.equal(true);
+    expect(activity.findIfGoalExceededByDate('2019/06/17')).to.equal(false);
   })
 
   it('should be able to find a users all time stair climbing record', () => {
@@ -179,7 +188,7 @@ describe('Activity', () => {
     })
   })
 
-  it('should be able to calculate by how much a user exceeded their goal', () => {
+  it('should calculate by how much a user exceeded their goal', () => {
     expect(activity.findByHowMuchExceededGoal('2019/06/20')).to.equal(369);
   })
 
