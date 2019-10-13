@@ -50,7 +50,7 @@ describe('Sleep', () => {
 
   it('should get hours slept each day for a week', () => {
     expect(sleep.getMetricByWeek('2019/06/21', 'hoursSlept')).to.eql([ 10.8, 10.7, 5.3, 9.8, 7.2, 9.4, 8.9 ]);
-    //expect(sleep.getMetricByWeek('2019/06/22', 'hoursSlept')).to.eql([ 10.7, 5.3, 9.8, 7.2, 9.4, 8.9, 9.8 ]);
+    expect(sleep.getMetricByWeek('2019/06/22', 'hoursSlept')).to.eql([ 10.7, 5.3, 9.8, 7.2, 9.4, 8.9, 9.8 ]);
   });
 
   it('should get sleep quality each day for a week', () => {

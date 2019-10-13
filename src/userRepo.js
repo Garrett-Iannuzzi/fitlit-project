@@ -13,7 +13,7 @@ class UserRepo {
     let stepGoalAll = this.usersData.reduce((steps, user) => {
       steps += user.dailyStepGoal / this.usersData.length
       return steps
-    },0)
+    }, 0)
     return stepGoalAll
   }
 }

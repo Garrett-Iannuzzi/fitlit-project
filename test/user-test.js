@@ -24,7 +24,8 @@ describe('User', () => {
   });
 
   it('should have an address', () => {
-    expect(user.address).to.equal('85823 Bosco Fork, East Oscarstad MI 85126-5660');
+    expect(user.address).to.equal(
+      '85823 Bosco Fork, East Oscarstad MI 85126-5660');
   });
 
   it('should have an email', () => {
@@ -41,15 +42,22 @@ describe('User', () => {
 
   it('should have a list of friends', () => {
     expect(user.friends).to.eql([
-      19,
-      11,
-      42,
-      33
+      2,
+      1,
+      4
     ]);
   });
 
-  it('should tell us user first name', () => {
+  it('should tell us users first name', () => {
     expect(user.getUserFirstName()).to.equal('Herminia');
+  });
+
+  it('should find all users friends', () => {
+    expect(user.findFriendNames()).to.eql([
+      'Jarvis',
+      'Luisa',
+      'Mae'
+    ]);
   });
 
 })

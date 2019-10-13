@@ -29,10 +29,9 @@ describe('UserRepo', () => {
       "strideLength": 4.4,
       "dailyStepGoal": 5000,
       "friends": [
-        19,
-        11,
-        42,
-        33
+        2,
+        1,
+        4
       ]
     });
   });

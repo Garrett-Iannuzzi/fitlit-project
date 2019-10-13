@@ -2,16 +2,19 @@ const randomUser = Math.ceil(Math.random() * 50);
 let userRepo = new UserRepo(userData);
 let user = new User(userRepo.getUserInfo(randomUser));
 let hydrationRepo = new HydrationRepo(hydrationData);
-let hydration = new Hydration(hydrationRepo.getUserByID(randomUser));
+let hydration = new Hydration(hydrationRepo.getUserById(randomUser));
 const sleepRepo = new SleepRepo(sleepData);
 const sleep = new Sleep(sleepRepo.getUserById(randomUser));
+const activityRepo = new ActivityRepo(activityData);
+const activity = new Activity(activityRepo, user);
 let date = hydrationData[hydrationData.length - 1].date;
 
 $(document).ready(function () {
+  $('#span__current--date').text(date);
   userHandler();
   hydrationHandler();
   sleepHandler()
-  $('#span__current--date').text(date);
+  activityHandler()
 })
 
 function userHandler() {
@@ -45,7 +48,21 @@ function updateSleepyImg() {
   }
 }
 
+function activityHandler() {
+  $('#span__todays--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
+  $('#span__todays--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
+  $('#span__todays--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
 
-// const activityRepo = new ActivityRepo(activityData);
-// const activity = new Activity(activityRepo.)
+  if (activity.getMilesWalked(date) <= 1) {
+    $('#span__distance--miles--js').text(`${activity.getMilesWalked(date)} mile`);
+  } else if (activity.getMilesWalked(date) > 1) {
+    $('#span__distance--miles--js').text(`${activity.getMilesWalked(date)} miles`);
+  }
 
+  $('#span__you--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
+  $('#span__them--steps--js').text(`${activityRepo.getAllUserActivityAvgByDate('numSteps', date)}`);
+  $('#span__you--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
+  $('#span__them--stairs--js').text(`${activityRepo.getAllUserActivityAvgByDate('flightsOfStairs', date)}`);
+  $('#span__you--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
+  $('#span__them--minutes--js').text(`${activityRepo.getAllUserActivityAvgByDate('minutesActive', date)}`);
+}

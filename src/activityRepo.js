@@ -10,8 +10,10 @@ class ActivityRepo {
   }
 
   getAllUserActivityAvgByDate(activity, date) {
-    let dateSpecificDatas = this.activityData.filter(loggedActivity => loggedActivity.date === date)
-    let totaledUpActivity = dateSpecificDatas.reduce((acc, loggedActivity) => acc += loggedActivity[activity] ,0);
+    let dateSpecificDatas = this.activityData.filter(loggedActivity =>
+      loggedActivity.date === date)
+    let totaledUpActivity = dateSpecificDatas.reduce((acc, loggedActivity) =>
+      acc += loggedActivity[activity], 0);
     return Math.round(totaledUpActivity / dateSpecificDatas.length);
   }
 

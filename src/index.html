@@ -12,7 +12,7 @@
       <h3>Today's Date: <span id="span__current--date"></span></h3>
     </header>
     <main class="main__page">
-      
+
       <!-- User Info -->
       <div class="div__user--info">
         <section class="section__user--info" id="section__user--info--js">
@@ -25,7 +25,7 @@
           <p class="p__user">Your Goal: <span id="span__user--goal--js"></span></p>
           <p class="p__user">FitLit Users Goal: <span id="span__user--average--js"></span></p>
         </section>
-      </div>  
+      </div>
 
       <!-- Hydration -->
       <div class="div__hydration">
@@ -34,7 +34,7 @@
           <img class="water__img" src="../Images/drop.png">
         </section>
         <section class="" id="">
-            <h4 class="h4__box--header" id="">The Week's Water: </h4> 
+            <h4 class="h4__box--header" id="">The Week's Water: </h4>
             <img class="water__img" src="../Images/water-bottle.png">
         </section>
       </div>
@@ -66,16 +66,29 @@
       <!-- Activity -->
       <div class="div__activity">
         <section class="" id="">
-          ...For a user, the number of steps for the latest day
+          <h4 class="h4__box--header">Today's Activity:</h4>
+          <p class="p__user">Steps: <span id="span__todays--steps--js"></span> steps</p>
+          <p class="p__user">Stairs Climbed: <span id="span__todays--stairs--js"></span> flights</p>
+          <p class="p__user">Total Activity Time: <span id="span__todays--minutes--js"></span> min</p>
         </section>
         <section class="" id="">
-          ...For a user, the number minutes active for the latest day
+          <p class="p__distance">You've stepped your way through </p>
+          <p class="p__display--miles" id="p__distance--miles--js"></p>
+          <p class="p__distance"> today!</p>
         </section>
         <section class="" id="">
-          ...For a user, the distance they have walked (in miles) for the latest day based on their step count
-        </section>
-        <section class="" id="">
-          ...How their number of steps, minutes active, and flights of stairs climbed compares to all users for the latest day
+          <h4 class="h4__box--header">You vs Other Users:</h4>
+          <p class="p__user">Steps</p>
+          <p class="p__user">You: <span id="span__you--steps--js"></span></p>
+          <p class="p__user">Them: <span id="span__them--steps--js"></span></p>
+          <p class="p__user">Stairs</p>
+          <p class="p__user">You: <span id="span__you--stairs--js"></span></p>
+          <p class="p__user">Them: <span id="span__them--stairs--js"></span></p>
+          <p class="p__user">Minutes</p>
+          <p class="p__user">You: <span id="span__you--minutes--js"></span></p>
+          <p class="p__user">Them: <span id="span__them--minutes--js"></span></p>
+
+
         </section>
         <section class="" id="">
           ...For a user, a weekly view of their step count, flights of stairs climbed, and minutes active
@@ -94,7 +107,7 @@
       <script type="text/javascript" src="./hydration.js"></script>
       <script type="text/javascript" src="./user.js"></script>
       <script type="text/javascript" src="./userRepo.js"></script>
-      
+
       <script type="text/javascript" src="../data/users-data.js"></script>
       <script type="text/javascript" src="../data/hydration-data.js"></script>
       <script type="text/javascript" src="../data/sleep-data.js"></script>
@@ -103,4 +116,3 @@
     </main>
   </body>
 </html>
-

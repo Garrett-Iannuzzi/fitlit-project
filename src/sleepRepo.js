@@ -27,7 +27,7 @@ class SleepRepo {
         return acc
       }, [])
       let index = thisUsersStuff.findIndex(stat => stat.date === date);
-      let justThisWeek = thisUsersStuff.splice(index - 6, 7);
+      let justThisWeek = thisUsersStuff.slice(index - 6, index + 1);
       let fakeAcc = 0;
       let objId = 0;
       justThisWeek.forEach(stat => {

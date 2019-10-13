@@ -7,13 +7,15 @@ class Activity {
   }
 
   getActivityInfoByDate(date) {
-    this.date = this.activityInfo.find(loggedActivity => loggedActivity.date === date);
+    this.date = this.activityInfo.find(function(loggedActivity) {
+      return loggedActivity.date === date;
+    })
     return this.date;
   }
 
   getMilesWalked(date) {
     this.getActivityInfoByDate(date);
-    return Math.round(this.date.numSteps * this.strideLength / 5280 *10) / 10;
+    return Math.round(this.date.numSteps * this.strideLength / 5280 * 10) / 10;
   }
 
   getUserActivityStatForDate(activity, date) {
@@ -22,9 +24,12 @@ class Activity {
   }
 
   getAverageByWeek(activity, date) {
-    let dateIndex = this.activityInfo.findIndex((loggedActivity, index) => loggedActivity.date === date);
-    let weekArray = this.activityInfo.filter((loggedActivity, index) => (index <= dateIndex && index >= (dateIndex - 6)));
-    let average = weekArray.reduce((acc, loggedActivity) => acc += loggedActivity[activity] / 7, 0);
+    let dateIndex = this.activityInfo.findIndex((loggedActivity) =>
+      loggedActivity.date === date);
+    let weekArray = this.activityInfo.filter((loggedActivity, index) =>
+      (index <= dateIndex && index >= (dateIndex - 6)));
+    let average = weekArray.reduce((acc, loggedActivity) =>
+      acc += loggedActivity[activity] / 7, 0);
     return Math.round(average);
   }
 
@@ -32,13 +37,21 @@ class Activity {
     return this.activityInfo.reduce((acc, loggedActivity) => {
       if (loggedActivity.numSteps > this.dailyStepGoal) {
         acc.push(loggedActivity.date)
-      };
+      }
       return acc;
-      }, []);
+    }, []);
   }
 
   findInfoForDaysExceededGoal() {
-    return this.activityInfo.filter(loggedActivity => loggedActivity.numSteps > this.dailyStepGoal);
+    return this.activityInfo.filter(loggedActivity =>
+      loggedActivity.numSteps > this.dailyStepGoal);
+  }
+
+  findByHowMuchExceededGoal(date) {
+    let exceededs = this.findInfoForDaysExceededGoal();
+    let dateInQuestion = exceededs.find(loggedActivity =>
+      loggedActivity.date === date);
+    return dateInQuestion.numSteps - this.dailyStepGoal;
   }
 
   findIfGoalExceededByDate(date) {
@@ -51,14 +64,12 @@ class Activity {
   }
 
   findStairRecord() {
-    let sortByStairs = this.activityInfo;
-    console.log('FIRST', sortByStairs);
-    console.log('ORIG', this.activityInfo);
-    sortByStairs = sortByStairs.sort((a,b) => b.flightsOfStairs - a.flightsOfStairs);
-    console.log('SECOND', sortByStairs);
-    console.log('ORIGstillok?', this.activityInfo);
-
-    return sortByStairs[0];
+    return this.activityInfo.reduce((acc, loggedActivity) => {
+      if (loggedActivity.flightsOfStairs > acc.flightsOfStairs) {
+        acc = loggedActivity
+      }
+      return acc;
+    })
   }
 
 }
