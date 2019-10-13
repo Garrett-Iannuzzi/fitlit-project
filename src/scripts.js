@@ -10,10 +10,11 @@ const activity = new Activity(activityRepo, user);
 let date = hydrationData[hydrationData.length - 1].date;
 
 $(document).ready(function () {
+  $('#span__current--date').text(date);
   userHandler();
   hydrationHandler();
   sleepHandler()
-  $('#span__current--date').text(date);
+  activityHandler()
 })
 
 function userHandler() {
@@ -44,7 +45,7 @@ function activityHandler() {
 
   if (activity.getMilesWalked(date) <= 1) {
     $('#span__distance--miles--js').text(`${activity.getMilesWalked(date)} mile`);
-  } else (activity.getMilesWalked(date) > 1) {
+  } else if (activity.getMilesWalked(date) > 1) {
     $('#span__distance--miles--js').text(`${activity.getMilesWalked(date)} miles`);
   }
 
