@@ -39,5 +39,6 @@ function sleepHandler() {
 
 function activityHandler() {
   $('#span__todays--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
+  $('#span__todays--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
   $('#span__todays--minutes--active--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
 }
