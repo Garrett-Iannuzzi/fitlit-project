@@ -24,7 +24,8 @@ describe('User', () => {
   });
 
   it('should have an address', () => {
-    expect(user.address).to.equal('85823 Bosco Fork, East Oscarstad MI 85126-5660');
+    expect(user.address).to.equal(
+      '85823 Bosco Fork, East Oscarstad MI 85126-5660');
   });
 
   it('should have an email', () => {
