@@ -33,6 +33,16 @@ function sleepHandler() {
   $('#span__sleep--quality--js').text(`${sleep.getMetricByDate(date, 'sleepQuality')}`);
   $('#span__sleep--average--hours--js').text(`${sleep.getAvgMetricPerDayAllTime('hoursSlept')}`);
   $('#span__sleep--average--quality--js').text(`${sleep.getAvgMetricPerDayAllTime('sleepQuality')}`);
+  $('#span__sleep--status--js').text(`${sleep.getUserSleepStatus(date)}`);
+  updateSleepyImg()
+}
+
+function updateSleepyImg() {
+  if (sleep.wellRested === true) {
+    $('#sleepy__img--js').attr('src', '../Images/wake-up.png');
+  } else {
+    $('#sleepy__img--js').attr('src', '../Images/tired.png');
+  }
 }
 
 

@@ -60,13 +60,23 @@ describe('Sleep', () => {
   describe ('Sleepy Status', () => {
 
     it('should determine if the user is sleepy or not', () => {
-      expect(sleep.getUserSleepStatus('2019/06/16')).to.equal('You are well rested!');
+      expect(sleep.getUserSleepStatus('2019/06/16')).to.equal('Well Rested!');
     });
 
+    it('should update well rested property', () => {
+      sleep.getUserSleepStatus('2019/06/16');
+      expect(sleep.wellRested).to.equal(true);
+    })
+
     it('should determine if the user is sleepy or not', () => {
-      expect(sleep.getUserSleepStatus('2019/06/17')).to.equal('You need more sleep!');
+      expect(sleep.getUserSleepStatus('2019/06/17')).to.equal('Sleepy!');
     });
-    
+
+    it('should update well rested property', () => {
+      sleep.getUserSleepStatus('2019/06/17');
+      expect(sleep.wellRested).to.equal(false);
+    })
+
   });
 
 });
