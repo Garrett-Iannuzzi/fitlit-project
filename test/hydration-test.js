@@ -12,7 +12,7 @@ describe('Hydration', () => {
 
   beforeEach(() => {
     hydrationRepo = new HydrationRepo(sampleHydrationData);
-    let hydrationInfo = hydrationRepo.getUserByID(3);
+    let hydrationInfo = hydrationRepo.getUserById(3);
     hydration = new Hydration(hydrationInfo);
   });
 

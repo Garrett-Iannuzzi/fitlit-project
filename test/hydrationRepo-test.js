@@ -21,7 +21,7 @@ describe('HydrationRepo', () => {
   });
 
   it('should be able to isolate hydration info for single user by id', () => {
-    expect(hydrationRepo.getUserByID(3)).to.eql([
+    expect(hydrationRepo.getUserById(3)).to.eql([
       { userID: 3, date: '2019/06/15', numOunces: 47 },
       { userID: 3, date: '2019/06/16', numOunces: 99 },
       { userID: 3, date: '2019/06/17', numOunces: 28 },

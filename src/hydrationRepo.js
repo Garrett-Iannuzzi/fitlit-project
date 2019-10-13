@@ -4,7 +4,7 @@ class HydrationRepo {
     this.userInfo;
   }
 
-  getUserByID(id) {
+  getUserById(id) {
     this.userInfo = this.hydrationData.filter(user => user.userID === id);
     return this.userInfo;
   }
