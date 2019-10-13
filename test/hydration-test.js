@@ -44,6 +44,7 @@ describe('Hydration', () => {
 
   it('should be able to get ounces consumed per day by week', () => {
     expect(hydration.getOuncesPerDayByWeek('2019/06/21')).to.eql([47, 99, 28, 29, 21, 23, 26]);
+    expect(hydration.getOuncesPerDayByWeek('2019/06/23')).to.eql([28, 29, 21, 23, 26, 78, 35]);
   })
 
 });
