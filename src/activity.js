@@ -15,7 +15,7 @@ class Activity {
 
   getMilesWalked(date) {
     this.getActivityInfoByDate(date);
-    return Math.round(this.date.numSteps * this.strideLength / 5280 *10) / 10;
+    return Math.round(this.date.numSteps * this.strideLength / 5280 * 10) / 10;
   }
 
   getUserActivityStatForDate(activity, date) {
@@ -24,9 +24,12 @@ class Activity {
   }
 
   getAverageByWeek(activity, date) {
-    let dateIndex = this.activityInfo.findIndex((loggedActivity, index) => loggedActivity.date === date);
-    let weekArray = this.activityInfo.filter((loggedActivity, index) => (index <= dateIndex && index >= (dateIndex - 6)));
-    let average = weekArray.reduce((acc, loggedActivity) => acc += loggedActivity[activity] / 7, 0);
+    let dateIndex = this.activityInfo.findIndex((loggedActivity) =>
+      loggedActivity.date === date);
+    let weekArray = this.activityInfo.filter((loggedActivity, index) =>
+      (index <= dateIndex && index >= (dateIndex - 6)));
+    let average = weekArray.reduce((acc, loggedActivity) =>
+      acc += loggedActivity[activity] / 7, 0);
     return Math.round(average);
   }
 
@@ -34,18 +37,20 @@ class Activity {
     return this.activityInfo.reduce((acc, loggedActivity) => {
       if (loggedActivity.numSteps > this.dailyStepGoal) {
         acc.push(loggedActivity.date)
-      };
+      }
       return acc;
-      }, []);
+    }, []);
   }
 
   findInfoForDaysExceededGoal() {
-    return this.activityInfo.filter(loggedActivity => loggedActivity.numSteps > this.dailyStepGoal);
+    return this.activityInfo.filter(loggedActivity =>
+      loggedActivity.numSteps > this.dailyStepGoal);
   }
 
   findByHowMuchExceededGoal(date) {
     let exceededs = this.findInfoForDaysExceededGoal();
-    let dateInQuestion = exceededs.find(loggedActivity => loggedActivity.date === date);
+    let dateInQuestion = exceededs.find(loggedActivity =>
+      loggedActivity.date === date);
     return dateInQuestion.numSteps - this.dailyStepGoal;
   }
 
