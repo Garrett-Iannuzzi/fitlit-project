@@ -6,7 +6,7 @@ class Sleep {
   getAvgMetricPerDayAllTime(stat) {
     let allSleepData = this.sleepInfo.reduce((acc, user) => {
      acc += user[stat] / this.sleepInfo.length
-     return acc 
+     return acc
     }, 0);
     return Number(allSleepData.toFixed(1));
   }
@@ -18,7 +18,7 @@ class Sleep {
 
   getMetricByWeek(date, metric) {
     let findDateIndex = this.sleepInfo.findIndex(user => user.date === date);
-    let findMetric = this.sleepInfo.splice(findDateIndex - 6, 7).map(user => user[metric]);
+    let findMetric = this.sleepInfo.slice(findDateIndex - 6, findDateIndex + 1).map(user => user[metric]);
     return findMetric;
   }
 
