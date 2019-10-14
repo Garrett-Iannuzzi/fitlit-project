@@ -79,12 +79,7 @@ describe('Activity', () => {
   });
 
   it('should be able to organize all activity info by a specific date', () => {
-    expect(activity.getActivityInfoByDate('2019/06/17')).to.eql({
-      userID: 3,
-      date: '2019/06/17',
-      numSteps: 4547,
-      minutesActive: 97,
-      flightsOfStairs: 5 });
+    activity.getActivityInfoByDate('2019/06/17');
     expect(activity.date).to.eql({
       userID: 3,
       date: '2019/06/17',
