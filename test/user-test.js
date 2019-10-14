@@ -64,12 +64,19 @@ describe('User', () => {
   it('should find friends step counts', () => {
     expect(user.findFriendSteps(sampleUserData, sampleActivityData, '2019/06/21')).to.eql([
       {'name': 'Jarvis',
-       'weeklySteps': '233'},
+       'weeklySteps': 55054},
      {'name': 'Luisa',
-      'weeklySteps': '233'},
+      'weeklySteps': 58629},
       {'name': 'Mae',
-       'weeklySteps': '233'},
-
+       'weeklySteps': 60963},
+    ]);
+    expect(user.findFriendSteps(sampleUserData, sampleActivityData, '2019/06/22')).to.eql([
+      {'name': 'Jarvis',
+       'weeklySteps': 54365},
+     {'name': 'Luisa',
+      'weeklySteps': 65341},
+      {'name': 'Mae',
+       'weeklySteps': 61072},
     ]);
   })
 
