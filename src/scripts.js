@@ -6,7 +6,7 @@ let hydration = new Hydration(hydrationRepo.getUserById(randomUser));
 const sleepRepo = new SleepRepo(sleepData);
 const sleep = new Sleep(sleepRepo.getUserById(randomUser));
 const activityRepo = new ActivityRepo(activityData);
-const activity = new Activity(activityRepo, user);
+const activity = new Activity(activityRepo.getUserById(randomUser), user);
 let date = hydrationData[hydrationData.length - 1].date;
 
 $(document).ready(function () {
@@ -14,7 +14,7 @@ $(document).ready(function () {
   userHandler();
   hydrationHandler();
   sleepHandler();
-  // activityHandler()
+  activityHandler();
 })
 
 
@@ -56,10 +56,11 @@ function activityHandler() {
   $('#span__todays--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
   $('#span__todays--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
 
-  if (activity.getMilesWalked(date) <= 1) {
-    $('#span__distance--miles--js').text(`${activity.getMilesWalked(date)} mile`);
-  } else if (activity.getMilesWalked(date) > 1) {
-    $('#span__distance--miles--js').text(`${activity.getMilesWalked(date)} miles`);
+  let milesWalked = activity.getMilesWalked(date);
+  if (milesWalked <= 1) {
+    $('#p__distance--miles--js').text(`${milesWalked} mile`);
+  } else if (milesWalked > 1) {
+    $('#p__distance--miles--js').text(`${milesWalked} miles`);
   }
 
   $('#span__you--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
