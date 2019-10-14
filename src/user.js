@@ -35,14 +35,10 @@ class User {
     let index = oneFriendsStats.findIndex(stat => stat.date === date);
     let weekStats = oneFriendsStats.slice(index - 6, index + 1);
     let totalSteps = 0;
-    let friend;
-    friend = '';
     weekStats.forEach(stat => {
       totalSteps += stat.numSteps
       });
-    this.friendNames.forEach(name => {
-      friend = name;
-    });
+    let friend = this.friendNames.shift();
     acc.push({
       'name': friend,
       'weeklySteps': totalSteps
