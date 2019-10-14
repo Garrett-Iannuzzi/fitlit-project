@@ -18,11 +18,11 @@ main {
 }
 
 header {
-  background-color: rgb(40, 39, 41);
+  background-color: rgb(55, 18, 75);
   border-bottom: solid 4px rgb(255, 255, 255);
   color: white;
   font-size: 1.4em;
-  opacity: .7;
+  opacity: .9;
   text-align: center;
 }
 
@@ -39,6 +39,18 @@ section {
   width: 330px;
 }
 
+section:hover {
+  opacity: 1;
+}
+
+h4 {
+  font-size: 1.3em;
+}
+
+p {
+  font-size: .9em;
+}
+
 .water__img,
 .sleep__img {
 height: 100px;
@@ -52,9 +64,11 @@ width: 100px;
   width: 175px;
 }
 
-.potato__2 {
+.hydration__chart,
+.sleep__chart--quality {
   background-color: rgb(55, 18, 75);
   border: solid 6px rgb(32, 11, 43);
+  opacity: .9;
   margin: 200px;
   width: 40%;
 }

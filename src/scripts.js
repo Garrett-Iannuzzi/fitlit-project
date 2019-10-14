@@ -9,6 +9,7 @@ const activityRepo = new ActivityRepo(activityData);
 const activity = new Activity(activityRepo.getUserById(randomUser), user);
 let date = hydrationData[hydrationData.length - 1].date;
 let hydrationChart = hydration.getOuncesPerDayByWeek(date);
+let sleepQualityChart = sleep.getMetricByWeek(date, 'sleepQuality');
 
 $(document).ready(function () {
   $('#span__current--date').text(date);
@@ -16,7 +17,7 @@ $(document).ready(function () {
   hydrationHandler();
   sleepHandler()
   activityHandler()
-  chartsHandler()
+  // chartsHandler()
 })
 
 // function chartsHandler() {
@@ -118,5 +119,50 @@ let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
         responsive: true,
         maintainAspectRatio: false,
     }
+});
 
+let sleepQualityByWeek = $('#sleep__by--week--quality--js');
+let usersleepQualityByWeekChart = new Chart(sleepQualityByWeek, {
+  type: 'bar',
+  data: {
+    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+    datasets: [{
+      label: "Sleep Quality Score",
+      backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+      hoverBackgroundColor: "white",
+      data: sleepQualityChart,
+        
+      }]
+    },
+    options: {
+      legend: {
+        labels: {
+            fontColor: "white",
+            fontSize: 18,
+        },
+      },
+      title: {
+        fontColor: "white",
+        display: true,
+        text: 'Sleep Quality',
+        fontSize: 25,
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            fontColor: "white",
+            fontSize: 25,
+                  beginAtZero: true
+              }
+          }],
+          xAxes: [{
+            ticks: {
+              fontColor: "white",
+              fontSize: 20,
+            }
+          }]
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+  }
 });
