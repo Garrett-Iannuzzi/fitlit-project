@@ -24,7 +24,9 @@ header {
 }
 
 h1 {
+  font-size: 3.0em;
   margin-top: 0px;
+  padding-top: 30px;
 }
 
 section {
@@ -42,6 +44,11 @@ section {
 
 section:hover {
   opacity: 1;
+}
+
+.p__user--friends {
+  border-bottom: solid 4px rgb(32, 11, 43);
+  padding-bottom: 40px;
 }
 
 h4 {
