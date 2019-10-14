@@ -1,12 +1,6 @@
 body {
-  display: grid;
   margin: 0px;
-}
-
-main {
-  color: white;
-  display: grid;
-  margin: 0px;
+  padding: 0px;
 }
 
 .main__page {
@@ -14,7 +8,10 @@ main {
   url(https://images.unsplash.com/photo-1555202926-4703eaa1fa74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80);
   background-position: center;
   background-size: cover;
-  width: 100%;
+  column-count: 2;
+  column-width: 5em; 
+  color: white;
+  margin: 0px;
 }
 
 header {
@@ -22,21 +19,24 @@ header {
   border-bottom: solid 4px rgb(255, 255, 255);
   color: white;
   font-size: 1.4em;
-  opacity: .9;
   text-align: center;
 }
 
+h1 {
+  margin-top: 0px;
+}
+
 section {
+  display: inline-block;
   background-color: rgb(55, 18, 75);
   border: solid 6px rgb(32, 11, 43);
   cursor: pointer;
-  float: left;
   font-size: 1.8em;
   margin: 15px;
   opacity: .9;
   padding: 10px;
   text-align: center;
-  width: 330px;
+  width: 85%;
 }
 
 section:hover {
@@ -49,6 +49,10 @@ h4 {
 
 p {
   font-size: .9em;
+}
+
+span {
+  font-size: 1em;
 }
 
 .water__img,
@@ -68,7 +72,10 @@ width: 100px;
 .sleep__chart--quality {
   background-color: rgb(55, 18, 75);
   border: solid 6px rgb(32, 11, 43);
+  margin: 15px;
+  margin-bottom: 20px;
   opacity: .9;
-  margin: 200px;
-  width: 40%;
+  width: 87%;
 }
+
+
