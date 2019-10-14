@@ -8,6 +8,9 @@ const sleep = new Sleep(sleepRepo.getUserById(randomUser));
 const activityRepo = new ActivityRepo(activityData);
 const activity = new Activity(activityRepo.getUserById(randomUser), user);
 let date = hydrationData[hydrationData.length - 1].date;
+let weeklyStepsChart = activity.getWeeklyActivityStats('numSteps', date);
+let weeklyStairsChart = activity.getWeeklyActivityStats('flightsOfStairs', date);
+let weeklyMinutesChart = activity.getWeeklyActivityStats('minutesActive', date);
 
 $(document).ready(function () {
   $('#span__current--date').text(date);
@@ -70,3 +73,47 @@ function activityHandler() {
   $('#span__you--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
   $('#span__them--minutes--js').text(`${activityRepo.getAllUserActivityAvgByDate('minutesActive', date)}`);
 }
+
+let stepsByWeekChart = new Chart($('#chart__weekly-activity--js'), {
+    type: 'bar',
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [{
+        label: "Steps Per Day",
+        backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+        hoverBackgroundColor: "white",
+        data: weeklyStepsChart,
+        }]
+      },
+      options: {
+        legend: {
+          labels: {
+              fontColor: "white",
+              fontSize: 18,
+          },
+        },
+        title: {
+          fontColor: "white",
+          display: true,
+          text: 'Weekly Steps Total',
+          fontSize: 25,
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              fontColor: "white",
+              fontSize: 25,
+                    beginAtZero: true
+                }
+            }],
+            xAxes: [{
+              ticks: {
+                fontColor: "white",
+                fontSize: 20,
+              }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+});
