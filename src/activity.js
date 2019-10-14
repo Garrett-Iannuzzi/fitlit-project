@@ -4,13 +4,13 @@ class Activity {
     this.strideLength = user.strideLength;
     this.dailyStepGoal = user.dailyStepGoal;
     this.date = {};
+    // console.log(this.activityInfo);
   }
 
   getActivityInfoByDate(date) {
-    this.date = this.activityInfo.find(function(loggedActivity) {
-      return loggedActivity.date === date;
+    this.date = this.activityInfo.find(function (loggedActivity) {
+      return loggedActivity.date === date
     })
-    return this.date;
   }
 
   getMilesWalked(date) {
