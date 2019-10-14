@@ -72,6 +72,30 @@ class Activity {
     })
   }
 
+
+  getThreeDayStepStreak() {
+    let threeDayStreaks = this.activityInfo.reduce((acc, stat, index) => {
+      if (index < 2) {
+        return acc;
+      }
+       if ((stat.numSteps > this.activityInfo[index - 1].numSteps) && (this.activityInfo[index - 1].numSteps > this.activityInfo[index - 2].numSteps)) {
+         acc.push(
+           { 'date': this.activityInfo[index - 2].date,
+             'numSteps': this.activityInfo[index - 2].numSteps},
+           { 'date': this.activityInfo[index - 1].date,
+             'numSteps': this.activityInfo[index - 1].numSteps},
+           { 'date': this.activityInfo[index].date,
+             'numSteps': this.activityInfo[index].numSteps});
+       }
+       return acc;
+     }, []);
+     let separatedStreaks = [];
+     threeDayStreaks.forEach(dayStat => {
+       separatedStreaks.push(threeDayStreaks.splice(0, 3));
+     })
+     return separatedStreaks;
+   }
+
 }
 
 if (typeof module !== 'undefined') {
