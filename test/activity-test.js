@@ -74,6 +74,21 @@ describe('Activity', () => {
         date: '2019/06/23',
         numSteps: 4665,
         minutesActive: 219,
+        flightsOfStairs: 9 },
+      { userID: 3,
+        date: '2019/06/24',
+        numSteps: 1665,
+        minutesActive: 219,
+        flightsOfStairs: 9 },
+      { userID: 3,
+        date: '2019/06/25',
+        numSteps: 4665,
+        minutesActive: 219,
+        flightsOfStairs: 9 },
+      { userID: 3,
+        date: '2019/06/26',
+        numSteps: 14665,
+        minutesActive: 219,
         flightsOfStairs: 9 }
     ]);
   });
@@ -153,6 +168,13 @@ describe('Activity', () => {
         "numSteps": 11342,
         "minutesActive": 53,
         "flightsOfStairs": 17
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/26",
+        "numSteps": 14665,
+        "minutesActive": 219,
+        "flightsOfStairs": 9
       }
     ])
   })
@@ -164,7 +186,8 @@ describe('Activity', () => {
       '2019/06/19',
       '2019/06/20',
       '2019/06/21',
-      '2019/06/22'
+      '2019/06/22',
+      '2019/06/26'
     ])
   })
 
@@ -185,6 +208,17 @@ describe('Activity', () => {
 
   it('should calculate by how much a user exceeded their goal', () => {
     expect(activity.findByHowMuchExceededGoal('2019/06/20')).to.equal(369);
+  })
+
+  it('should calculate step streak of three days', () => {
+    expect(activity.getThreeDayStepStreak()).to.eql([
+      [ { date: '2019/06/20', numSteps: 5369 },
+        { date: '2019/06/21', numSteps: 7498 },
+        { date: '2019/06/22', numSteps: 11342 } ],
+      [ { date: '2019/06/24', numSteps: 1665 },
+        { date: '2019/06/25', numSteps: 4665 },
+        { date: '2019/06/26', numSteps: 14665 } ]
+      ]);
   })
 
 })
