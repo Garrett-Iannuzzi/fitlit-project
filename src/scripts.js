@@ -6,8 +6,9 @@ let hydration = new Hydration(hydrationRepo.getUserById(randomUser));
 const sleepRepo = new SleepRepo(sleepData);
 const sleep = new Sleep(sleepRepo.getUserById(randomUser));
 const activityRepo = new ActivityRepo(activityData);
-const activity = new Activity(activityRepo, user);
+const activity = new Activity(activityRepo.getUserById(randomUser), user);
 let date = hydrationData[hydrationData.length - 1].date;
+let hydrationChart = hydration.getOuncesPerDayByWeek(date);
 
 $(document).ready(function () {
   $('#span__current--date').text(date);
@@ -15,7 +16,13 @@ $(document).ready(function () {
   hydrationHandler();
   sleepHandler()
   activityHandler()
+  chartsHandler()
 })
+
+// function chartsHandler() {
+//   hydrationChart = hydration.getOuncesPerDayByWeek(date);
+//   // console.log(hydrationChart)
+// }
 
 function userHandler() {
   $('#span__user--name--js').text(`${user.getUserFirstName()}`);
@@ -66,3 +73,50 @@ function activityHandler() {
   $('#span__you--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
   $('#span__them--minutes--js').text(`${activityRepo.getAllUserActivityAvgByDate('minutesActive', date)}`);
 }
+
+let userHydrationByWeek = $('#hydration__by--week--chart--js');
+let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
+    type: 'bar',
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [{
+        label: "Oz's on Each Day",
+        backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+        hoverBackgroundColor: "white",
+        data: hydrationChart,
+          
+        }]
+      },
+      options: {
+        legend: {
+          labels: {
+              fontColor: "white",
+              fontSize: 18,
+          },
+        },
+        title: {
+          fontColor: "white",
+          display: true,
+          text: 'Your Water Intake',
+          fontSize: 25,
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              fontColor: "white",
+              fontSize: 25,
+                    beginAtZero: true
+                }
+            }],
+            xAxes: [{
+              ticks: {
+                fontColor: "white",
+                fontSize: 20,
+              }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+
+});
