@@ -192,4 +192,8 @@ describe('Activity', () => {
     expect(activity.findByHowMuchExceededGoal('2019/06/20')).to.equal(369);
   })
 
+  it('should get all streaks of increasing step count', () => {
+    activity.getThreeDayStepStreak()
+  })
+
 })

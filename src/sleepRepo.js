@@ -29,13 +29,13 @@ class SleepRepo {
       let index = thisUsersStuff.findIndex(stat => stat.date === date);
       let justThisWeek = thisUsersStuff.slice(index - 6, index + 1);
       let fakeAcc = 0;
-      let objId = 0;
+      let userId = 0;
       justThisWeek.forEach(stat => {
         fakeAcc += stat.sleepQuality / 7;
-        objId = stat.userID
+        userId = stat.userID
       })
         if (fakeAcc > 3) {
-          finalAcc.push(objId)
+          finalAcc.push(userId)
         }
         return finalAcc
     },[])

@@ -52,12 +52,12 @@ describe('User', () => {
     expect(user.getUserFirstName()).to.equal('Herminia');
   });
 
-  it('should find all users friends', () => {
-    expect(user.findFriendNames()).to.eql([
-      'Jarvis',
-      'Luisa',
-      'Mae'
-    ]);
-  });
+  // it('should find all users friends', () => {
+  //   expect(user.findFriendNames()).to.eql([
+  //     'Jarvis',
+  //     'Luisa',
+  //     'Mae'
+  //   ]);
+  // });
 
 })

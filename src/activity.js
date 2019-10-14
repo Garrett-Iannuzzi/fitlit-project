@@ -72,6 +72,22 @@ class Activity {
     })
   }
 
+  getThreeDayStepStreak() {
+    return this.activityInfo.reduce((acc, stat, index) => {
+      if (index < 2) {
+        return acc;
+      }
+      if ((stat.numSteps > this.activityInfo[index - 1].numSteps) && (this.activityInfo[index - 1].numSteps > this.activityInfo[index - 2].numSteps)) {
+        acc.push({
+          [this.activityInfo[index].date]: this.activityInfo[index].numSteps,
+          [this.activityInfo[index - 1].date]: this.activityInfo[index - 1].numSteps,
+          [this.activityInfo[index - 2].date]: this.activityInfo[index - 2].numSteps,
+        });
+      }
+      return acc;
+    }, []);
+  }
+
 }
 
 if (typeof module !== 'undefined') {
