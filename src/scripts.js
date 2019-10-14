@@ -1,15 +1,15 @@
 const randomUser = Math.ceil(Math.random() * 50);
-let userRepo = new UserRepo(userData);
-let user = new User(userRepo.getUserInfo(randomUser));
-let hydrationRepo = new HydrationRepo(hydrationData);
-let hydration = new Hydration(hydrationRepo.getUserById(randomUser));
+const userRepo = new UserRepo(userData);
+const user = new User(userRepo.getUserInfo(randomUser));
+const hydrationRepo = new HydrationRepo(hydrationData);
+const hydration = new Hydration(hydrationRepo.getUserById(randomUser));
 const sleepRepo = new SleepRepo(sleepData);
 const sleep = new Sleep(sleepRepo.getUserById(randomUser));
 const activityRepo = new ActivityRepo(activityData);
 const activity = new Activity(activityRepo.getUserById(randomUser), user);
-let date = hydrationData[hydrationData.length - 1].date;
-let hydrationChart = hydration.getOuncesPerDayByWeek(date);
-let sleepQualityChart = sleep.getMetricByWeek(date, 'sleepQuality');
+const date = hydrationData[hydrationData.length - 1].date;
+const hydrationChart = hydration.getOuncesPerDayByWeek(date);
+const sleepQualityChart = sleep.getMetricByWeek(date, 'sleepQuality');
 
 $(document).ready(function () {
   $('#span__current--date').text(date);
@@ -17,13 +17,7 @@ $(document).ready(function () {
   hydrationHandler();
   sleepHandler()
   activityHandler()
-  // chartsHandler()
 })
-
-// function chartsHandler() {
-//   hydrationChart = hydration.getOuncesPerDayByWeek(date);
-//   // console.log(hydrationChart)
-// }
 
 function userHandler() {
   $('#span__user--name--js').text(`${user.getUserFirstName()}`);
@@ -75,8 +69,7 @@ function activityHandler() {
   $('#span__them--minutes--js').text(`${activityRepo.getAllUserActivityAvgByDate('minutesActive', date)}`);
 }
 
-let userHydrationByWeek = $('#hydration__by--week--chart--js');
-let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
+let userHydrationByWeekChart = new Chart($('#hydration__by--week--chart--js'), {
     type: 'bar',
     data: {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
@@ -85,7 +78,6 @@ let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
         backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
         hoverBackgroundColor: "white",
         data: hydrationChart,
-          
         }]
       },
       options: {
@@ -121,16 +113,15 @@ let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
     }
 });
 
-let sleepQualityByWeek = $('#sleep__by--week--quality--js');
-let usersleepQualityByWeekChart = new Chart(sleepQualityByWeek, {
-  type: 'bar',
+let usersleepQualityByWeekChart = new Chart($('#sleep__by--week--quality--js'), {
+  type: 'line',
   data: {
     labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
     datasets: [{
       label: "Sleep Quality Score",
       backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
-      hoverBackgroundColor: "white",
       data: sleepQualityChart,
+      pointRadius: 6,
         
       }]
     },
@@ -145,20 +136,20 @@ let usersleepQualityByWeekChart = new Chart(sleepQualityByWeek, {
         fontColor: "white",
         display: true,
         text: 'Sleep Quality',
-        fontSize: 25,
+        fontSize: 20,
       },
       scales: {
         yAxes: [{
           ticks: {
             fontColor: "white",
-            fontSize: 25,
+            fontSize: 20,
                   beginAtZero: true
               }
           }],
           xAxes: [{
             ticks: {
               fontColor: "white",
-              fontSize: 20,
+              fontSize: 15,
             }
           }]
       },
