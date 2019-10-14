@@ -96,6 +96,14 @@ class Activity {
      return separatedStreaks;
    }
 
+   getWeeklyActivityStats(activity, date) {
+     let dateIndex = this.activityInfo.findIndex((loggedActivity) =>
+       loggedActivity.date === date);
+     let weekArray = this.activityInfo.filter((loggedActivity, index) =>
+       (index <= dateIndex && index >= (dateIndex - 6)));
+    return weekArray.map(loggedActivity => loggedActivity[activity])
+   }
+
 }
 
 if (typeof module !== 'undefined') {
