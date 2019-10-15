@@ -52,7 +52,7 @@ describe('User', () => {
   it('should tell us users first name', () => {
     expect(user.getUserFirstName()).to.equal('Herminia');
   });
-
+  
   it('should find all users friends', () => {
     expect(user.findFriendNames(sampleUserData)).to.eql([
       'Jarvis',
@@ -78,8 +78,6 @@ describe('User', () => {
       {'name': 'Mae',
        'weeklySteps': 61072},
     ]);
-  })
-
-
+  });
 
 })

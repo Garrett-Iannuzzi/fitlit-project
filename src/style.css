@@ -1,14 +1,6 @@
 body {
-  display: grid;
-  /* height: 100vh; */
   margin: 0px;
-}
-
-main {
-  color: white;
-  display: grid;
-  /* height: 100vh; */
-  margin: 0px;
+  padding: 0px;
 }
 
 .main__page {
@@ -16,30 +8,92 @@ main {
   url(https://images.unsplash.com/photo-1555202926-4703eaa1fa74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80);
   background-position: center;
   background-size: cover;
-  width: 100%;
+  column-count: 3;
+  column-width: 5em; 
+  color: white;
+  margin: 0px;
+  padding-top: 40px;
 }
 
 header {
-  background-color: rgb(40, 39, 41);
+  background-color: rgb(55, 18, 75);
   border-bottom: solid 4px rgb(255, 255, 255);
   color: white;
   font-size: 1.4em;
-  opacity: .7;
+  opacity: .9;
+  height: 250px;
   text-align: center;
 }
 
+h1 {
+  font-size: 4.8em;
+  font-family: 'Cabin', sans-serif;
+  margin: 0px 0px 40px 0px;
+  padding-top: 30px;
+}
+
+h2 {
+  display: inline-block;
+  font-size: .9em;
+  margin: 0px 70px 0px 70px;
+}
+
+.h2__name {
+  font-size: 1.5em;
+}
+
 section {
+  display: inline-block;
   background-color: rgb(55, 18, 75);
   border: solid 6px rgb(32, 11, 43);
   cursor: pointer;
-  /* display: grid; */
-  float: left;
   font-size: 1.8em;
-  margin: 15px;
+  height: 15%;
+  margin: 35px;
   opacity: .9;
   padding: 10px;
   text-align: center;
-  width: 330px;
+  width: 82%;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.div__account--info {
+  font-size: .7em;
+}
+
+section:hover {
+  opacity: 1;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.p__user--friends,
+.span__sleep--average--hours {
+  border-bottom: solid 4px rgb(32, 11, 43);
+  padding-bottom: 40px;
+}
+
+h4 {
+  font-size: 1.2em;
+  margin: 10px;
+}
+
+p {
+  font-size: 1.1em;
+}
+
+span {
+  font-size: 1.1em;
+}
+
+.p__user--sleep-last--night {
+  border-bottom: solid 4px rgb(32, 11, 43);
+  padding-bottom: 40px;
 }
 
 .p__display--miles {
@@ -84,3 +138,29 @@ width: 100px;
   height: 175px;
   width: 175px;
 }
+
+.hydration__chart,
+.sleep__chart--quality, 
+.sleep__chart--hours {
+  background-color: rgb(55, 18, 75);
+  border: solid 6px rgb(32, 11, 43);
+  margin: 45px;
+  margin-bottom: 20px;
+  opacity: .9;
+  width: 82%;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.hydration__chart:hover,
+.sleep__chart--quality:hover,
+.sleep__chart--hours:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+}
+

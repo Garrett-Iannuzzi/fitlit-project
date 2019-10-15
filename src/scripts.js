@@ -1,16 +1,19 @@
 const randomUser = Math.ceil(Math.random() * 50);
-let userRepo = new UserRepo(userData);
-let user = new User(userRepo.getUserInfo(randomUser));
-let hydrationRepo = new HydrationRepo(hydrationData);
-let hydration = new Hydration(hydrationRepo.getUserById(randomUser));
+const userRepo = new UserRepo(userData);
+const user = new User(userRepo.getUserInfo(randomUser));
+const hydrationRepo = new HydrationRepo(hydrationData);
+const hydration = new Hydration(hydrationRepo.getUserById(randomUser));
 const sleepRepo = new SleepRepo(sleepData);
 const sleep = new Sleep(sleepRepo.getUserById(randomUser));
 const activityRepo = new ActivityRepo(activityData);
 const activity = new Activity(activityRepo.getUserById(randomUser), user);
-let date = hydrationData[hydrationData.length - 1].date;
-let weeklyStepsChart = activity.getWeeklyActivityStats('numSteps', date);
-let weeklyStairsChart = activity.getWeeklyActivityStats('flightsOfStairs', date);
-let weeklyMinutesChart = activity.getWeeklyActivityStats('minutesActive', date);
+const date = hydrationData[hydrationData.length - 1].date;
+const hydrationChart = hydration.getOuncesPerDayByWeek(date);
+const sleepQualityChart = sleep.getMetricByWeek(date, 'sleepQuality');
+const sleepHoursChart = sleep.getMetricByWeek(date, 'hoursSlept');
+const weeklyStepsChart = activity.getWeeklyActivityStats('numSteps', date);
+const weeklyStairsChart = activity.getWeeklyActivityStats('flightsOfStairs', date);
+const weeklyMinutesChart = activity.getWeeklyActivityStats('minutesActive', date);
 
 $(document).ready(function () {
   $('#span__current--date').text(date);
@@ -80,7 +83,128 @@ function displayActivityTable() {
   $('#td__others--minutes--js').text(`${activityRepo.getAllUserActivityAvgByDate('minutesActive', date)}`);
 }
 
-let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
+let userHydrationByWeekChart = new Chart($('#hydration__by--week--chart--js'), {
+    type: 'bar',
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [{
+        label: "Oz's on Each Day",
+        backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+        hoverBackgroundColor: "white",
+        data: hydrationChart,
+        }]
+      },
+      options: {
+        legend: {
+          labels: {
+              fontColor: "white",
+              fontSize: 18,
+          },
+        },
+        title: {
+          fontColor: "white",
+          display: true,
+          text: 'Your Water Intake',
+          fontSize: 20,
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              fontColor: "white",
+              fontSize: 15,
+                beginAtZero: true
+                }
+            }],
+            xAxes: [{
+              ticks: {
+                fontColor: "white",
+                fontSize: 15,
+              }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+});
+
+let usersleepQualityByWeekChart = new Chart($('#sleep__by--week--quality--js'), {
+  type: 'line',
+  data: {
+    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+    datasets: [{
+      label: "Sleep Quality Score",
+      pointBackgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+      data: sleepQualityChart,
+      pointRadius: 8,
+        
+      }]
+    },
+    options: {
+      legend: {
+        labels: {
+            fontColor: "white",
+            fontSize: 25,
+        },
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            fontColor: "white",
+            fontSize: 15,
+                  beginAtZero: true
+              }
+          }],
+          xAxes: [{
+            ticks: {
+              fontColor: "white",
+              fontSize: 15,
+            }
+          }]
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+  }
+});
+
+let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
+  type: 'line',
+  data: {
+    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+    datasets: [{
+      label: "Hours Slept",
+      pointBackgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+      data: sleepHoursChart,
+      pointRadius: 8,
+        
+      }]
+    },
+    options: {
+      legend: {
+        labels: {
+            fontColor: "white",
+            fontSize: 25,
+        },
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            fontColor: "white",
+            fontSize: 15,
+                  beginAtZero: true
+              }
+          }],
+          xAxes: [{
+            ticks: {
+              fontColor: "white",
+              fontSize: 15,
+            }
+          }]
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+  }
+  
+  let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
     type: 'line',
     data: {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
@@ -93,7 +217,7 @@ let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
         lineTension: 0,
         pointBorderWidth: 5,
         data: weeklyStepsChart,
-        }]
+       }]
       },
       options: {
         legend: {
@@ -113,7 +237,7 @@ let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
             ticks: {
               fontColor: "white",
               fontSize: 25,
-                    beginAtZero: true
+                 beginAtZero: true
                 }
             }],
             xAxes: [{
@@ -127,7 +251,7 @@ let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
         maintainAspectRatio: false,
     }
 });
-
+  
 let stairsByWeekChart = new Chart($('#chart__weekly--stairs--js'), {
     type: 'line',
     data: {

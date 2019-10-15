@@ -3,62 +3,70 @@
   <head>
     <title>Activity Tracker</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Cabin&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
   </head>
   <body>
     <header class="" id="">
       <h1>Fitness Is Litness</h1>
-      <h2>Welcome <span id="span__user--name--js"></span>!</h2>
-      <h3>Today's Date: <span id="span__current--date"></span></h3>
+      <h2 class="h2__name">Welcome <span id="span__user--name--js"></span>!</h2>
+      <h2>Today's Date: <span id="span__current--date"></span></h2>
+      <h2>Search By Date: </h2>
     </header>
     <main class="main__page">
 
       <!-- User Info -->
       <div class="div__user--info">
         <section class="section__user--info" id="section__user--info--js">
-          <h4 class="h4__box--header">Account Info</h4>
-          <p class="p__user">Address: <span id="span__user--address--js"></span></p>
-          <p class="p__user">Email: <span id="span__user--email--js"></span></p>
-          <p class="p__user">Stride Length: <span id="span__user--stride--js"></span></p>
-          <p class="p__user">Friends Gettin' Fit: <span id="span__user--friends--js"></span></p>
-          <p class="p__user">Daily Step Goal:</p>
-          <p class="p__user">Your Goal: <span id="span__user--goal--js"></span></p>
-          <p class="p__user">FitLit Users Goal: <span id="span__user--average--js"></span></p>
+          <h4 class="h4__box--header">Account Info:</h4>
+          <div class="div__account--info">
+            <p class="p__user">Address: <span id="span__user--address--js"></span></p>
+            <p class="p__user">Email: <span id="span__user--email--js"></span></p>
+            <p class="p__user">Stride Length: <span id="span__user--stride--js"></span></p>
+            <p class="p__user--friends">Friends Gettin' Fit: <span id="span__user--friends--js"></span></p>
+            <p class="p__user">Daily Step Goal:</p>
+            <p class="p__user">Your Goal: <span id="span__user--goal--js"></span></p>
+            <p class="p__user">FitLit Users Goal: <span id="span__user--average--js"></span></p>
+        </div>
         </section>
       </div>
 
       <!-- Hydration -->
       <div class="div__hydration">
         <section class="" id="">
-          <h4 class="h4__box--header">Todays Water: <span id="span__todays--water"><p class="" id="hydration__today"></p></span></h4>
+          <h4 class="h4__box--header">Todays Water: </h4>
+          <h4><span id="span__todays--water"></span></h4>
           <img class="water__img" src="../Images/drop.png">
         </section>
-        <section class="" id="">
-            <h4 class="h4__box--header" id="">The Week's Water: </h4>
-            <img class="water__img" src="../Images/water-bottle.png">
-        </section>
       </div>
-
+      
+      <!-- Hydration Chart -->
+        <div class="div__activity--chart">
+          <div class="hydration__chart" id="hydration__by--week--chart">
+            <canvas id="hydration__by--week--chart--js" width="200" height="400"></canvas>
+          </div>
+        
       <!-- Sleep -->
       <div class="div__sleep">
         <section class="" id="">
           <h4 class="h4__box--header">Last Nights Sleep:</h4>
-          <p class="p__user">Hours: <span id="span__sleep--hours--js"></span></p>
-          <p class="p__user">Quality Score: <span id="span__sleep--quality--js"></span> / 5</p>
+          <p class="p__user">Hours: </p>
+          <h4 class="p__user--sleep-last--night"><span id="span__sleep--hours--js"></span></h4>
+          <p class="p__user">Quality Score:</p>
+          <h4><span id="span__sleep--quality--js"></span> / 5</h4>
           <img class="sleep__img" src="../Images/sleep.png">
-        </section>
-        <section class="" id="" >
-          <h4 class="h4__box--header">The Week's Sleep</h4>
         </section>
         <section class="" id="">
           <h4 class="h4__box--header">Average Sleep Stats:</h4>
-          <p class="p__user">Hours: <span id="span__sleep--average--hours--js"></span></p>
-          <p class="p__user">Quality Score: <span id="span__sleep--average--quality--js"></span> / 5</p>
+          <p class="p__user">Hours: </p>
+          <h4 class="span__sleep--average--hours"><span id="span__sleep--average--hours--js"></span></h4>
+          <p class="p__user">Quality Score: </p>
+          <h4><span id="span__sleep--average--quality--js"></span> / 5</h4>
           <img class="sleep__img--avg" src="../Images/sleepy.png">
         </section>
         <section class="" id="" >
             <h4 class="h4__box--header">Your Sleep Status: </h4>
-            <p class="p__user"><span id="span__sleep--status--js"></span></p>
+            <h4><span id="span__sleep--status--js"></span></h4>
             <img class="sleepy__img" id="sleepy__img--js" src="">
           </section>
       </div>
@@ -120,6 +128,14 @@
         </section>
       </div>
 
+      <!-- Charts -->
+      <div class="sleep__chart--quality" id="sleep__by--week--quality">
+          <canvas id="sleep__by--week--quality--js" width="200" height="400"></canvas>
+        </div>
+      <div class="sleep__chart--hours" id="sleep__by--week--hours--js">
+          <canvas id="sleep__week--hours--js" width="200" height="400"></canvas>
+        </div>
+
       <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script>window.jQuery || document.write('<script src="path/to/your/jquery.min.js"><\/script>')</script>
@@ -132,7 +148,6 @@
       <script type="text/javascript" src="./hydration.js"></script>
       <script type="text/javascript" src="./user.js"></script>
       <script type="text/javascript" src="./userRepo.js"></script>
-
       <script type="text/javascript" src="../data/users-data.js"></script>
       <script type="text/javascript" src="../data/hydration-data.js"></script>
       <script type="text/javascript" src="../data/sleep-data.js"></script>

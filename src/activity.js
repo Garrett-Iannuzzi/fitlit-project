@@ -72,7 +72,6 @@ class Activity {
     })
   }
 
-
   getThreeDayStepStreak() {
     let threeDayStreaks = this.activityInfo.reduce((acc, stat, index) => {
       if (index < 2) {
