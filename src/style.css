@@ -26,8 +26,9 @@ header {
 }
 
 h1 {
-  font-size: 3.5em;
-  margin: 0px 0px 70px 0px;
+  font-size: 4.8em;
+  font-family: 'Cabin', sans-serif;
+  margin: 0px 0px 40px 0px;
   padding-top: 30px;
 }
 
