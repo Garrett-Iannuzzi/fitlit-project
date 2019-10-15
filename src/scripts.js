@@ -23,6 +23,13 @@ $(document).ready(function () {
   activityHandler();
 })
 
+$('#button__confidence--js').on('click', function() {
+  $('#section__goal--exceed--js').removeClass('hide');
+})
+
+$('#section__goal--exceed--js').on('click', function() {
+  $('#section__goal--exceed--js').addClass('hide');
+})
 
 
 function userHandler() {
@@ -34,6 +41,9 @@ function userHandler() {
   $('#span__user--goal--js').text(`${user.dailyStepGoal}`);
   $('#span__user--average--js').text(`${userRepo.getAverageStepGoalAllUsers()}`);
   user.findFriendNames(userData);
+  activity.findInfoForDaysExceededGoal().forEach(date => {
+    $('#ul__goal--exceeded--js').append(`<li class="li__goal--exceeded">${date.date} by ${activity.findByHowMuchExceededGoal(date.date)} steps!</li>`);
+  });
 }
 
 function hydrationHandler() {
@@ -136,7 +146,7 @@ let usersleepQualityByWeekChart = new Chart($('#sleep__by--week--quality--js'), 
       pointBackgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
       data: sleepQualityChart,
       pointRadius: 8,
-        
+
       }]
     },
     options: {
@@ -175,7 +185,7 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
       pointBackgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
       data: sleepHoursChart,
       pointRadius: 8,
-        
+
       }]
     },
     options: {
@@ -202,63 +212,62 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
       },
       responsive: true,
       maintainAspectRatio: false,
-  }
-  
-  let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
-    type: 'line',
-    data: {
-      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-      datasets: [{
-        label: "Steps Per Day",
-        backgroundColor: "darkgray",
-        hoverBackgroundColor: "white",
-        borderColor: "mediumspringgreen",
-        borderWidth: 3,
-        lineTension: 0,
-        pointBorderWidth: 5,
-        data: weeklyStepsChart,
-       }]
-      },
-      options: {
-        legend: {
-          labels: {
-              fontColor: "white",
-              fontSize: 18,
-          },
-        },
-        title: {
-          fontColor: "white",
-          display: true,
-          text: 'Weekly Steps Totals',
-          fontSize: 25,
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              fontColor: "white",
-              fontSize: 25,
-                 beginAtZero: true
-                }
-            }],
-            xAxes: [{
-              ticks: {
-                fontColor: "white",
-                fontSize: 20,
-              }
-            }]
-        },
-        responsive: true,
-        maintainAspectRatio: false,
     }
 });
-  
+
+let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
+  type: 'line',
+  data: {
+    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+    datasets: [{
+      label: "Steps Per Day",
+      hoverBackgroundColor: "white",
+      borderColor: "mediumspringgreen",
+      borderWidth: 3,
+      lineTension: 0,
+      pointBorderWidth: 5,
+      data: weeklyStepsChart,
+     }]
+    },
+    options: {
+      legend: {
+        labels: {
+            fontColor: "white",
+            fontSize: 18,
+        },
+      },
+      title: {
+        fontColor: "white",
+        display: true,
+        text: 'Weekly Steps Totals',
+        fontSize: 25,
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            fontColor: "white",
+            fontSize: 25,
+               beginAtZero: true
+              }
+          }],
+          xAxes: [{
+            ticks: {
+              fontColor: "white",
+              fontSize: 20,
+            }
+          }]
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+  }
+});
+
 let stairsByWeekChart = new Chart($('#chart__weekly--stairs--js'), {
     type: 'line',
     data: {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: "Flights of Stairs Per Day",
-        backgroundColor: "darkgray",
         hoverBackgroundColor: "white",
         borderColor: "magenta",
         borderWidth: 3,
@@ -306,7 +315,6 @@ let minutesByWeekChart = new Chart($('#chart__weekly--minutes--js'), {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: "Minutes of Activity Per Day",
-        backgroundColor: "darkgray",
         hoverBackgroundColor: "white",
         borderColor: "deepskyblue",
         borderWidth: 3,
