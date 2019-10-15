@@ -54,6 +54,11 @@ class User {
     return onlySteps.map(friend => friend.weeklySteps);
   }
 
+  findFriendStepsOnlyWinner() {
+    let stepWinner = this.friendStepInfo.sort((a, b) => b.weeklySteps - a.weeklySteps);
+    return stepWinner[0].name
+  }
+
 }
 
 if (typeof module !== 'undefined') {

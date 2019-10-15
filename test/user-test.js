@@ -82,7 +82,12 @@ describe('User', () => {
 
   it('should find your friends weekly steps', () => {
     user.findFriendSteps(sampleUserData, sampleActivityData, '2019/06/22');
-    expect(user.findFriendStepsOnly()).to.eql([ 54365, 65341, 61072 ])
+    expect(user.findFriendStepsOnly()).to.eql([ 54365, 65341, 61072 ]);
   });
+
+  it('should find which friend had the most steps', () => {
+    user.findFriendSteps(sampleUserData, sampleActivityData, '2019/06/22');
+    expect(user.findFriendStepsOnlyWinner()).to.equal('Luisa')
+  })
 
 })

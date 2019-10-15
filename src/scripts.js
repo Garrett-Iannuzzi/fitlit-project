@@ -349,22 +349,20 @@ let minutesByWeekChart = new Chart($('#chart__weekly--minutes--js'), {
     }
 });
 
-let names = user.findFriendNames(userData);
-let steps = user.findFriendStepsOnly();
-console.log(steps)
-console.log(names)
+let namesForStepRace = user.findFriendNames(userData);
+let stepsForStepRace = user.findFriendStepsOnly();
 let weeklyStepsVsFriendsChart = new Chart($('#step__chart--friends--js'), {
   type: 'bar',
   data: {
-    labels: names,
+    labels: namesForStepRace,
     datasets: [{
-      label: "Step Race",
+      label: "Steps",
       hoverBackgroundColor: "white",
       borderColor: "deepskyblue",
       borderWidth: 3,
       lineTension: 0,
       pointBorderWidth: 5,
-      data: steps,
+      data: stepsForStepRace,
       }]
     },
     options: {
@@ -378,20 +376,20 @@ let weeklyStepsVsFriendsChart = new Chart($('#step__chart--friends--js'), {
         fontColor: "white",
         display: true,
         text: 'Step Race',
-        fontSize: 25,
+        fontSize: 35,
       },
       scales: {
         yAxes: [{
           ticks: {
             fontColor: "white",
-            fontSize: 25,
+            fontSize: 15,
                   beginAtZero: true
               }
           }],
           xAxes: [{
             ticks: {
               fontColor: "white",
-              fontSize: 20,
+              fontSize: 18,
             }
           }]
       },
