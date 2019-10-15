@@ -4,6 +4,7 @@ class Activity {
     this.strideLength = user.strideLength;
     this.dailyStepGoal = user.dailyStepGoal;
     this.date = {};
+    this.stepStreaks;
     // console.log(this.activityInfo);
   }
 
@@ -88,11 +89,11 @@ class Activity {
        }
        return acc;
      }, []);
-     let separatedStreaks = [];
+     this.stepStreaks = [];
      threeDayStreaks.forEach(dayStat => {
-       separatedStreaks.push(threeDayStreaks.splice(0, 3));
+       this.stepStreaks.push(threeDayStreaks.splice(0, 3));
      })
-     return separatedStreaks;
+     return this.stepStreaks;
    }
 
    getWeeklyActivityStats(activity, date) {
@@ -101,6 +102,11 @@ class Activity {
      let weekArray = this.activityInfo.filter((loggedActivity, index) =>
        (index <= dateIndex && index >= (dateIndex - 6)));
     return weekArray.map(loggedActivity => loggedActivity[activity])
+   }
+
+   getStepStreakDatesOnly() {
+     let finalDates = this.stepStreaks.flat().map(stat => stat.date);
+     return finalDates.slice(0, 3)
    }
 
 }
