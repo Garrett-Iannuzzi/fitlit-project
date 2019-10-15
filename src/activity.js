@@ -4,13 +4,13 @@ class Activity {
     this.strideLength = user.strideLength;
     this.dailyStepGoal = user.dailyStepGoal;
     this.date = {};
+    // console.log(this.activityInfo);
   }
 
   getActivityInfoByDate(date) {
-    this.date = this.activityInfo.find(function(loggedActivity) {
-      return loggedActivity.date === date;
+    this.date = this.activityInfo.find(function (loggedActivity) {
+      return loggedActivity.date === date
     })
-    return this.date;
   }
 
   getMilesWalked(date) {
@@ -73,20 +73,35 @@ class Activity {
   }
 
   getThreeDayStepStreak() {
-    return this.activityInfo.reduce((acc, stat, index) => {
+    let threeDayStreaks = this.activityInfo.reduce((acc, stat, index) => {
       if (index < 2) {
         return acc;
       }
-      if ((stat.numSteps > this.activityInfo[index - 1].numSteps) && (this.activityInfo[index - 1].numSteps > this.activityInfo[index - 2].numSteps)) {
-        acc.push({
-          [this.activityInfo[index].date]: this.activityInfo[index].numSteps,
-          [this.activityInfo[index - 1].date]: this.activityInfo[index - 1].numSteps,
-          [this.activityInfo[index - 2].date]: this.activityInfo[index - 2].numSteps,
-        });
-      }
-      return acc;
-    }, []);
-  }
+       if ((stat.numSteps > this.activityInfo[index - 1].numSteps) && (this.activityInfo[index - 1].numSteps > this.activityInfo[index - 2].numSteps)) {
+         acc.push(
+           { 'date': this.activityInfo[index - 2].date,
+             'numSteps': this.activityInfo[index - 2].numSteps},
+           { 'date': this.activityInfo[index - 1].date,
+             'numSteps': this.activityInfo[index - 1].numSteps},
+           { 'date': this.activityInfo[index].date,
+             'numSteps': this.activityInfo[index].numSteps});
+       }
+       return acc;
+     }, []);
+     let separatedStreaks = [];
+     threeDayStreaks.forEach(dayStat => {
+       separatedStreaks.push(threeDayStreaks.splice(0, 3));
+     })
+     return separatedStreaks;
+   }
+
+   getWeeklyActivityStats(activity, date) {
+     let dateIndex = this.activityInfo.findIndex((loggedActivity) =>
+       loggedActivity.date === date);
+     let weekArray = this.activityInfo.filter((loggedActivity, index) =>
+       (index <= dateIndex && index >= (dateIndex - 6)));
+    return weekArray.map(loggedActivity => loggedActivity[activity])
+   }
 
 }
 

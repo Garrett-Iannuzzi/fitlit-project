@@ -96,15 +96,45 @@ span {
   padding-bottom: 40px;
 }
 
+.p__display--miles {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+table {
+  border-spacing: 10px;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid darkgray;
+  padding: 8px;
+}
+
+.td__table--steps {
+  color: mediumspringgreen;
+}
+
+.td__table--stairs {
+  color: magenta;
+}
+
+.td__table--minutes {
+  color: deepskyblue;
+}
+
 .water__img,
-.sleep__img {
+.sleep__img,
+.shoe__img  {
 height: 100px;
 margin-bottom: 35px;
 width: 100px;
 }
 
 .sleep__img--avg,
-.sleepy__img  {
+.sleepy__img,
+.goal__img {
   height: 175px;
   width: 175px;
 }
