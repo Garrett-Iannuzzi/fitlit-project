@@ -62,6 +62,7 @@ function activityHandler() {
   $('#span__todays--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
   $('#span__todays--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
   $('#span__todays--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
+  $('#span__chart--step--winner--js').text(`${user.findFriendStepsOnlyWinner()}`);
   displayMilesWalked(date);
   displayActivityTable();
 }
