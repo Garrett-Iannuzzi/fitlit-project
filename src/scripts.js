@@ -121,7 +121,7 @@ let usersleepQualityByWeekChart = new Chart($('#sleep__by--week--quality--js'), 
       label: "Sleep Quality Score",
       backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
       data: sleepQualityChart,
-      pointRadius: 6,
+      pointRadius: 7,
         
       }]
     },

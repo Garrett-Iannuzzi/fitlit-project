@@ -35,15 +35,23 @@ section {
   border: solid 6px rgb(32, 11, 43);
   cursor: pointer;
   font-size: 1.8em;
-  margin: 15px;
+  margin: 45px;
   opacity: .9;
   padding: 10px;
   text-align: center;
   width: 85%;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
 }
 
 section:hover {
   opacity: 1;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .p__user--friends {
@@ -80,10 +88,26 @@ width: 100px;
 .sleep__chart--quality {
   background-color: rgb(55, 18, 75);
   border: solid 6px rgb(32, 11, 43);
-  margin: 15px;
+  margin: 45px;
   margin-bottom: 20px;
   opacity: .9;
   width: 87%;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.hydration__chart:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.sleep__chart--quality:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 
