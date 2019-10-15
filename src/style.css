@@ -140,7 +140,8 @@ width: 100px;
 }
 
 .hydration__chart,
-.sleep__chart--quality, 
+.sleep__chart--quality,
+.step__chart--friends--steps, 
 .sleep__chart--hours {
   background-color: rgb(55, 18, 75);
   border: solid 6px rgb(32, 11, 43);
@@ -158,6 +159,7 @@ width: 100px;
 
 .hydration__chart:hover,
 .sleep__chart--quality:hover,
+.step__chart--friends--steps:hover,
 .sleep__chart--hours:hover {
   opacity: 1;
   transform: scale(1.1);
