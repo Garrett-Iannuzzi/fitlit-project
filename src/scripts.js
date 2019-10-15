@@ -74,14 +74,19 @@ function activityHandler() {
   $('#span__them--minutes--js').text(`${activityRepo.getAllUserActivityAvgByDate('minutesActive', date)}`);
 }
 
-let stepsByWeekChart = new Chart($('#chart__weekly-activity--js'), {
-    type: 'bar',
+let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
+    type: 'line',
     data: {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: "Steps Per Day",
-        backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+        // backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+        backgroundColor: "indigo",
         hoverBackgroundColor: "white",
+        borderColor: "white",
+        borderWidth: 3,
+        lineTension: 0,
+        pointBorderWidth: 5,
         data: weeklyStepsChart,
         }]
       },
@@ -91,11 +96,112 @@ let stepsByWeekChart = new Chart($('#chart__weekly-activity--js'), {
               fontColor: "white",
               fontSize: 18,
           },
+
         },
         title: {
           fontColor: "white",
           display: true,
-          text: 'Weekly Steps Total',
+          text: 'Weekly Steps Totals',
+          fontSize: 25,
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              fontColor: "white",
+              fontSize: 25,
+                    beginAtZero: true
+                }
+            }],
+            xAxes: [{
+              ticks: {
+                fontColor: "white",
+                fontSize: 20,
+              }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+});
+
+let stairsByWeekChart = new Chart($('#chart__weekly--stairs--js'), {
+    type: 'line',
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [{
+        label: "Flights of Stairs Per Day",
+        // backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+        backgroundColor: "indigo",
+        hoverBackgroundColor: "white",
+        borderColor: "white",
+        borderWidth: 3,
+        lineTension: 0,
+        pointBorderWidth: 5,
+        data: weeklyStairsChart,
+        }]
+      },
+      options: {
+        legend: {
+          labels: {
+              fontColor: "white",
+              fontSize: 18,
+          },
+
+        },
+        title: {
+          fontColor: "white",
+          display: true,
+          text: 'Weekly Stairs Totals',
+          fontSize: 25,
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              fontColor: "white",
+              fontSize: 25,
+                    beginAtZero: true
+                }
+            }],
+            xAxes: [{
+              ticks: {
+                fontColor: "white",
+                fontSize: 20,
+              }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+});
+
+let minutesByWeekChart = new Chart($('#chart__weekly--minutes--js'), {
+    type: 'line',
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [{
+        label: "Minutes of Activity Per Day",
+        // backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+        backgroundColor: "indigo",
+        hoverBackgroundColor: "white",
+        borderColor: "white",
+        borderWidth: 3,
+        lineTension: 0,
+        pointBorderWidth: 5,
+        data: weeklyMinutesChart,
+        }]
+      },
+      options: {
+        legend: {
+          labels: {
+              fontColor: "white",
+              fontSize: 18,
+          },
+
+        },
+        title: {
+          fontColor: "white",
+          display: true,
+          text: 'Weekly Activity Totals',
           fontSize: 25,
         },
         scales: {
