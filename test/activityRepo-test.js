@@ -66,6 +66,21 @@ describe('ActivityRepo', () => {
         date: '2019/06/23',
         numSteps: 4665,
         minutesActive: 219,
+        flightsOfStairs: 9 },
+      { userID: 3,
+        date: '2019/06/24',
+        numSteps: 1665,
+        minutesActive: 219,
+        flightsOfStairs: 9 },
+      { userID: 3,
+        date: '2019/06/25',
+        numSteps: 4665,
+        minutesActive: 219,
+        flightsOfStairs: 9 },
+      { userID: 3,
+        date: '2019/06/26',
+        numSteps: 14665,
+        minutesActive: 219,
         flightsOfStairs: 9 }
     ]);
   });

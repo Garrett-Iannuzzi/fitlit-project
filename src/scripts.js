@@ -6,16 +6,21 @@ let hydration = new Hydration(hydrationRepo.getUserById(randomUser));
 const sleepRepo = new SleepRepo(sleepData);
 const sleep = new Sleep(sleepRepo.getUserById(randomUser));
 const activityRepo = new ActivityRepo(activityData);
-const activity = new Activity(activityRepo, user);
+const activity = new Activity(activityRepo.getUserById(randomUser), user);
 let date = hydrationData[hydrationData.length - 1].date;
+let weeklyStepsChart = activity.getWeeklyActivityStats('numSteps', date);
+let weeklyStairsChart = activity.getWeeklyActivityStats('flightsOfStairs', date);
+let weeklyMinutesChart = activity.getWeeklyActivityStats('minutesActive', date);
 
 $(document).ready(function () {
   $('#span__current--date').text(date);
   userHandler();
   hydrationHandler();
-  sleepHandler()
-  activityHandler()
+  sleepHandler();
+  activityHandler();
 })
+
+
 
 function userHandler() {
   $('#span__user--name--js').text(`${user.getUserFirstName()}`);
@@ -25,6 +30,7 @@ function userHandler() {
   $('#span__user--friends--js').text(`${user.friends.length}`);
   $('#span__user--goal--js').text(`${user.dailyStepGoal}`);
   $('#span__user--average--js').text(`${userRepo.getAverageStepGoalAllUsers()}`);
+  user.findFriendNames(userData);
 }
 
 function hydrationHandler() {
@@ -52,17 +58,168 @@ function activityHandler() {
   $('#span__todays--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
   $('#span__todays--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
   $('#span__todays--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
-
-  if (activity.getMilesWalked(date) <= 1) {
-    $('#span__distance--miles--js').text(`${activity.getMilesWalked(date)} mile`);
-  } else if (activity.getMilesWalked(date) > 1) {
-    $('#span__distance--miles--js').text(`${activity.getMilesWalked(date)} miles`);
-  }
-
-  $('#span__you--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
-  $('#span__them--steps--js').text(`${activityRepo.getAllUserActivityAvgByDate('numSteps', date)}`);
-  $('#span__you--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
-  $('#span__them--stairs--js').text(`${activityRepo.getAllUserActivityAvgByDate('flightsOfStairs', date)}`);
-  $('#span__you--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
-  $('#span__them--minutes--js').text(`${activityRepo.getAllUserActivityAvgByDate('minutesActive', date)}`);
+  displayMilesWalked(date);
+  displayActivityTable();
 }
+
+function displayMilesWalked(date) {
+  let milesWalked = activity.getMilesWalked(date);
+  if (milesWalked <= 1) {
+    $('#p__distance--miles--js').text(`${milesWalked} mile`);
+  } else if (milesWalked > 1) {
+    $('#p__distance--miles--js').text(`${milesWalked} miles`);
+  }
+}
+
+function displayActivityTable() {
+  $('#td__user--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
+  $('#td__others--steps--js').text(`${activityRepo.getAllUserActivityAvgByDate('numSteps', date)}`);
+  $('#td__user--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
+  $('#td__others--stairs--js').text(`${activityRepo.getAllUserActivityAvgByDate('flightsOfStairs', date)}`);
+  $('#td__user--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
+  $('#td__others--minutes--js').text(`${activityRepo.getAllUserActivityAvgByDate('minutesActive', date)}`);
+}
+
+let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
+    type: 'line',
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [{
+        label: "Steps Per Day",
+        backgroundColor: "darkgray",
+        hoverBackgroundColor: "white",
+        borderColor: "mediumspringgreen",
+        borderWidth: 3,
+        lineTension: 0,
+        pointBorderWidth: 5,
+        data: weeklyStepsChart,
+        }]
+      },
+      options: {
+        legend: {
+          labels: {
+              fontColor: "white",
+              fontSize: 18,
+          },
+        },
+        title: {
+          fontColor: "white",
+          display: true,
+          text: 'Weekly Steps Totals',
+          fontSize: 25,
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              fontColor: "white",
+              fontSize: 25,
+                    beginAtZero: true
+                }
+            }],
+            xAxes: [{
+              ticks: {
+                fontColor: "white",
+                fontSize: 20,
+              }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+});
+
+let stairsByWeekChart = new Chart($('#chart__weekly--stairs--js'), {
+    type: 'line',
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [{
+        label: "Flights of Stairs Per Day",
+        backgroundColor: "darkgray",
+        hoverBackgroundColor: "white",
+        borderColor: "magenta",
+        borderWidth: 3,
+        lineTension: 0,
+        pointBorderWidth: 5,
+        data: weeklyStairsChart,
+        }]
+      },
+      options: {
+        legend: {
+          labels: {
+              fontColor: "white",
+              fontSize: 18,
+          },
+        },
+        title: {
+          fontColor: "white",
+          display: true,
+          text: 'Weekly Stairs Totals',
+          fontSize: 25,
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              fontColor: "white",
+              fontSize: 25,
+                    beginAtZero: true
+                }
+            }],
+            xAxes: [{
+              ticks: {
+                fontColor: "white",
+                fontSize: 20,
+              }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+});
+
+let minutesByWeekChart = new Chart($('#chart__weekly--minutes--js'), {
+    type: 'line',
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [{
+        label: "Minutes of Activity Per Day",
+        backgroundColor: "darkgray",
+        hoverBackgroundColor: "white",
+        borderColor: "deepskyblue",
+        borderWidth: 3,
+        lineTension: 0,
+        pointBorderWidth: 5,
+        data: weeklyMinutesChart,
+        }]
+      },
+      options: {
+        legend: {
+          labels: {
+              fontColor: "white",
+              fontSize: 18,
+          },
+        },
+        title: {
+          fontColor: "white",
+          display: true,
+          text: 'Weekly Activity Totals',
+          fontSize: 25,
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              fontColor: "white",
+              fontSize: 25,
+                    beginAtZero: true
+                }
+            }],
+            xAxes: [{
+              ticks: {
+                fontColor: "white",
+                fontSize: 20,
+              }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+});

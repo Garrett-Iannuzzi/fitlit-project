@@ -2,6 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const User = require('../src/user');
 const sampleUserData = require('../data/sampleUserData');
+const sampleActivityData = require('../data/sampleActivityData');
 const UserRepo = require('../src/userRepo');
 
 describe('User', () => {
@@ -53,11 +54,32 @@ describe('User', () => {
   });
 
   it('should find all users friends', () => {
-    expect(user.findFriendNames()).to.eql([
+    expect(user.findFriendNames(sampleUserData)).to.eql([
       'Jarvis',
       'Luisa',
       'Mae'
     ]);
   });
+
+  it('should find friends step counts', () => {
+    expect(user.findFriendSteps(sampleUserData, sampleActivityData, '2019/06/21')).to.eql([
+      {'name': 'Jarvis',
+       'weeklySteps': 55054},
+     {'name': 'Luisa',
+      'weeklySteps': 58629},
+      {'name': 'Mae',
+       'weeklySteps': 60963},
+    ]);
+    expect(user.findFriendSteps(sampleUserData, sampleActivityData, '2019/06/22')).to.eql([
+      {'name': 'Jarvis',
+       'weeklySteps': 54365},
+     {'name': 'Luisa',
+      'weeklySteps': 65341},
+      {'name': 'Mae',
+       'weeklySteps': 61072},
+    ]);
+  })
+
+
 
 })
