@@ -130,14 +130,8 @@ let usersleepQualityByWeekChart = new Chart($('#sleep__by--week--quality--js'), 
       legend: {
         labels: {
             fontColor: "white",
-            fontSize: 18,
+            fontSize: 25,
         },
-      },
-      title: {
-        fontColor: "white",
-        display: true,
-        text: 'Sleep Quality',
-        fontSize: 25,
       },
       scales: {
         yAxes: [{
@@ -175,14 +169,8 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
       legend: {
         labels: {
             fontColor: "white",
-            fontSize: 15,
+            fontSize: 25,
         },
-      },
-      title: {
-        fontColor: "white",
-        display: true,
-        text: 'Hours Slept',
-        fontSize: 25,
       },
       scales: {
         yAxes: [{

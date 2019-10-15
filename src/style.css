@@ -20,6 +20,7 @@ header {
   border-bottom: solid 4px rgb(255, 255, 255);
   color: white;
   font-size: 1.4em;
+  opacity: .9;
   height: 250px;
   text-align: center;
 }
@@ -34,6 +35,10 @@ h2 {
   display: inline-block;
   font-size: .9em;
   margin: 0px 70px 0px 70px;
+}
+
+.h2__name {
+  font-size: 1.5em;
 }
 
 section {
@@ -123,7 +128,8 @@ width: 100px;
 .hydration__chart:hover,
 .sleep__chart--quality:hover,
 .sleep__chart--hours:hover {
-  -webkit-transform: scale(1.1);
+  opacity: 1;
   transform: scale(1.1);
+  -webkit-transform: scale(1.1);
 }
 
