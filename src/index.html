@@ -70,23 +70,44 @@
           <p class="p__user">Steps: <span id="span__todays--steps--js"></span> steps</p>
           <p class="p__user">Stairs Climbed: <span id="span__todays--stairs--js"></span> flights</p>
           <p class="p__user">Total Activity Time: <span id="span__todays--minutes--js"></span> min</p>
+          <img class="goal__img" src="../Images/goal.png">
         </section>
         <section class="" id="">
           <p class="p__distance">You've stepped your way through </p>
           <p class="p__display--miles" id="p__distance--miles--js"></p>
           <p class="p__distance"> today!</p>
+        <img class="shoe__img" src="../Images/shoe.png">
         </section>
         <section class="" id="">
-          <h4 class="h4__box--header">You vs Other Users:</h4>
-          <p class="p__user">Steps</p>
-          <p class="p__user">You: <span id="span__you--steps--js"></span></p>
-          <p class="p__user">Them: <span id="span__them--steps--js"></span></p>
-          <p class="p__user">Stairs</p>
-          <p class="p__user">You: <span id="span__you--stairs--js"></span></p>
-          <p class="p__user">Them: <span id="span__them--stairs--js"></span></p>
-          <p class="p__user">Minutes</p>
-          <p class="p__user">You: <span id="span__you--minutes--js"></span></p>
-          <p class="p__user">Them: <span id="span__them--minutes--js"></span></p>
+          <table>
+            <thead>
+              <tr>
+                <th colspan="3">You vs Other Users</th>
+              </tr>
+              <tr>
+                <th scope="col">Today's Activity</th>
+                <th scope="col">Your Total</th>
+                <th scope="col">Other Users</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Steps</th>
+                <td class="td__table--steps" id="td__user--steps--js">1</td>
+                <td class="td__table--steps" id="td__others--steps--js">100</td>
+              </tr>
+              <tr>
+                <th scope="row">Stairs</th>
+                <td class="td__table--stairs" id="td__user--stairs--js">1</td>
+                <td class="td__table--stairs" id="td__others--stairs--js">200</td>
+              </tr>
+              <tr>
+                <th scope="row">Minutes</th>
+                <td class="td__table--minutes" id="td__user--minutes--js">1</td>
+                <td class="td__table--minutes" id="td__others--minutes--js">300</td>
+              </tr>
+            </tbody>
+          </table>
         </section>
         <section class="" id="">
           <canvas id="chart__weekly--steps--js" width="400" height="400"></canvas>

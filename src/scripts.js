@@ -58,20 +58,26 @@ function activityHandler() {
   $('#span__todays--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
   $('#span__todays--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
   $('#span__todays--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
+  displayMilesWalked(date);
+  displayActivityTable();
+}
 
+function displayMilesWalked(date) {
   let milesWalked = activity.getMilesWalked(date);
   if (milesWalked <= 1) {
     $('#p__distance--miles--js').text(`${milesWalked} mile`);
   } else if (milesWalked > 1) {
     $('#p__distance--miles--js').text(`${milesWalked} miles`);
   }
+}
 
-  $('#span__you--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
-  $('#span__them--steps--js').text(`${activityRepo.getAllUserActivityAvgByDate('numSteps', date)}`);
-  $('#span__you--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
-  $('#span__them--stairs--js').text(`${activityRepo.getAllUserActivityAvgByDate('flightsOfStairs', date)}`);
-  $('#span__you--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
-  $('#span__them--minutes--js').text(`${activityRepo.getAllUserActivityAvgByDate('minutesActive', date)}`);
+function displayActivityTable() {
+  $('#td__user--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
+  $('#td__others--steps--js').text(`${activityRepo.getAllUserActivityAvgByDate('numSteps', date)}`);
+  $('#td__user--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
+  $('#td__others--stairs--js').text(`${activityRepo.getAllUserActivityAvgByDate('flightsOfStairs', date)}`);
+  $('#td__user--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
+  $('#td__others--minutes--js').text(`${activityRepo.getAllUserActivityAvgByDate('minutesActive', date)}`);
 }
 
 let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
@@ -80,10 +86,9 @@ let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: "Steps Per Day",
-        // backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
-        backgroundColor: "indigo",
+        backgroundColor: "darkgray",
         hoverBackgroundColor: "white",
-        borderColor: "white",
+        borderColor: "mediumspringgreen",
         borderWidth: 3,
         lineTension: 0,
         pointBorderWidth: 5,
@@ -96,7 +101,6 @@ let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
               fontColor: "white",
               fontSize: 18,
           },
-
         },
         title: {
           fontColor: "white",
@@ -130,10 +134,9 @@ let stairsByWeekChart = new Chart($('#chart__weekly--stairs--js'), {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: "Flights of Stairs Per Day",
-        // backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
-        backgroundColor: "indigo",
+        backgroundColor: "darkgray",
         hoverBackgroundColor: "white",
-        borderColor: "white",
+        borderColor: "magenta",
         borderWidth: 3,
         lineTension: 0,
         pointBorderWidth: 5,
@@ -146,7 +149,6 @@ let stairsByWeekChart = new Chart($('#chart__weekly--stairs--js'), {
               fontColor: "white",
               fontSize: 18,
           },
-
         },
         title: {
           fontColor: "white",
@@ -180,10 +182,9 @@ let minutesByWeekChart = new Chart($('#chart__weekly--minutes--js'), {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: "Minutes of Activity Per Day",
-        // backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
-        backgroundColor: "indigo",
+        backgroundColor: "darkgray",
         hoverBackgroundColor: "white",
-        borderColor: "white",
+        borderColor: "deepskyblue",
         borderWidth: 3,
         lineTension: 0,
         pointBorderWidth: 5,
@@ -196,7 +197,6 @@ let minutesByWeekChart = new Chart($('#chart__weekly--minutes--js'), {
               fontColor: "white",
               fontSize: 18,
           },
-
         },
         title: {
           fontColor: "white",
