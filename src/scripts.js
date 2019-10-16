@@ -40,8 +40,8 @@ function userHandler() {
   $('#span__user--friends--js').text(`${user.friends.length}`);
   $('#span__user--goal--js').text(`${user.dailyStepGoal}`);
   $('#span__user--average--js').text(`${userRepo.getAverageStepGoalAllUsers()}`);
-  activity.findInfoForDaysExceededGoal().forEach(date => {
-    $('#ul__goal--exceeded--js').append(`<li class="li__goal--exceeded">${date.date} by ${activity.findByHowMuchExceededGoal(date.date)} steps!</li>`);
+  activity.findInfoForDaysExceededGoal().forEach(stat => {
+    $('#ul__goal--exceeded--js').append(`<li class="li__goal--exceeded">${stat.date} by ${activity.findByHowMuchExceededGoal(stat.date)} steps!</li>`);
   });
 }
 
@@ -71,8 +71,12 @@ function activityHandler() {
   $('#span__todays--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
   $('#span__todays--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
   $('#span__chart--step--winner--js').text(`${user.findFriendStepsOnlyWinner()}`);
-  activity.getThreeDayStepStreak();
-  $('#span__step--streak--dates').text(`${activity.getStepStreakDatesOnly()}`);
+  activity.getStepStreakDatesOnly('numSteps').forEach(stat => {
+    $('#ul__step--streak--js').append(`<li id="li__step--streak--js"> ${stat} </li>`);
+  });
+  activity.getStepStreakDatesOnly('minutesActive').forEach(stat => {
+    $('#ul__min--streak--js').append(`<li id="li__min--streak--js"> ${stat} </li>`);
+  });
   displayMilesWalked(date);
   displayActivityTable();
 }
@@ -218,7 +222,7 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
       maintainAspectRatio: false,
     }
 });
-  
+
   let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
     type: 'line',
     data: {
@@ -414,4 +418,3 @@ let weeklyStepsVsFriendsChart = new Chart($('#step__chart--friends--js'), {
       maintainAspectRatio: false,
   }
 });
-

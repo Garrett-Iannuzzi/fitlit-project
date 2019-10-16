@@ -113,12 +113,24 @@ section:hover {
   width: 95%;
   z-index: 100;
 }
+  
+ul {
+  padding: 0;
+}
 
-.ul__goal--exceeded,
-.li__goal--exceeded {
+li {
   list-style-type: none;
-  text-decoration: none;
   margin: 15px;
+  text-align: center;
+}
+
+#li__step--streak--js {
+  color: mediumspringgreen;
+
+}
+
+#li__min--streak--js {
+  color: deepskyblue;
 }
 
 .p__user--friends,
@@ -190,7 +202,7 @@ width: 100px;
 
 .hydration__chart,
 .sleep__chart--quality,
-.step__chart--friends--steps, 
+.step__chart--friends--steps,
 .sleep__chart--hours {
   background-color: rgb(55, 18, 75);
   border: solid 6px rgb(32, 11, 43);
