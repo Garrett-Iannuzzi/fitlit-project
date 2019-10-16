@@ -103,13 +103,14 @@ section:hover {
 }
 
 .section__goal--exceed {
-    z-index: 100;
-    width: 95%;
-    height: 900px;
-    position: absolute;
-    overflow-y: scroll;
-    top: 213px;
-    left: 0;
+  cursor: pointer;
+  height: 900px;
+  left: 0;
+  overflow-y: scroll;
+  position: absolute;
+  top: 213px;
+  width: 95%;
+  z-index: 100;
 }
 
 .ul__goal--exceeded,

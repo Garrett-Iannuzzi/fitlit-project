@@ -4,7 +4,6 @@ class Activity {
     this.strideLength = user.strideLength;
     this.dailyStepGoal = user.dailyStepGoal;
     this.date = {};
-    // console.log(this.activityInfo);
   }
 
   getActivityInfoByDate(date) {
