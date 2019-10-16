@@ -224,6 +224,11 @@ describe('Activity', () => {
   it('should organize daily activity for each day in a week', () => {
     expect(activity.getWeeklyActivityStats('numSteps', '2019/06/22')).to.eql(
       [ 12304, 4547, 2546, 10961, 5369, 7498, 11342 ])
-  })
+  });
+
+  it('should get only the dates of a step streak', () => {
+    activity.getThreeDayStepStreak()
+    expect(activity.getStepStreakDatesOnly()).to.eql([ '2019/06/26', '2019/06/25', '2019/06/24' ])
+  });
 
 })
