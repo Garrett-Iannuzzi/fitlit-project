@@ -13,11 +13,11 @@
       <h2>Today's Date: <span id="span__current--date"></span></h2>
       <h2>Search By Date: </h2>
     </header>
-    <main class="main__page">
+    <main class="main__page grid">
+      <div class="grid-sizer">
 
       <!-- User Info -->
-      <div class="div__user--info">
-        <section class="section__user--info" id="section__user--info--js">
+        <section class="section__user--info draggable grid-item" id="section__user--info--js">
           <h4 class="h4__box--header">Account Info:</h4>
           <div class="div__account--info">
             <p class="p__user">Address: <span id="span__user--address--js"></span></p>
@@ -28,28 +28,23 @@
             <p class="p__user">Your Goal: <span id="span__user--goal--js"></span></p>
             <p class="p__user">FitLit Users Goal: <span id="span__user--average--js"></span></p>
             <button id="button__confidence--js">Confidence Boost</button>
-        </div>
+          </div>
         </section>
-      </div>
 
       <!-- Hydration -->
-      <div class="div__hydration">
-        <section class="" id="">
+        <section class="div__hydration draggable grid-item" id="">
           <h4 class="h4__box--header">Todays Water: </h4>
           <h4><span id="span__todays--water"></span></h4>
           <img class="smaller__img" src="../Images/drop.png">
         </section>
-      </div>
 
       <!-- Hydration Chart -->
-        <div class="div__activity--chart">
-          <div class="hydration__chart" id="hydration__by--week--chart">
-            <canvas id="hydration__by--week--chart--js" width="200" height="400"></canvas>
-          </div>
+        <section class="hydration__chart draggable grid-item" id="hydration__by--week--chart">
+          <canvas id="hydration__by--week--chart--js" width="200" height="400"></canvas>
+        </section>
 
       <!-- Sleep -->
-      <div class="div__sleep">
-        <section class="" id="">
+        <section class="draggable grid-item" id="">
           <h4 class="h4__box--header">Last Nights Sleep:</h4>
           <p class="p__user">Hours: </p>
           <h4 class="p__user--sleep-last--night"><span id="span__sleep--hours--js"></span></h4>
@@ -57,7 +52,7 @@
           <h4><span id="span__sleep--quality--js"></span> / 5</h4>
           <img class="smaller__img" src="../Images/sleep.png">
         </section>
-        <section class="" id="">
+        <section class="draggable grid-item" id="">
           <h4 class="h4__box--header">Average Sleep Stats:</h4>
           <p class="p__user">Hours: </p>
           <h4 class="p__divider"><span id="span__sleep--average--hours--js"></span></h4>
@@ -65,28 +60,26 @@
           <h4><span id="span__sleep--average--quality--js"></span> / 5</h4>
           <img class="larger__img" src="../Images/sleepy.png">
         </section>
-        <section class="" id="" >
-            <h4 class="h4__box--header">Your Sleep Status: </h4>
-            <h4><span id="span__sleep--status--js"></span></h4>
-            <img class="larger__img" id="sleepy__img--js" src="">
-          </section>
-      </div>
+        <section class="draggable grid-item" id="" >
+           <h4 class="h4__box--header">Your Sleep Status: </h4>
+           <h4><span id="span__sleep--status--js"></span></h4>
+           <img class="larger__img" id="sleepy__img--js" src="">
+        </section>
 
       <!-- Activity -->
-      <div class="div__activity">
-        <section class="" id="">
+        <section class="draggable grid-item" id="">
           <h4 class="h4__box--header">Today's Activity:</h4>
           <h4 class="h4__user">Steps: </h4><p class="p__divider step__color" id="p__todays--steps--js"></p>
           <h4 class="h4__user">Stairs Climbed: </h4><p class="p__divider stair__color" id="p__todays--stairs--js"></p>
           <h4 class="h4__user">Total Activity Time: </h4><p class="minute__color" id="p__todays--minutes--js"></p>
           <img class="larger__img" src="../Images/goal.png">
         </section>
-        <section class="" id="">
+        <section class="draggable grid-item" id="">
           <p class="p__distance">You've stepped your way through </p>
           <p><span class="p__display--miles" id="p__distance--miles--js"></span> today!</p>
         <img class="smaller__img" src="../Images/shoe.png">
         </section>
-        <section class="" id="">
+        <section class="draggable grid-item" id="">
           <table>
             <thead>
               <tr>
@@ -117,42 +110,41 @@
             </tbody>
           </table>
         </section>
-        <section class="" id="">
+        <section class="draggable grid-item" id="">
           <canvas id="chart__weekly--steps--js" width="400" height="400"></canvas>
         </section>
-        <section class="" id="">
+        <section class="draggable grid-item" id="">
           <canvas id="chart__weekly--stairs--js" width="400" height="400"></canvas>
         </section>
-        <section>
+        <section class="draggable grid-item">
           <h4 class="h4__box--header">Latest 3 Day Streak:</h4>
           <h4 class="h4__box--header">Step Total</h4>
           <ul id="ul__step--streak--js">
           </ul>
         </section>
-        <section>
+        <section class="draggable grid-item">
           <h4 class="h4__box--header">Latest 3 Day Streak:</h4>
           <h4 class="h4__box--header">Minutes of Activity</h4>
           <ul id="ul__min--streak--js">
           </ul>
         </section>
-        <section class="" id="">
+        <section class="draggable grid-item" id="">
           <canvas id="chart__weekly--minutes--js" width="400" height="400"></canvas>
         </section>
-        <section class="section__goal--exceed hide" id="section__goal--exceed--js">
+        <section class="section__goal--exceed hide draggable grid-item" id="section__goal--exceed--js">
           <h4 class="h4__box--header">Look at all these days you exceeded your step goal!</h4>
           <ul class="ul__goal--exceeded" id="ul__goal--exceeded--js">
           </ul>
         </section>
-      </div>
 
       <!-- Charts -->
-      <section class="sleep__chart--quality" id="sleep__by--week--quality">
+      <section class="sleep__chart--quality draggable grid-item" id="sleep__by--week--quality">
           <canvas id="sleep__by--week--quality--js" width="200" height="400"></canvas>
       </section>
-      <section class="sleep__chart--hours" id="sleep__by--week--hours--js">
+      <section class="sleep__chart--hours draggable grid-item" id="sleep__by--week--hours--js">
           <canvas id="sleep__week--hours--js" width="200" height="400"></canvas>
       </section>
-        <section>
+        <section class="draggable grid-item">
           <div class="step__chart--friends--steps" id="step__vs--friends--js">
               <canvas id="step__chart--friends--js" width="200" height="400"></canvas>
           </div>
@@ -162,6 +154,8 @@
       <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script>window.jQuery || document.write('<script src="path/to/your/jquery.min.js"><\/script>')</script>
+      <script src="https://unpkg.com/packery@2.1/dist/packery.pkgd.min.js"></script>
+      <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
       <script type="text/javascript" src="./activityRepo.js"></script>
       <script type="text/javascript" src="./activity.js"></script>
@@ -176,6 +170,7 @@
       <script type="text/javascript" src="../data/sleep-data.js"></script>
       <script type="text/javascript" src="../data/activity-data.js"></script>
       <script type="text/javascript" src="./scripts.js"></script>
+    </div>
     </main>
   </body>
 </html>

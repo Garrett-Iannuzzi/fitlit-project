@@ -8,10 +8,7 @@ body {
   url(https://images.unsplash.com/photo-1555202926-4703eaa1fa74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80);
   background-position: center;
   background-size: cover;
-  column-count: 3;
-  column-width: 5em;
   color: white;
-  margin: 0px;
   padding-top: 40px;
 }
 
@@ -32,6 +29,11 @@ h1 {
   padding-top: 30px;
 }
 
+.grid-item {
+  grid-auto-columns: 3;
+  grid-auto-rows: auto;
+}
+
 h2 {
   display: inline-block;
   font-size: 1.5em;
@@ -47,12 +49,11 @@ section {
   background-color: rgb(55, 18, 75);
   border: solid 6px rgb(32, 11, 43);
   font-size: 1.8em;
-  height: 15%;
   margin: 35px;
   opacity: .9;
   padding: 10px;
   text-align: center;
-  width: 82%;
+  width: 27%;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   -webkit-transition-duration: 0.3s;
@@ -193,15 +194,19 @@ width: 100px;
 .sleep__chart--hours {
   background-color: rgb(55, 18, 75);
   border: solid 6px rgb(32, 11, 43);
-  margin: 45px;
+  margin: 35px;
   opacity: .9;
-  width: 82%;
+  width: 27%;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   -webkit-transition-property: transform;
   transition-property: transform;
+}
+
+.step__chart--friends--steps {
+  width: 88%;
 }
 
 .hydration__chart:hover,
