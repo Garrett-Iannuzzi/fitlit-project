@@ -250,13 +250,6 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
           text: 'Weekly Steps Totals',
           fontSize: 25,
         },
-      },
-      title: {
-        fontColor: "white",
-        display: true,
-        text: 'Weekly Steps Totals',
-        fontSize: 25,
-      },
       scales: {
         yAxes: [{
           ticks: {
@@ -274,6 +267,7 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
       },
       responsive: true,
       maintainAspectRatio: false,
+    }
   });
 
 let stairsByWeekChart = new Chart($('#chart__weekly--stairs--js'), {
