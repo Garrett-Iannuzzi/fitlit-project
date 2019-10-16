@@ -15,6 +15,7 @@ const weeklyStepsChart = activity.getWeeklyActivityStats('numSteps', date);
 const weeklyStairsChart = activity.getWeeklyActivityStats('flightsOfStairs', date);
 const weeklyMinutesChart = activity.getWeeklyActivityStats('minutesActive', date);
 const weeklyStepsVsFriends = user.findFriendSteps(userData, activityData, date);
+let $grid = $('.grid').packery({itemSelector:'.grid-item', columnWidth: 100});
 
 $(document).ready(function () {
   $('#span__current--date').text(date);
@@ -22,7 +23,20 @@ $(document).ready(function () {
   hydrationHandler();
   sleepHandler();
   activityHandler();
-})
+});
+
+// let $grid = $('section').draggabilly({
+// })
+
+$grid.find('.draggable').each( function( i, gridItem ) {
+  let draggie = new Draggabilly( gridItem );
+  $grid.packery( 'bindDraggabillyEvents', draggie );
+});
+
+// $('.main__page').packery({
+//   // itemSelector: 'section',
+//   gutter: 15
+// });
 
 $('#button__confidence--js').on('click', function() {
   $('#section__goal--exceed--js').removeClass('hide');
