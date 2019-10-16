@@ -31,6 +31,6 @@ describe('HydrationRepo', () => {
       { userID: 3, date: '2019/06/21', numOunces: 26 },
       { userID: 3, date: '2019/06/22', numOunces: 78 },
       { userID: 3, date: '2019/06/23', numOunces: 35 }
-    ])
-  })
+    ]);
+  });
 });

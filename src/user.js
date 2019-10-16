@@ -32,19 +32,20 @@ class User {
   findFriendSteps(userData, activityData, date) {
     this.findFriendNames(userData);
     this.friendStepInfo = this.friends.reduce((acc, friendId) => {
-    let oneFriendsStats = activityData.filter(stat => stat.userID === friendId);
-    let index = oneFriendsStats.findIndex(stat => stat.date === date);
-    let weekStats = oneFriendsStats.slice(index - 6, index + 1);
-    let totalSteps = 0;
-    weekStats.forEach(stat => {
-      totalSteps += stat.numSteps
+      let oneFriendsStats = activityData.filter(stat =>
+        stat.userID === friendId);
+      let index = oneFriendsStats.findIndex(stat => stat.date === date);
+      let weekStats = oneFriendsStats.slice(index - 6, index + 1);
+      let totalSteps = 0;
+      weekStats.forEach(stat => {
+        totalSteps += stat.numSteps
       });
-    let friend = this.friendNames.shift();
-    acc.push({
-      'name': friend,
-      'weeklySteps': totalSteps
-    });
-    return acc;
+      let friend = this.friendNames.shift();
+      acc.push({
+        'name': friend,
+        'weeklySteps': totalSteps
+      });
+      return acc;
     }, [])
     return this.friendStepInfo
   }
@@ -55,7 +56,8 @@ class User {
   }
 
   findFriendStepsOnlyWinner() {
-    let stepWinner = this.friendStepInfo.sort((a, b) => b.weeklySteps - a.weeklySteps);
+    let stepWinner = this.friendStepInfo.sort((a, b) =>
+      b.weeklySteps - a.weeklySteps);
     return stepWinner[0].name
   }
 

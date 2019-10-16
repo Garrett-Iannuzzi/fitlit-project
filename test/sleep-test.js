@@ -29,7 +29,7 @@ describe('Sleep', () => {
       { userID: 3, date: '2019/06/20', hoursSlept: 9.4, sleepQuality: 1.2 },
       { userID: 3, date: '2019/06/21', hoursSlept: 8.9, sleepQuality: 3.7 },
       { userID: 3, date: '2019/06/22', hoursSlept: 9.8, sleepQuality: 2.1 }
-    ])
+    ]);
   });
 
   it('should get average number of hours slept by id', () => {
@@ -49,12 +49,15 @@ describe('Sleep', () => {
   });
 
   it('should get hours slept each day for a week', () => {
-    expect(sleep.getMetricByWeek('2019/06/21', 'hoursSlept')).to.eql([ 10.8, 10.7, 5.3, 9.8, 7.2, 9.4, 8.9 ]);
-    expect(sleep.getMetricByWeek('2019/06/22', 'hoursSlept')).to.eql([ 10.7, 5.3, 9.8, 7.2, 9.4, 8.9, 9.8 ]);
+    expect(sleep.getMetricByWeek('2019/06/21', 'hoursSlept')).to.eql([
+      10.8, 10.7, 5.3, 9.8, 7.2, 9.4, 8.9 ]);
+    expect(sleep.getMetricByWeek('2019/06/22', 'hoursSlept')).to.eql([
+      10.7, 5.3, 9.8, 7.2, 9.4, 8.9, 9.8 ]);
   });
 
   it('should get sleep quality each day for a week', () => {
-    expect(sleep.getMetricByWeek('2019/06/21', 'sleepQuality')).to.eql([ 4.7, 3.4, 4.9, 2.6, 3.4, 1.2, 3.7 ]);
+    expect(sleep.getMetricByWeek('2019/06/21', 'sleepQuality')).to.eql([
+      4.7, 3.4, 4.9, 2.6, 3.4, 1.2, 3.7 ]);
   });
 
   describe ('Sleepy Status', () => {
@@ -66,7 +69,7 @@ describe('Sleep', () => {
     it('should update well rested property', () => {
       sleep.getUserSleepStatus('2019/06/16');
       expect(sleep.wellRested).to.equal(true);
-    })
+    });
 
     it('should determine if the user is sleepy or not', () => {
       expect(sleep.getUserSleepStatus('2019/06/17')).to.equal('Sleepy!');
@@ -75,8 +78,6 @@ describe('Sleep', () => {
     it('should update well rested property', () => {
       sleep.getUserSleepStatus('2019/06/17');
       expect(sleep.wellRested).to.equal(false);
-    })
-
+    });
   });
-
 });

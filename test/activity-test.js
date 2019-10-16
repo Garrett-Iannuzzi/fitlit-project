@@ -116,14 +116,14 @@ describe('Activity', () => {
   it('should know how many step a user took on a given date', () => {
     expect(activity.getUserActivityStatForDate('numSteps', '2019/06/21')).
       to.equal(7498);
-  })
+  });
 
   it('should calculate a users average mins of activity for the week', () => {
     expect(activity.getAverageByWeek('minutesActive', '2019/06/21')).
       to.equal(165);
     expect(activity.getAverageByWeek('minutesActive', '2019/06/23')).
       to.equal(166);
-  })
+  });
 
   it('should get info for which days a user exceeded step goal', () => {
     expect(activity.findInfoForDaysExceededGoal()).to.eql([
@@ -176,8 +176,8 @@ describe('Activity', () => {
         "minutesActive": 219,
         "flightsOfStairs": 9
       }
-    ])
-  })
+    ]);
+  });
 
   it('should calculate just the dates a user exceeded step goal', () => {
     expect(activity.findDaysExceededGoal()).to.eql([
@@ -188,13 +188,13 @@ describe('Activity', () => {
       '2019/06/21',
       '2019/06/22',
       '2019/06/26'
-    ])
-  })
+    ]);
+  });
 
   it('should calculate if a user exceeded goal on given date', () => {
     expect(activity.findIfGoalExceededByDate('2019/06/19')).to.equal(true);
     expect(activity.findIfGoalExceededByDate('2019/06/17')).to.equal(false);
-  })
+  });
 
   it('should be able to find a users all time stair climbing record', () => {
     expect(activity.findStairRecord()).to.eql({
@@ -203,12 +203,12 @@ describe('Activity', () => {
       "numSteps": 5369,
       "minutesActive": 129,
       "flightsOfStairs": 46
-    })
-  })
+    });
+  });
 
   it('should calculate by how much a user exceeded their goal', () => {
     expect(activity.findByHowMuchExceededGoal('2019/06/20')).to.equal(369);
-  })
+  });
 
   it('should calculate step streak of three days', () => {
     expect(activity.getThreeDayStepStreak('numSteps')).to.eql([
@@ -218,12 +218,12 @@ describe('Activity', () => {
       [ { date: '2019/06/24', numSteps: 1665 },
         { date: '2019/06/25', numSteps: 4665 },
         { date: '2019/06/26', numSteps: 14665 } ]
-      ]);
-  })
+    ]);
+  });
 
   it('should calculate activity minutes streak of three days', () => {
     expect(activity.getThreeDayStepStreak('minutesActive')).to.eql([]);
-  })
+  });
 
   it('should organize daily activity for each day in a week', () => {
     expect(activity.getWeeklyActivityStats('numSteps', '2019/06/22')).to.eql(
@@ -232,7 +232,7 @@ describe('Activity', () => {
 
   it('should get only the dates of a step streak', () => {
     activity.getThreeDayStepStreak('numSteps')
-    expect(activity.getStepStreakDatesOnly('numSteps')).to.eql([ '2019/06/24', '2019/06/25', '2019/06/26' ])
+    expect(activity.getStepStreakDatesOnly('numSteps')).to.eql([
+      '2019/06/24', '2019/06/25', '2019/06/26' ])
   });
-
 })
