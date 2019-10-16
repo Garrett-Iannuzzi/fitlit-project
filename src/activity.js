@@ -76,38 +76,39 @@ class Activity {
       if (index < 2) {
         return acc;
       }
-       if ((stat[activity] > this.activityInfo[index - 1][activity]) && (this.activityInfo[index - 1][activity] > this.activityInfo[index - 2][activity])) {
-         acc.push(
-           { 'date': this.activityInfo[index - 2].date,
-             [activity]: this.activityInfo[index - 2][activity]},
-           { 'date': this.activityInfo[index - 1].date,
-             [activity]: this.activityInfo[index - 1][activity]},
-           { 'date': this.activityInfo[index].date,
-             [activity]: this.activityInfo[index][activity]});
-       }
-       return acc;
-     }, []);
-     this.actStreaks = [];
-     threeDayStreaks.forEach(dayStat => {
-       this.actStreaks.push(threeDayStreaks.splice(0, 3));
-     })
-     console.log('actStreaks', this.actStreaks)
-;     return this.actStreaks;
-   }
+      if ((stat[activity] > this.activityInfo[index - 1][activity]) &&
+        (this.activityInfo[index - 1][activity] >
+          this.activityInfo[index - 2][activity])) {
+        acc.push(
+          { 'date': this.activityInfo[index - 2].date,
+            [activity]: this.activityInfo[index - 2][activity]},
+          { 'date': this.activityInfo[index - 1].date,
+            [activity]: this.activityInfo[index - 1][activity]},
+          { 'date': this.activityInfo[index].date,
+            [activity]: this.activityInfo[index][activity]});
+      }
+      return acc;
+    }, []);
+    this.actStreaks = [];
+    threeDayStreaks.forEach(dayStat => {
+      this.actStreaks.push(threeDayStreaks.splice(0, 3));
+    });
+    return this.actStreaks;
+  }
 
-   getWeeklyActivityStats(activity, date) {
-     let dateIndex = this.activityInfo.findIndex((loggedActivity) =>
-       loggedActivity.date === date);
-     let weekArray = this.activityInfo.filter((loggedActivity, index) =>
-       (index <= dateIndex && index >= (dateIndex - 6)));
+  getWeeklyActivityStats(activity, date) {
+    let dateIndex = this.activityInfo.findIndex((loggedActivity) =>
+      loggedActivity.date === date);
+    let weekArray = this.activityInfo.filter((loggedActivity, index) =>
+      (index <= dateIndex && index >= (dateIndex - 6)));
     return weekArray.map(loggedActivity => loggedActivity[activity])
-   }
+  }
 
-   getStepStreakDatesOnly(activity) {
-     let streaks = this.getThreeDayStepStreak(activity);
-     let latestStreak = streaks.reverse()[0].map(stat => stat.date);
-     return latestStreak
-   }
+  getStepStreakDatesOnly(activity) {
+    let streaks = this.getThreeDayStepStreak(activity);
+    let latestStreak = streaks.reverse()[0].map(stat => stat.date);
+    return latestStreak
+  }
 
 }
 

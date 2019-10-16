@@ -7,7 +7,7 @@
     rel="stylesheet"><meta charset="UTF-8">
   </head>
   <body>
-    <header class="" id="">
+    <header>
       <h1>Fitness Is Litness</h1>
       <h2 class="h2__name">Welcome <span id="span__user--name--js"></span>!</h2>
       <h2>Today's Date: <span id="span__current--date"></span></h2>
@@ -38,21 +38,21 @@
         </section>
 
       <!-- Hydration -->
-        <section class="div__hydration draggable grid-item" id="">
+        <section class="div__hydration draggable grid-item">
           <h4 class="h4__box--header">Todays Water: </h4>
           <h4><span id="span__todays--water"></span></h4>
           <img class="smaller__img" src="../Images/drop.png">
         </section>
 
       <!-- Hydration Chart -->
-        <section class="hydration__chart draggable grid-item"
+        <section class="chart--style draggable grid-item"
           id="hydration__by--week--chart">
           <canvas id="hydration__by--week--chart--js" width="200" height="400">
           </canvas>
         </section>
 
       <!-- Sleep -->
-        <section class="draggable grid-item" id="">
+        <section class="draggable grid-item">
           <h4 class="h4__box--header">Last Nights Sleep:</h4>
           <p class="p__user">Hours: </p>
           <h4 class="p__user--sleep-last--night">
@@ -61,7 +61,7 @@
           <h4><span id="span__sleep--quality--js"></span> / 5</h4>
           <img class="smaller__img" src="../Images/sleep.png">
         </section>
-        <section class="draggable grid-item" id="">
+        <section class="draggable grid-item">
           <h4 class="h4__box--header">Average Sleep Stats:</h4>
           <p class="p__user">Hours: </p>
           <h4 class="p__divider">
@@ -70,14 +70,14 @@
           <h4><span id="span__sleep--average--quality--js"></span> / 5</h4>
           <img class="larger__img" src="../Images/sleepy.png">
         </section>
-        <section class="draggable grid-item" id="" >
+        <section class="draggable grid-item">
            <h4 class="h4__box--header">Your Sleep Status: </h4>
            <h4><span id="span__sleep--status--js"></span></h4>
            <img class="larger__img" id="sleepy__img--js" src="">
         </section>
 
       <!-- Activity -->
-        <section class="draggable grid-item" id="">
+        <section class="draggable grid-item">
           <h4 class="h4__box--header">Today's Activity:</h4>
           <h4 class="h4__user">Steps: </h4>
             <p class="p__divider step__color" id="p__todays--steps--js"></p>
@@ -87,13 +87,13 @@
             <p class="minute__color" id="p__todays--minutes--js"></p>
           <img class="larger__img" src="../Images/goal.png">
         </section>
-        <section class="draggable grid-item" id="">
+        <section class="draggable grid-item">
           <p class="p__distance">You've stepped your way through </p>
           <p><span class="p__display--miles" id="p__distance--miles--js"></span>
              today!</p>
         <img class="smaller__img" src="../Images/shoe.png">
         </section>
-        <section class="draggable grid-item" id="">
+        <section class="draggable grid-item">
           <table>
             <thead>
               <tr>
@@ -124,11 +124,11 @@
             </tbody>
           </table>
         </section>
-        <section class="draggable grid-item" id="">
+        <section class="draggable grid-item">
           <canvas id="chart__weekly--steps--js" width="400" height="400">
           </canvas>
         </section>
-        <section class="draggable grid-item" id="">
+        <section class="draggable grid-item">
           <canvas id="chart__weekly--stairs--js" width="400" height="400">
           </canvas>
         </section>
@@ -144,7 +144,7 @@
           <ul id="ul__min--streak--js">
           </ul>
         </section>
-        <section class="draggable grid-item" id="">
+        <section class="draggable grid-item">
           <canvas id="chart__weekly--minutes--js" width="400" height="400">
           </canvas>
         </section>
@@ -157,12 +157,12 @@
         </section>
 
       <!-- Charts -->
-      <section class="sleep__chart--quality draggable grid-item"
+      <section class="chart--style draggable grid-item"
         id="sleep__by--week--quality">
           <canvas id="sleep__by--week--quality--js" width="200" height="400">
           </canvas>
       </section>
-      <section class="sleep__chart--hours draggable grid-item"
+      <section class="chart--style draggable grid-item"
         id="sleep__by--week--hours--js">
           <canvas id="sleep__week--hours--js" width="200" height="400"></canvas>
       </section>

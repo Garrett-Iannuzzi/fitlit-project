@@ -34,11 +34,11 @@ class SleepRepo {
         fakeAcc += stat.sleepQuality / 7;
         userId = stat.userID
       })
-        if (fakeAcc > 3) {
-          finalAcc.push(userId)
-        }
-        return finalAcc
-    },[])
+      if (fakeAcc > 3) {
+        finalAcc.push(userId)
+      }
+      return finalAcc
+    }, [])
   }
 
   getAllUserIds() {

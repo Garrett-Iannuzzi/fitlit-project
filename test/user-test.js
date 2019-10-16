@@ -52,7 +52,7 @@ describe('User', () => {
   it('should tell us users first name', () => {
     expect(user.getUserFirstName()).to.equal('Herminia');
   });
-  
+
   it('should find all users friends', () => {
     expect(user.findFriendNames(sampleUserData)).to.eql([
       'Jarvis',
@@ -62,21 +62,23 @@ describe('User', () => {
   });
 
   it('should find friends step counts', () => {
-    expect(user.findFriendSteps(sampleUserData, sampleActivityData, '2019/06/21')).to.eql([
+    expect(user.findFriendSteps(
+      sampleUserData, sampleActivityData, '2019/06/21')).to.eql([
       {'name': 'Jarvis',
-       'weeklySteps': 55054},
-     {'name': 'Luisa',
-      'weeklySteps': 58629},
+        'weeklySteps': 55054},
+      {'name': 'Luisa',
+        'weeklySteps': 58629},
       {'name': 'Mae',
-       'weeklySteps': 60963},
+        'weeklySteps': 60963},
     ]);
-    expect(user.findFriendSteps(sampleUserData, sampleActivityData, '2019/06/22')).to.eql([
+    expect(user.findFriendSteps(
+      sampleUserData, sampleActivityData, '2019/06/22')).to.eql([
       {'name': 'Jarvis',
-       'weeklySteps': 54365},
-     {'name': 'Luisa',
-      'weeklySteps': 65341},
+        'weeklySteps': 54365},
+      {'name': 'Luisa',
+        'weeklySteps': 65341},
       {'name': 'Mae',
-       'weeklySteps': 61072},
+        'weeklySteps': 61072},
     ]);
   });
 
@@ -88,6 +90,5 @@ describe('User', () => {
   it('should find which friend had the most steps', () => {
     user.findFriendSteps(sampleUserData, sampleActivityData, '2019/06/22');
     expect(user.findFriendStepsOnlyWinner()).to.equal('Luisa')
-  })
-
+  });
 })

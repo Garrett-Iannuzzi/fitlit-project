@@ -17,7 +17,7 @@ const weeklyStairsChart =
 const weeklyMinutesChart =
   activity.getWeeklyActivityStats('minutesActive', date);
 const weeklyStepsVsFriends = user.findFriendSteps(userData, activityData, date);
-let $grid = $('.grid').packery({itemSelector:'.grid-item', columnWidth: 100, gutter: 70});
+let $grid = $('.grid').packery({itemSelector: '.grid-item', columnWidth: 100});
 
 $(document).ready(function () {
   $('#span__current--date').text(date);
@@ -27,10 +27,18 @@ $(document).ready(function () {
   activityHandler();
 });
 
+// let $grid = $('section').draggabilly({
+// })
+
 $grid.find('.draggable').each( function( i, gridItem ) {
   let draggie = new Draggabilly( gridItem );
   $grid.packery( 'bindDraggabillyEvents', draggie );
 });
+
+// $('.main__page').packery({
+//   // itemSelector: 'section',
+//   gutter: 15
+// });
 
 $('#button__confidence--js').on('click', function() {
   $('#section__goal--exceed--js').removeClass('hide');
@@ -109,63 +117,56 @@ function displayMilesWalked(date) {
 }
 
 function displayActivityTable() {
-  $('#td__user--steps--js').text(`
-    ${activity.getUserActivityStatForDate('numSteps', date)}`);
-  $('#td__others--steps--js').text(`
-    ${activityRepo.getAllUserActivityAvgByDate('numSteps', date)}`);
-  $('#td__user--stairs--js').text(`
-    ${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
-  $('#td__others--stairs--js').text(`
-    ${activityRepo.getAllUserActivityAvgByDate('flightsOfStairs', date)}`);
-  $('#td__user--minutes--js').text(`
-    ${activity.getUserActivityStatForDate('minutesActive', date)}`);
-  $('#td__others--minutes--js').text(`
-    ${activityRepo.getAllUserActivityAvgByDate('minutesActive', date)}`);
+  $('#td__user--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
+  $('#td__others--steps--js').text(`${activityRepo.getAllUserActivityAvgByDate('numSteps', date)}`);
+  $('#td__user--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
+  $('#td__others--stairs--js').text(`${activityRepo.getAllUserActivityAvgByDate('flightsOfStairs', date)}`);
+  $('#td__user--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
+  $('#td__others--minutes--js').text(`${activityRepo.getAllUserActivityAvgByDate('minutesActive', date)}`);
 }
 
 let userHydrationByWeekChart = new Chart($('#hydration__by--week--chart--js'), {
-    type: 'bar',
-    data: {
-      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-      datasets: [{
-        label: "Oz's on Each Day",
-        backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C",
-         "#E0FF19", "#D47FFF"],
-        hoverBackgroundColor: "white",
-        data: hydrationChart,
-        }]
+  type: 'bar',
+  data: {
+    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+    datasets: [{
+      label: "Oz's on Each Day",
+      backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+      hoverBackgroundColor: "white",
+      data: hydrationChart,
+    }]
+  },
+  options: {
+    legend: {
+      labels: {
+        fontColor: "white",
+        fontSize: 18,
       },
-      options: {
-        legend: {
-          labels: {
-              fontColor: "white",
-              fontSize: 18,
-          },
-        },
-        title: {
+    },
+    title: {
+      fontColor: "white",
+      display: true,
+      text: 'Your Water Intake',
+      fontSize: 20,
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
           fontColor: "white",
-          display: true,
-          text: 'Your Water Intake',
-          fontSize: 20,
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              fontColor: "white",
-              fontSize: 15,
-                beginAtZero: true
-                }
-            }],
-            xAxes: [{
-              ticks: {
-                fontColor: "white",
-                fontSize: 15,
-              }
-            }]
-        },
-        responsive: true,
-        maintainAspectRatio: false,
-    }
+          fontSize: 15,
+          beginAtZero: true
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "white",
+          fontSize: 15,
+        }
+      }]
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+  }
 });
 
 let usersleepQualityByWeekChart = new Chart($('#sleep__by--week--quality--js'), {
@@ -174,38 +175,37 @@ let usersleepQualityByWeekChart = new Chart($('#sleep__by--week--quality--js'), 
     labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
     datasets: [{
       label: "Sleep Quality Score",
-      pointBackgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED",
-        "#FF631C", "#E0FF19", "#D47FFF"],
+      pointBackgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
       data: sleepQualityChart,
       backgroundColor: "gainsboro",
       pointRadius: 8,
 
+    }]
+  },
+  options: {
+    legend: {
+      labels: {
+        fontColor: "white",
+        fontSize: 25,
+      },
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          fontColor: "white",
+          fontSize: 15,
+          beginAtZero: true
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "white",
+          fontSize: 15,
+        }
       }]
     },
-    options: {
-      legend: {
-        labels: {
-            fontColor: "white",
-            fontSize: 25,
-        },
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            fontColor: "white",
-            fontSize: 15,
-                  beginAtZero: true
-              }
-          }],
-          xAxes: [{
-            ticks: {
-              fontColor: "white",
-              fontSize: 15,
-            }
-          }]
-      },
-      responsive: true,
-      maintainAspectRatio: false,
+    responsive: true,
+    maintainAspectRatio: false,
   }
 });
 
@@ -215,180 +215,178 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
     labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
     datasets: [{
       label: "Hours Slept",
-      pointBackgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED",
-        "#FF631C", "#E0FF19", "#D47FFF"],
+      pointBackgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
       data: sleepHoursChart,
       backgroundColor: "gainsboro",
       pointRadius: 8,
-
+    }]
+  },
+  options: {
+    legend: {
+      labels: {
+        fontColor: "white",
+        fontSize: 25,
+      },
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          fontColor: "white",
+          fontSize: 15,
+          beginAtZero: true
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "white",
+          fontSize: 15,
+        }
       }]
     },
-    options: {
-      legend: {
-        labels: {
-            fontColor: "white",
-            fontSize: 25,
-        },
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            fontColor: "white",
-            fontSize: 15,
-                  beginAtZero: true
-              }
-          }],
-          xAxes: [{
-            ticks: {
-              fontColor: "white",
-              fontSize: 15,
-            }
-          }]
-      },
-      responsive: true,
-      maintainAspectRatio: false,
-    }
+    responsive: true,
+    maintainAspectRatio: false,
+  }
 });
 
-  let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
-    type: 'line',
-    data: {
-      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-      datasets: [{
-        label: "Steps Per Day",
-        hoverBackgroundColor: "white",
-        borderColor: "mediumspringgreen",
-        borderWidth: 3,
-        lineTension: 0,
-        pointBorderWidth: 5,
-        data: weeklyStepsChart,
-       }]
+let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
+  type: 'line',
+  data: {
+    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+    datasets: [{
+      label: "Steps Per Day",
+      hoverBackgroundColor: "white",
+      borderColor: "mediumspringgreen",
+      borderWidth: 3,
+      lineTension: 0,
+      pointBorderWidth: 5,
+      data: weeklyStepsChart,
+    }]
+  },
+  options: {
+    legend: {
+      labels: {
+        fontColor: "white",
+        fontSize: 18,
       },
-      options: {
-        legend: {
-          labels: {
-              fontColor: "white",
-              fontSize: 18,
-          },
-        },
-        title: {
+    },
+    title: {
+      fontColor: "white",
+      display: true,
+      text: 'Weekly Steps Totals',
+      fontSize: 25,
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
           fontColor: "white",
-          display: true,
-          text: 'Weekly Steps Totals',
           fontSize: 25,
-        },
-      scales: {
-        yAxes: [{
-          ticks: {
-            fontColor: "white",
-            fontSize: 25,
-               beginAtZero: true
-              }
-          }],
-          xAxes: [{
-            ticks: {
-              fontColor: "white",
-              fontSize: 20,
-            }
-          }]
-      },
-      responsive: true,
-      maintainAspectRatio: false,
-    }
-  });
+          beginAtZero: true
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "white",
+          fontSize: 20,
+        }
+      }]
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+  }
+});
 
 let stairsByWeekChart = new Chart($('#chart__weekly--stairs--js'), {
-    type: 'line',
-    data: {
-      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-      datasets: [{
-        label: "Flights of Stairs Per Day",
-        hoverBackgroundColor: "white",
-        borderColor: "magenta",
-        borderWidth: 3,
-        lineTension: 0,
-        pointBorderWidth: 5,
-        data: weeklyStairsChart,
-        }]
+  type: 'line',
+  data: {
+    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+    datasets: [{
+      label: "Flights of Stairs Per Day",
+      hoverBackgroundColor: "white",
+      borderColor: "magenta",
+      borderWidth: 3,
+      lineTension: 0,
+      pointBorderWidth: 5,
+      data: weeklyStairsChart,
+    }]
+  },
+  options: {
+    legend: {
+      labels: {
+        fontColor: "white",
+        fontSize: 18,
       },
-      options: {
-        legend: {
-          labels: {
-              fontColor: "white",
-              fontSize: 18,
-          },
-        },
-        title: {
+    },
+    title: {
+      fontColor: "white",
+      display: true,
+      text: 'Weekly Stairs Totals',
+      fontSize: 25,
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
           fontColor: "white",
-          display: true,
-          text: 'Weekly Stairs Totals',
           fontSize: 25,
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              fontColor: "white",
-              fontSize: 25,
-                    beginAtZero: true
-                }
-            }],
-            xAxes: [{
-              ticks: {
-                fontColor: "white",
-                fontSize: 20,
-              }
-            }]
-        },
-        responsive: true,
-        maintainAspectRatio: false,
-    }
+          beginAtZero: true
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "white",
+          fontSize: 20,
+        }
+      }]
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+  }
 });
 
 let minutesByWeekChart = new Chart($('#chart__weekly--minutes--js'), {
-    type: 'line',
-    data: {
-      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-      datasets: [{
-        label: "Minutes of Activity Per Day",
-        hoverBackgroundColor: "white",
-        borderColor: "deepskyblue",
-        borderWidth: 3,
-        lineTension: 0,
-        pointBorderWidth: 5,
-        data: weeklyMinutesChart,
-        }]
+  type: 'line',
+  data: {
+    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+    datasets: [{
+      label: "Minutes of Activity Per Day",
+      hoverBackgroundColor: "white",
+      borderColor: "deepskyblue",
+      borderWidth: 3,
+      lineTension: 0,
+      pointBorderWidth: 5,
+      data: weeklyMinutesChart,
+    }]
+  },
+  options: {
+    legend: {
+      labels: {
+        fontColor: "white",
+        fontSize: 18,
       },
-      options: {
-        legend: {
-          labels: {
-              fontColor: "white",
-              fontSize: 18,
-          },
-        },
-        title: {
+    },
+    title: {
+      fontColor: "white",
+      display: true,
+      text: 'Weekly Activity Totals',
+      fontSize: 25,
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
           fontColor: "white",
-          display: true,
-          text: 'Weekly Activity Totals',
           fontSize: 25,
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              fontColor: "white",
-              fontSize: 25,
-                    beginAtZero: true
-                }
-            }],
-            xAxes: [{
-              ticks: {
-                fontColor: "white",
-                fontSize: 20,
-              }
-            }]
-        },
-        responsive: true,
-        maintainAspectRatio: false,
-    }
+          beginAtZero: true
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "white",
+          fontSize: 20,
+        }
+      }]
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+  }
 });
 
 let namesForStepRace = user.findFriendNames(userData);
@@ -405,37 +403,37 @@ let weeklyStepsVsFriendsChart = new Chart($('#step__chart--friends--js'), {
       lineTension: 0,
       pointBorderWidth: 5,
       data: stepsForStepRace,
+    }]
+  },
+  options: {
+    legend: {
+      labels: {
+        fontColor: "white",
+        fontSize: 18,
+      },
+    },
+    title: {
+      fontColor: "white",
+      display: true,
+      text: 'Step Race',
+      fontSize: 35,
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          fontColor: "white",
+          fontSize: 15,
+          beginAtZero: true
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "white",
+          fontSize: 18,
+        }
       }]
     },
-    options: {
-      legend: {
-        labels: {
-            fontColor: "white",
-            fontSize: 18,
-        },
-      },
-      title: {
-        fontColor: "white",
-        display: true,
-        text: 'Step Race',
-        fontSize: 35,
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            fontColor: "white",
-            fontSize: 15,
-                  beginAtZero: true
-              }
-          }],
-          xAxes: [{
-            ticks: {
-              fontColor: "white",
-              fontSize: 18,
-            }
-          }]
-      },
-      responsive: true,
-      maintainAspectRatio: false,
+    responsive: true,
+    maintainAspectRatio: false,
   }
 });
