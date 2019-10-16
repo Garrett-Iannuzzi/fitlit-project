@@ -34,7 +34,7 @@ h1 {
 
 h2 {
   display: inline-block;
-  font-size: .9em;
+  font-size: 1.5em;
   margin: 0px 70px 0px 70px;
 }
 
@@ -88,6 +88,7 @@ button {
 }
 
 button:hover {
+  background-color: rgb(210, 49, 49);
   transform: scale(1.2);
 }
 
@@ -115,8 +116,9 @@ section:hover {
 
 .ul__goal--exceeded,
 .li__goal--exceeded {
-  text-decoration: none;
   list-style-type: none;
+  text-decoration: none;
+  margin: 15px;
 }
 
 .p__user--friends,

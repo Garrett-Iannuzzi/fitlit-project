@@ -270,8 +270,7 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
       },
       responsive: true,
       maintainAspectRatio: false,
-  }
-});
+  });
 
 let stairsByWeekChart = new Chart($('#chart__weekly--stairs--js'), {
     type: 'line',
