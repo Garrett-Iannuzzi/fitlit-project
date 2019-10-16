@@ -14,6 +14,7 @@ const sleepHoursChart = sleep.getMetricByWeek(date, 'hoursSlept');
 const weeklyStepsChart = activity.getWeeklyActivityStats('numSteps', date);
 const weeklyStairsChart = activity.getWeeklyActivityStats('flightsOfStairs', date);
 const weeklyMinutesChart = activity.getWeeklyActivityStats('minutesActive', date);
+const weeklyStepsVsFriends = user.findFriendSteps(userData, activityData, date);
 
 $(document).ready(function () {
   $('#span__current--date').text(date);
@@ -23,8 +24,6 @@ $(document).ready(function () {
   activityHandler();
 })
 
-
-
 function userHandler() {
   $('#span__user--name--js').text(`${user.getUserFirstName()}`);
   $('#span__user--address--js').text(`${user.address}`);
@@ -33,7 +32,7 @@ function userHandler() {
   $('#span__user--friends--js').text(`${user.friends.length}`);
   $('#span__user--goal--js').text(`${user.dailyStepGoal}`);
   $('#span__user--average--js').text(`${userRepo.getAverageStepGoalAllUsers()}`);
-  user.findFriendNames(userData);
+  // user.findFriendNames(userData);
 }
 
 function hydrationHandler() {
@@ -61,6 +60,9 @@ function activityHandler() {
   $('#span__todays--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
   $('#span__todays--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
   $('#span__todays--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
+  $('#span__chart--step--winner--js').text(`${user.findFriendStepsOnlyWinner()}`);
+  activity.getThreeDayStepStreak();
+  $('#span__step--streak--dates').text(`${activity.getStepStreakDatesOnly()}`);
   displayMilesWalked(date);
   displayActivityTable();
 }
@@ -135,6 +137,7 @@ let usersleepQualityByWeekChart = new Chart($('#sleep__by--week--quality--js'), 
       label: "Sleep Quality Score",
       pointBackgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
       data: sleepQualityChart,
+      backgroundColor: "gainsboro",
       pointRadius: 8,
         
       }]
@@ -174,6 +177,7 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
       label: "Hours Slept",
       pointBackgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
       data: sleepHoursChart,
+      backgroundColor: "gainsboro",
       pointRadius: 8,
         
       }]
@@ -203,6 +207,7 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
       responsive: true,
       maintainAspectRatio: false,
   }
+});
   
   let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
     type: 'line',
@@ -210,7 +215,6 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: "Steps Per Day",
-        backgroundColor: "darkgray",
         hoverBackgroundColor: "white",
         borderColor: "mediumspringgreen",
         borderWidth: 3,
@@ -258,7 +262,6 @@ let stairsByWeekChart = new Chart($('#chart__weekly--stairs--js'), {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: "Flights of Stairs Per Day",
-        backgroundColor: "darkgray",
         hoverBackgroundColor: "white",
         borderColor: "magenta",
         borderWidth: 3,
@@ -306,7 +309,6 @@ let minutesByWeekChart = new Chart($('#chart__weekly--minutes--js'), {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: "Minutes of Activity Per Day",
-        backgroundColor: "darkgray",
         hoverBackgroundColor: "white",
         borderColor: "deepskyblue",
         borderWidth: 3,
@@ -347,3 +349,53 @@ let minutesByWeekChart = new Chart($('#chart__weekly--minutes--js'), {
         maintainAspectRatio: false,
     }
 });
+
+let namesForStepRace = user.findFriendNames(userData);
+let stepsForStepRace = user.findFriendStepsOnly();
+let weeklyStepsVsFriendsChart = new Chart($('#step__chart--friends--js'), {
+  type: 'bar',
+  data: {
+    labels: namesForStepRace,
+    datasets: [{
+      label: "Steps",
+      hoverBackgroundColor: "white",
+      borderColor: "deepskyblue",
+      borderWidth: 3,
+      lineTension: 0,
+      pointBorderWidth: 5,
+      data: stepsForStepRace,
+      }]
+    },
+    options: {
+      legend: {
+        labels: {
+            fontColor: "white",
+            fontSize: 18,
+        },
+      },
+      title: {
+        fontColor: "white",
+        display: true,
+        text: 'Step Race',
+        fontSize: 35,
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            fontColor: "white",
+            fontSize: 15,
+                  beginAtZero: true
+              }
+          }],
+          xAxes: [{
+            ticks: {
+              fontColor: "white",
+              fontSize: 18,
+            }
+          }]
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+  }
+});
+

@@ -8,6 +8,7 @@ class User {
     this.dailyStepGoal = userInfo.dailyStepGoal;
     this.friends = userInfo.friends;
     this.friendNames;
+    this.friendStepInfo;
   }
 
   getUserFirstName() {
@@ -30,7 +31,7 @@ class User {
 
   findFriendSteps(userData, activityData, date) {
     this.findFriendNames(userData);
-    return this.friends.reduce((acc, friendId) => {
+    this.friendStepInfo = this.friends.reduce((acc, friendId) => {
     let oneFriendsStats = activityData.filter(stat => stat.userID === friendId);
     let index = oneFriendsStats.findIndex(stat => stat.date === date);
     let weekStats = oneFriendsStats.slice(index - 6, index + 1);
@@ -45,8 +46,18 @@ class User {
     });
     return acc;
     }, [])
+    return this.friendStepInfo
   }
 
+  findFriendStepsOnly() {
+    let onlySteps = this.friendStepInfo;
+    return onlySteps.map(friend => friend.weeklySteps);
+  }
+
+  findFriendStepsOnlyWinner() {
+    let stepWinner = this.friendStepInfo.sort((a, b) => b.weeklySteps - a.weeklySteps);
+    return stepWinner[0].name
+  }
 
 }
 
