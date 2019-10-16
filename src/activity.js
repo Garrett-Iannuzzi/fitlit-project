@@ -5,7 +5,6 @@ class Activity {
     this.dailyStepGoal = user.dailyStepGoal;
     this.date = {};
     this.stepStreaks;
-    // console.log(this.activityInfo);
   }
 
   getActivityInfoByDate(date) {

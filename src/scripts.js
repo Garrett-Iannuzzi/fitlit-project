@@ -24,6 +24,14 @@ $(document).ready(function () {
   activityHandler();
 })
 
+$('#button__confidence--js').on('click', function() {
+  $('#section__goal--exceed--js').removeClass('hide');
+})
+
+$('#section__goal--exceed--js').on('click', function() {
+  $('#section__goal--exceed--js').addClass('hide');
+})
+
 function userHandler() {
   $('#span__user--name--js').text(`${user.getUserFirstName()}`);
   $('#span__user--address--js').text(`${user.address}`);
@@ -32,7 +40,9 @@ function userHandler() {
   $('#span__user--friends--js').text(`${user.friends.length}`);
   $('#span__user--goal--js').text(`${user.dailyStepGoal}`);
   $('#span__user--average--js').text(`${userRepo.getAverageStepGoalAllUsers()}`);
-  // user.findFriendNames(userData);
+  activity.findInfoForDaysExceededGoal().forEach(date => {
+    $('#ul__goal--exceeded--js').append(`<li class="li__goal--exceeded">${date.date} by ${activity.findByHowMuchExceededGoal(date.date)} steps!</li>`);
+  });
 }
 
 function hydrationHandler() {
@@ -139,7 +149,7 @@ let usersleepQualityByWeekChart = new Chart($('#sleep__by--week--quality--js'), 
       data: sleepQualityChart,
       backgroundColor: "gainsboro",
       pointRadius: 8,
-        
+
       }]
     },
     options: {
@@ -179,7 +189,7 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
       data: sleepHoursChart,
       backgroundColor: "gainsboro",
       pointRadius: 8,
-        
+
       }]
     },
     options: {
@@ -206,7 +216,7 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
       },
       responsive: true,
       maintainAspectRatio: false,
-  }
+    }
 });
   
   let stepsByWeekChart = new Chart($('#chart__weekly--steps--js'), {
@@ -236,26 +246,33 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
           text: 'Weekly Steps Totals',
           fontSize: 25,
         },
-        scales: {
-          yAxes: [{
+      },
+      title: {
+        fontColor: "white",
+        display: true,
+        text: 'Weekly Steps Totals',
+        fontSize: 25,
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            fontColor: "white",
+            fontSize: 25,
+               beginAtZero: true
+              }
+          }],
+          xAxes: [{
             ticks: {
               fontColor: "white",
-              fontSize: 25,
-                 beginAtZero: true
-                }
-            }],
-            xAxes: [{
-              ticks: {
-                fontColor: "white",
-                fontSize: 20,
-              }
-            }]
-        },
-        responsive: true,
-        maintainAspectRatio: false,
-    }
+              fontSize: 20,
+            }
+          }]
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+  }
 });
-  
+
 let stairsByWeekChart = new Chart($('#chart__weekly--stairs--js'), {
     type: 'line',
     data: {
