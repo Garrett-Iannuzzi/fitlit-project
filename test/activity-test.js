@@ -228,7 +228,7 @@ describe('Activity', () => {
 
   it('should get only the dates of a step streak', () => {
     activity.getThreeDayStepStreak()
-    expect(activity.getStepStreakDatesOnly()).to.eql([ '2019/06/20', '2019/06/21', '2019/06/22' ])
+    expect(activity.getStepStreakDatesOnly()).to.eql([ '2019/06/26', '2019/06/25', '2019/06/24' ])
   });
 
 })

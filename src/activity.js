@@ -106,7 +106,7 @@ class Activity {
 
    getStepStreakDatesOnly() {
      let finalDates = this.stepStreaks.flat().map(stat => stat.date);
-     return finalDates.slice(0, 3)
+     return finalDates.reverse().slice(0, 3)
    }
 
 }

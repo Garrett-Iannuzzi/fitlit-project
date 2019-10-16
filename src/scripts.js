@@ -24,8 +24,6 @@ $(document).ready(function () {
   activityHandler();
 })
 
-
-
 function userHandler() {
   $('#span__user--name--js').text(`${user.getUserFirstName()}`);
   $('#span__user--address--js').text(`${user.address}`);
@@ -63,6 +61,8 @@ function activityHandler() {
   $('#span__todays--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
   $('#span__todays--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
   $('#span__chart--step--winner--js').text(`${user.findFriendStepsOnlyWinner()}`);
+  activity.getThreeDayStepStreak();
+  $('#span__step--streak--dates').text(`${activity.getStepStreakDatesOnly()}`);
   displayMilesWalked(date);
   displayActivityTable();
 }
