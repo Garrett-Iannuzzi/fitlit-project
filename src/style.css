@@ -48,6 +48,7 @@ section {
   display: inline-block;
   background-color: rgb(55, 18, 75);
   border: solid 6px rgb(32, 11, 43);
+  cursor: pointer;
   font-size: 1.8em;
   margin: 35px;
   opacity: .9;
