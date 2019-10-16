@@ -211,7 +211,7 @@ describe('Activity', () => {
   })
 
   it('should calculate step streak of three days', () => {
-    expect(activity.getThreeDayStepStreak()).to.eql([
+    expect(activity.getThreeDayStepStreak('numSteps')).to.eql([
       [ { date: '2019/06/20', numSteps: 5369 },
         { date: '2019/06/21', numSteps: 7498 },
         { date: '2019/06/22', numSteps: 11342 } ],
@@ -221,14 +221,18 @@ describe('Activity', () => {
       ]);
   })
 
+  it('should calculate activity minutes streak of three days', () => {
+    expect(activity.getThreeDayStepStreak('minutesActive')).to.eql([]);
+  })
+
   it('should organize daily activity for each day in a week', () => {
     expect(activity.getWeeklyActivityStats('numSteps', '2019/06/22')).to.eql(
       [ 12304, 4547, 2546, 10961, 5369, 7498, 11342 ])
   });
 
   it('should get only the dates of a step streak', () => {
-    activity.getThreeDayStepStreak()
-    expect(activity.getStepStreakDatesOnly()).to.eql([ '2019/06/26', '2019/06/25', '2019/06/24' ])
+    activity.getThreeDayStepStreak('numSteps')
+    expect(activity.getStepStreakDatesOnly('numSteps')).to.eql([ '2019/06/24', '2019/06/25', '2019/06/26' ])
   });
 
 })
