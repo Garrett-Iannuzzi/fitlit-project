@@ -107,10 +107,9 @@ section:hover {
 .section__goal--exceed {
   cursor: pointer;
   height: 900px;
-  left: 0;
   overflow-y: scroll;
   position: absolute;
-  top: 213px;
+  top: -35px;
   width: 95%;
   z-index: 100;
 }
