@@ -4,7 +4,6 @@ class Activity {
     this.strideLength = user.strideLength;
     this.dailyStepGoal = user.dailyStepGoal;
     this.date = {};
-    this.stepStreaks;
   }
 
   getActivityInfoByDate(date) {
@@ -72,27 +71,28 @@ class Activity {
     })
   }
 
-  getThreeDayStepStreak() {
+  getThreeDayStepStreak(activity) {
     let threeDayStreaks = this.activityInfo.reduce((acc, stat, index) => {
       if (index < 2) {
         return acc;
       }
-       if ((stat.numSteps > this.activityInfo[index - 1].numSteps) && (this.activityInfo[index - 1].numSteps > this.activityInfo[index - 2].numSteps)) {
+       if ((stat[activity] > this.activityInfo[index - 1][activity]) && (this.activityInfo[index - 1][activity] > this.activityInfo[index - 2][activity])) {
          acc.push(
            { 'date': this.activityInfo[index - 2].date,
-             'numSteps': this.activityInfo[index - 2].numSteps},
+             [activity]: this.activityInfo[index - 2][activity]},
            { 'date': this.activityInfo[index - 1].date,
-             'numSteps': this.activityInfo[index - 1].numSteps},
+             [activity]: this.activityInfo[index - 1][activity]},
            { 'date': this.activityInfo[index].date,
-             'numSteps': this.activityInfo[index].numSteps});
+             [activity]: this.activityInfo[index][activity]});
        }
        return acc;
      }, []);
-     this.stepStreaks = [];
+     this.actStreaks = [];
      threeDayStreaks.forEach(dayStat => {
-       this.stepStreaks.push(threeDayStreaks.splice(0, 3));
+       this.actStreaks.push(threeDayStreaks.splice(0, 3));
      })
-     return this.stepStreaks;
+     console.log('actStreaks', this.actStreaks)
+;     return this.actStreaks;
    }
 
    getWeeklyActivityStats(activity, date) {
@@ -103,9 +103,10 @@ class Activity {
     return weekArray.map(loggedActivity => loggedActivity[activity])
    }
 
-   getStepStreakDatesOnly() {
-     let finalDates = this.stepStreaks.flat().map(stat => stat.date);
-     return finalDates.reverse().slice(0, 3)
+   getStepStreakDatesOnly(activity) {
+     let streaks = this.getThreeDayStepStreak(activity);
+     let latestStreak = streaks.reverse()[0].map(stat => stat.date);
+     return latestStreak
    }
 
 }
