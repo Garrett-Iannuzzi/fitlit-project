@@ -12,8 +12,10 @@ const hydrationChart = hydration.getOuncesPerDayByWeek(date);
 const sleepQualityChart = sleep.getMetricByWeek(date, 'sleepQuality');
 const sleepHoursChart = sleep.getMetricByWeek(date, 'hoursSlept');
 const weeklyStepsChart = activity.getWeeklyActivityStats('numSteps', date);
-const weeklyStairsChart = activity.getWeeklyActivityStats('flightsOfStairs', date);
-const weeklyMinutesChart = activity.getWeeklyActivityStats('minutesActive', date);
+const weeklyStairsChart =
+  activity.getWeeklyActivityStats('flightsOfStairs', date);
+const weeklyMinutesChart =
+  activity.getWeeklyActivityStats('minutesActive', date);
 const weeklyStepsVsFriends = user.findFriendSteps(userData, activityData, date);
 let $grid = $('.grid').packery({itemSelector:'.grid-item', columnWidth: 100, gutter: 70});
 
@@ -47,7 +49,9 @@ function userHandler() {
   $('#span__user--goal--js').text(`${user.dailyStepGoal}`);
   $('#span__user--average--js').text(`${userRepo.getAverageStepGoalAllUsers()}`);
   activity.findInfoForDaysExceededGoal().forEach(stat => {
-    $('#ul__goal--exceeded--js').append(`<li class="li__goal--exceeded">${stat.date} by ${activity.findByHowMuchExceededGoal(stat.date)} steps!</li>`);
+    $('#ul__goal--exceeded--js').append(`<li class="li__goal--exceeded">
+    ${stat.date} by ${activity.findByHowMuchExceededGoal(stat.date)} steps!
+    </li>`);
   });
 }
 
@@ -56,10 +60,14 @@ function hydrationHandler() {
 }
 
 function sleepHandler() {
-  $('#span__sleep--hours--js').text(`${sleep.getMetricByDate(date, 'hoursSlept')} hr`);
-  $('#span__sleep--quality--js').text(`${sleep.getMetricByDate(date, 'sleepQuality')}`);
-  $('#span__sleep--average--hours--js').text(`${sleep.getAvgMetricPerDayAllTime('hoursSlept')}`);
-  $('#span__sleep--average--quality--js').text(`${sleep.getAvgMetricPerDayAllTime('sleepQuality')}`);
+  $('#span__sleep--hours--js').text(`
+    ${sleep.getMetricByDate(date, 'hoursSlept')} hr`);
+  $('#span__sleep--quality--js').text(`
+    ${sleep.getMetricByDate(date, 'sleepQuality')}`);
+  $('#span__sleep--average--hours--js').text(`
+    ${sleep.getAvgMetricPerDayAllTime('hoursSlept')}`);
+  $('#span__sleep--average--quality--js').text(`
+    ${sleep.getAvgMetricPerDayAllTime('sleepQuality')}`);
   $('#span__sleep--status--js').text(`${sleep.getUserSleepStatus(date)}`);
   updateSleepyImg()
 }
@@ -73,10 +81,14 @@ function updateSleepyImg() {
 }
 
 function activityHandler() {
-  $('#p__todays--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)} steps`);
-  $('#p__todays--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)} flights`);
-  $('#p__todays--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)} min`);
-  $('#span__chart--step--winner--js').text(`${user.findFriendStepsOnlyWinner()}`);
+  $('#p__todays--steps--js').text(`
+    ${activity.getUserActivityStatForDate('numSteps', date)} steps`);
+  $('#p__todays--stairs--js').text(`
+    ${activity.getUserActivityStatForDate('flightsOfStairs', date)} flights`);
+  $('#p__todays--minutes--js').text(`
+    ${activity.getUserActivityStatForDate('minutesActive', date)} min`);
+  $('#span__chart--step--winner--js').text(`
+    ${user.findFriendStepsOnlyWinner()}`);
   activity.getStepStreakDatesOnly('numSteps').forEach(stat => {
     $('#ul__step--streak--js').append(`<li class="step__color"> ${stat} </li>`);
   });
@@ -97,12 +109,18 @@ function displayMilesWalked(date) {
 }
 
 function displayActivityTable() {
-  $('#td__user--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
-  $('#td__others--steps--js').text(`${activityRepo.getAllUserActivityAvgByDate('numSteps', date)}`);
-  $('#td__user--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
-  $('#td__others--stairs--js').text(`${activityRepo.getAllUserActivityAvgByDate('flightsOfStairs', date)}`);
-  $('#td__user--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
-  $('#td__others--minutes--js').text(`${activityRepo.getAllUserActivityAvgByDate('minutesActive', date)}`);
+  $('#td__user--steps--js').text(`
+    ${activity.getUserActivityStatForDate('numSteps', date)}`);
+  $('#td__others--steps--js').text(`
+    ${activityRepo.getAllUserActivityAvgByDate('numSteps', date)}`);
+  $('#td__user--stairs--js').text(`
+    ${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
+  $('#td__others--stairs--js').text(`
+    ${activityRepo.getAllUserActivityAvgByDate('flightsOfStairs', date)}`);
+  $('#td__user--minutes--js').text(`
+    ${activity.getUserActivityStatForDate('minutesActive', date)}`);
+  $('#td__others--minutes--js').text(`
+    ${activityRepo.getAllUserActivityAvgByDate('minutesActive', date)}`);
 }
 
 let userHydrationByWeekChart = new Chart($('#hydration__by--week--chart--js'), {
@@ -111,7 +129,8 @@ let userHydrationByWeekChart = new Chart($('#hydration__by--week--chart--js'), {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: "Oz's on Each Day",
-        backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+        backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C",
+         "#E0FF19", "#D47FFF"],
         hoverBackgroundColor: "white",
         data: hydrationChart,
         }]
@@ -155,7 +174,8 @@ let usersleepQualityByWeekChart = new Chart($('#sleep__by--week--quality--js'), 
     labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
     datasets: [{
       label: "Sleep Quality Score",
-      pointBackgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+      pointBackgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED",
+        "#FF631C", "#E0FF19", "#D47FFF"],
       data: sleepQualityChart,
       backgroundColor: "gainsboro",
       pointRadius: 8,
@@ -195,7 +215,8 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
     labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
     datasets: [{
       label: "Hours Slept",
-      pointBackgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+      pointBackgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED",
+        "#FF631C", "#E0FF19", "#D47FFF"],
       data: sleepHoursChart,
       backgroundColor: "gainsboro",
       pointRadius: 8,
