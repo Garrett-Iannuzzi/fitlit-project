@@ -81,15 +81,15 @@ function updateSleepyImg() {
 }
 
 function activityHandler() {
-  $('#span__todays--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)}`);
-  $('#span__todays--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)}`);
-  $('#span__todays--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)}`);
+  $('#p__todays--steps--js').text(`${activity.getUserActivityStatForDate('numSteps', date)} steps`);
+  $('#p__todays--stairs--js').text(`${activity.getUserActivityStatForDate('flightsOfStairs', date)} flights`);
+  $('#p__todays--minutes--js').text(`${activity.getUserActivityStatForDate('minutesActive', date)} min`);
   $('#span__chart--step--winner--js').text(`${user.findFriendStepsOnlyWinner()}`);
   activity.getStepStreakDatesOnly('numSteps').forEach(stat => {
-    $('#ul__step--streak--js').append(`<li id="li__step--streak--js"> ${stat} </li>`);
+    $('#ul__step--streak--js').append(`<li class="step__color"> ${stat} </li>`);
   });
   activity.getStepStreakDatesOnly('minutesActive').forEach(stat => {
-    $('#ul__min--streak--js').append(`<li id="li__min--streak--js"> ${stat} </li>`);
+    $('#ul__min--streak--js').append(`<li class="minute__color"> ${stat} </li>`);
   });
   displayMilesWalked(date);
   displayActivityTable();
@@ -264,13 +264,6 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
           text: 'Weekly Steps Totals',
           fontSize: 25,
         },
-      },
-      title: {
-        fontColor: "white",
-        display: true,
-        text: 'Weekly Steps Totals',
-        fontSize: 25,
-      },
       scales: {
         yAxes: [{
           ticks: {
@@ -288,6 +281,7 @@ let usersleepHoursByWeekChart = new Chart($('#sleep__week--hours--js'), {
       },
       responsive: true,
       maintainAspectRatio: false,
+    }
   });
 
 let stairsByWeekChart = new Chart($('#chart__weekly--stairs--js'), {

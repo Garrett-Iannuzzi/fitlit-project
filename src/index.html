@@ -23,7 +23,7 @@
             <p class="p__user">Address: <span id="span__user--address--js"></span></p>
             <p class="p__user">Email: <span id="span__user--email--js"></span></p>
             <p class="p__user">Stride Length: <span id="span__user--stride--js"></span></p>
-            <p class="p__user--friends">Friends Gettin' Fit: <span id="span__user--friends--js"></span></p>
+            <p class="p__divider">Friends Gettin' Fit: <span id="span__user--friends--js"></span></p>
             <p class="p__user">Daily Step Goal:</p>
             <p class="p__user">Your Goal: <span id="span__user--goal--js"></span></p>
             <p class="p__user">FitLit Users Goal: <span id="span__user--average--js"></span></p>
@@ -35,7 +35,7 @@
         <section class="div__hydration draggable grid-item" id="">
           <h4 class="h4__box--header">Todays Water: </h4>
           <h4><span id="span__todays--water"></span></h4>
-          <img class="water__img" src="../Images/drop.png">
+          <img class="smaller__img" src="../Images/drop.png">
         </section>
 
       <!-- Hydration Chart -->
@@ -50,34 +50,34 @@
           <h4 class="p__user--sleep-last--night"><span id="span__sleep--hours--js"></span></h4>
           <p class="p__user">Quality Score:</p>
           <h4><span id="span__sleep--quality--js"></span> / 5</h4>
-          <img class="sleep__img" src="../Images/sleep.png">
+          <img class="smaller__img" src="../Images/sleep.png">
         </section>
         <section class="draggable grid-item" id="">
           <h4 class="h4__box--header">Average Sleep Stats:</h4>
           <p class="p__user">Hours: </p>
-          <h4 class="span__sleep--average--hours"><span id="span__sleep--average--hours--js"></span></h4>
+          <h4 class="p__divider"><span id="span__sleep--average--hours--js"></span></h4>
           <p class="p__user">Quality Score: </p>
           <h4><span id="span__sleep--average--quality--js"></span> / 5</h4>
-          <img class="sleep__img--avg" src="../Images/sleepy.png">
+          <img class="larger__img" src="../Images/sleepy.png">
         </section>
         <section class="draggable grid-item" id="" >
-            <h4 class="h4__box--header">Your Sleep Status: </h4>
-            <h4><span id="span__sleep--status--js"></span></h4>
-            <img class="sleepy__img" id="sleepy__img--js" src="">
+           <h4 class="h4__box--header">Your Sleep Status: </h4>
+           <h4><span id="span__sleep--status--js"></span></h4>
+           <img class="larger__img" id="sleepy__img--js" src="">
         </section>
 
       <!-- Activity -->
         <section class="draggable grid-item" id="">
           <h4 class="h4__box--header">Today's Activity:</h4>
-          <p class="p__user">Steps: <span id="span__todays--steps--js"></span> steps</p>
-          <p class="p__user">Stairs Climbed: <span id="span__todays--stairs--js"></span> flights</p>
-          <p class="p__user">Total Activity Time: <span id="span__todays--minutes--js"></span> min</p>
-          <img class="goal__img" src="../Images/goal.png">
+          <h4 class="h4__user">Steps: </h4><p class="p__divider step__color" id="p__todays--steps--js"></p>
+          <h4 class="h4__user">Stairs Climbed: </h4><p class="p__divider stair__color" id="p__todays--stairs--js"></p>
+          <h4 class="h4__user">Total Activity Time: </h4><p class="minute__color" id="p__todays--minutes--js"></p>
+          <img class="larger__img" src="../Images/goal.png">
         </section>
         <section class="draggable grid-item" id="">
           <p class="p__distance">You've stepped your way through </p>
           <p><span class="p__display--miles" id="p__distance--miles--js"></span> today!</p>
-        <img class="shoe__img" src="../Images/shoe.png">
+        <img class="smaller__img" src="../Images/shoe.png">
         </section>
         <section class="draggable grid-item" id="">
           <table>
@@ -94,18 +94,18 @@
             <tbody>
               <tr>
                 <th scope="row">Steps</th>
-                <td class="td__table--steps" id="td__user--steps--js">1</td>
-                <td class="td__table--steps" id="td__others--steps--js">100</td>
+                <td class="step__color" id="td__user--steps--js"></td>
+                <td class="step__color" id="td__others--steps--js"></td>
               </tr>
               <tr>
                 <th scope="row">Stairs</th>
-                <td class="td__table--stairs" id="td__user--stairs--js">1</td>
-                <td class="td__table--stairs" id="td__others--stairs--js">200</td>
+                <td class="stair__color" id="td__user--stairs--js"></td>
+                <td class="stair__color" id="td__others--stairs--js"></td>
               </tr>
               <tr>
                 <th scope="row">Minutes</th>
-                <td class="td__table--minutes" id="td__user--minutes--js">1</td>
-                <td class="td__table--minutes" id="td__others--minutes--js">300</td>
+                <td class="minute__color" id="td__user--minutes--js"></td>
+                <td class="minute__color" id="td__others--minutes--js"></td>
               </tr>
             </tbody>
           </table>
@@ -147,7 +147,7 @@
         <section class="draggable grid-item">
           <div class="step__chart--friends--steps" id="step__vs--friends--js">
               <canvas id="step__chart--friends--js" width="200" height="400"></canvas>
-            </div>
+          </div>
             <p class="p__user">Winner: <span id="span__chart--step--winner--js"></span></p>
         </section>
 
