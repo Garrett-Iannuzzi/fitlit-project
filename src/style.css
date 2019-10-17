@@ -189,8 +189,7 @@ width: 100px;
 }
 
 .chart--style,
-.step__chart--friends--steps,
-{
+.step__chart--friends--steps {
   background-color: rgb(55, 18, 75);
   border: solid 6px rgb(32, 11, 43);
   margin: 35px;
