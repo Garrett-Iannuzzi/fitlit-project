@@ -17,7 +17,9 @@ const weeklyStairsChart =
 const weeklyMinutesChart =
   activity.getWeeklyActivityStats('minutesActive', date);
 const weeklyStepsVsFriends = user.findFriendSteps(userData, activityData, date);
-let $grid = $('.grid').packery({itemSelector: '.grid-item', columnWidth: 100});
+const namesForStepRace = user.findFriendNames(userData);
+const stepsForStepRace = user.findFriendStepsOnly();
+const $grid = $('.grid').packery({itemSelector: '.grid-item', columnWidth: 100});
 
 $(document).ready(function () {
   $('#span__current--date').text(date);
@@ -381,8 +383,6 @@ let minutesByWeekChart = new Chart($('#chart__weekly--minutes--js'), {
   }
 });
 
-let namesForStepRace = user.findFriendNames(userData);
-let stepsForStepRace = user.findFriendStepsOnly();
 let weeklyStepsVsFriendsChart = new Chart($('#step__chart--friends--js'), {
   type: 'bar',
   data: {
