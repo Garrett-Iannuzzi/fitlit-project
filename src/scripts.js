@@ -27,18 +27,10 @@ $(document).ready(function () {
   activityHandler();
 });
 
-// let $grid = $('section').draggabilly({
-// })
-
 $grid.find('.draggable').each( function( i, gridItem ) {
   let draggie = new Draggabilly( gridItem );
   $grid.packery( 'bindDraggabillyEvents', draggie );
 });
-
-// $('.main__page').packery({
-//   // itemSelector: 'section',
-//   gutter: 15
-// });
 
 $('#button__confidence--js').on('click', function() {
   $('#section__goal--exceed--js').removeClass('hide');
