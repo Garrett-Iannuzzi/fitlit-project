@@ -17,7 +17,9 @@ const weeklyStairsChart =
 const weeklyMinutesChart =
   activity.getWeeklyActivityStats('minutesActive', date);
 const weeklyStepsVsFriends = user.findFriendSteps(userData, activityData, date);
-let $grid = $('.grid').packery({itemSelector: '.grid-item', columnWidth: 100});
+const namesForStepRace = user.findFriendNames(userData);
+const stepsForStepRace = user.findFriendStepsOnly();
+const $grid = $('.grid').packery({itemSelector: '.grid-item', columnWidth: 100});
 
 $(document).ready(function () {
   $('#span__current--date').text(date);
@@ -27,18 +29,10 @@ $(document).ready(function () {
   activityHandler();
 });
 
-// let $grid = $('section').draggabilly({
-// })
-
 $grid.find('.draggable').each( function( i, gridItem ) {
   let draggie = new Draggabilly( gridItem );
   $grid.packery( 'bindDraggabillyEvents', draggie );
 });
-
-// $('.main__page').packery({
-//   // itemSelector: 'section',
-//   gutter: 15
-// });
 
 $('#button__confidence--js').on('click', function() {
   $('#section__goal--exceed--js').removeClass('hide');
@@ -389,8 +383,6 @@ let minutesByWeekChart = new Chart($('#chart__weekly--minutes--js'), {
   }
 });
 
-let namesForStepRace = user.findFriendNames(userData);
-let stepsForStepRace = user.findFriendStepsOnly();
 let weeklyStepsVsFriendsChart = new Chart($('#step__chart--friends--js'), {
   type: 'bar',
   data: {
