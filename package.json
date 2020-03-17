@@ -1,9 +1,10 @@
 {
-  "name": "activity-tracker",
+  "name": "fitness-is-litness",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "npm run index.html",
     "test": "./node_modules/.bin/mocha",
     "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
   },
