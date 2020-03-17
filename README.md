@@ -1,35 +1,38 @@
 # FitLit Activity Tracker
 
-Garrett Iannuzzi & Heather Faerber
+[Garrett Iannuzzi](https://github.com/Garrett-Iannuzzi) & [Heather Faerber](https://github.com/hfaerber)
 
-View the full page [here](http://fitness-is-litness.surge.sh/)
+View the full page [here](http://fitness-is-litness.surge.sh/)!
 
 ## Project Details
 
-This pair project was completed in 10 days during Mod 2.  The objective was to
-build out a data model to process several data sets and then to create a
-dashboard displaying user activity stats with great UI/UX.  We implemented ES6
-classes and a testing suite using Test Driven Development to build our data
-model. We implemented jQuery for our DOM manipulation and used eslint for
-style guide accuracy.  This project was focused on clean, DRY code and SRP,
-especially when building out the data model.
+This paired project was completed in 10 days at Turing School of Software and Design. The objective was to
+build out a data model to process several data sets and then to create a dashboard displaying user activity stats with an interactive UI/UX using `Chart.js`. Currently the application generates a random number to serve as a user id, then displays all activity information tied to that user.  Future iteration goals would implement a login page to determine a specific user as well adding customization to save the user's organization of the draggable widgets.
 
-Currently our project generates a random number to serve as a user id, then
-displays all activity information tied to that user.  Future iteration goals
-would implement a login page to determine a specific user as well adding
-customization to save the user's organization of the draggable widgets.
+## Goals:
+1) Implemented ES6 classes 
+2) Use Test Driven Development to build data model
+3) Implemented jQuery for our DOM manipulation 
+4) Implement `eslint` for style guide accuracy.  
 
-## Design
+This project was focused on clean, DRY code and SRP, especially when building out the data model.
 
-This project specified what information should be displayed but did not provide
-a comp to match nor did it specify how any of the required information should be
-displayed. We chose to mix up the display options and include an engaging color
-scheme with great UI and readability in mind.
+## Setup:
+1) Clone down the repo 
+2) Run `npm i` in the terminal
+3) Select "Open In Default Browser" to see the full site
+4) You can also use the production link above
 
-## See The Dashboard
+## Tech Stack:
 
-#### Screenshot
+1) Vanilla JavaScript
+2) HTML
+3) CSS
+4) esLint
+5) Chart.js
+
+#### Screenshots and gifs:
+![project-demo](https://user-images.githubusercontent.com/48163945/66961130-79f16a00-f05d-11e9-86d0-906f3dcbf8bf.gif)
+
 ![FitLit paired project screenshot](https://user-images.githubusercontent.com/48163945/66958950-e6b63580-f058-11e9-99a2-12dca5ea1af2.png)
 
-#### Gif
-![project-demo](https://user-images.githubusercontent.com/48163945/66961130-79f16a00-f05d-11e9-86d0-906f3dcbf8bf.gif)
