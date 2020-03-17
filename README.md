@@ -12,7 +12,7 @@ build out a data model to process several data sets and then to create a dashboa
 ## Goals:
 1) Implemented ES6 classes 
 2) Use Test Driven Development to build data model
-3) Implemented jQuery for our DOM manipulation 
+3) Implemented `jQuery` for our DOM manipulation 
 4) Implement `eslint` for style guide accuracy.  
 
 This project was focused on clean, DRY code and SRP, especially when building out the data model.
