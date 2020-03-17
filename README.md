@@ -2,6 +2,8 @@
 
 Garrett Iannuzzi & Heather Faerber
 
+View the full page [here](http://fitness-is-litness.surge.sh/)
+
 ## Project Details
 
 This pair project was completed in 10 days during Mod 2.  The objective was to
