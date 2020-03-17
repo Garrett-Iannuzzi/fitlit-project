@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run",
+    "build": "npm run ./src",
     "test": "./node_modules/.bin/mocha",
     "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
   },
