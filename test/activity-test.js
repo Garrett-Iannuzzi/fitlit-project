@@ -1,11 +1,11 @@
 const chai = require('chai');
 const expect = chai.expect;
 const Activity = require('../src/activity');
-const sampleActivityData = require('../data/sampleActivityData');
+const sampleActivityData = require('../src/data/sampleActivityData');
 const ActivityRepo = require('../src/activityRepo');
 const User = require('../src/user');
 const UserRepo = require('../src/userRepo');
-const sampleUserData = require('../data/sampleUserData');
+const sampleUserData = require('../src/data/sampleUserData');
 
 describe('Activity', () => {
 
