@@ -2,7 +2,7 @@
 
 [Garrett Iannuzzi](https://github.com/Garrett-Iannuzzi) & [Heather Faerber](https://github.com/hfaerber)
 
-View the full page [here](http://fitness-is-litness.surge.sh/)!
+View the full page [here](https://fitness-is-litness.netlify.app/)!
 
 ## Project Details
 
