@@ -76,9 +76,9 @@ function sleepHandler() {
 
 function updateSleepyImg() {
   if (sleep.wellRested === true) {
-    $('#sleepy__img--js').attr('src', '../Images/wake-up.png');
+    $('#sleepy__img--js').attr('src', '../src/Images/wake-up.png');
   } else {
-    $('#sleepy__img--js').attr('src', '../Images/tired.png');
+    $('#sleepy__img--js').attr('src', '../src/Images/tired.png');
   }
 }
 
